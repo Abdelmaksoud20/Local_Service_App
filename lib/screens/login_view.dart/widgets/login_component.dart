@@ -44,16 +44,22 @@ class _LoginComponentState extends State<LoginComponent> {
           title: 'Login',
           radius: 15,
           onPressed: () {
+            //! homePage clinetOrServiceProvider
             controller!.clear();
             controllerpassword!.clear();
           },
         ),
         Padding(
           padding: const EdgeInsets.only(left: 20, top: 15),
-          child: Text(
-            'Forgot password',
-            style: GoogleFonts.poppins(fontSize: 13, color: Color(0xff2A6827)),
-            // TextStyle(color: Color(0xff2A6827), fontSize: 15),
+          child: GestureDetector(
+            onTap: (){
+              //! ForgetPassWordPage
+            },
+            child: Text(
+              'Forgot password',
+              style: GoogleFonts.poppins(fontSize: 13, color: Color(0xff2A6827)),
+              // TextStyle(color: Color(0xff2A6827), fontSize: 15),
+            ),
           ),
         ),
       ],

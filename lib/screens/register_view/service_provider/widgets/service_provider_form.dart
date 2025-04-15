@@ -52,7 +52,9 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
             SizedBox(
             height: 15,
           ),
-          PrimaryButton(title: 'Register',radius: 15,),
+          PrimaryButton(title: 'Register',radius: 15,onPressed: (){
+            //!HomePagetoServiceProvider
+          },),
           SizedBox(
             height: 15,
           ),

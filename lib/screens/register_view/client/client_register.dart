@@ -11,7 +11,9 @@ class ClientRegister extends StatelessWidget {
         SizedBox(height: 20),
         ClientForm(),
         SizedBox(height: 20),
-        PrimaryButton(title: 'Register', radius: 15),
+        PrimaryButton(title: 'Register', radius: 15,onPressed: (){
+          //!HomePageClient
+        },),
         SizedBox(height: 10),
       ],
     );
