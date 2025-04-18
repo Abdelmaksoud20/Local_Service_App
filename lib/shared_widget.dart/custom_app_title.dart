@@ -20,7 +20,7 @@ class CustomAppTitle extends StatelessWidget {
       height: double.infinity,
       width: double.infinity,
       child: Padding(
-        padding: EdgeInsets.only(top: height * 0.05, left: width * 0.02),
+        padding: EdgeInsets.only(top: height * 0.06, left: width * 0.03),
         child: Text(
           text(selectedPage ?? ''),
           style: GoogleFonts.poppins(

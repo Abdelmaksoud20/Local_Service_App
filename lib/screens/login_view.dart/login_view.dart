@@ -20,11 +20,15 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Stack(
-          children: [
-            CustomAppTitle(selectedPage: selected),
-            ComponentLoginOrRegister(onSwitch: updatePageTitle),
-          ],
+        resizeToAvoidBottomInset: true,
+        body: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(), // update
+          child: Stack(
+            children: [
+              CustomAppTitle(selectedPage: selected),
+              ComponentLoginOrRegister(onSwitch: updatePageTitle),
+            ],
+          ),
         ),
       ),
     );

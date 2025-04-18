@@ -1,33 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/models/form_field_model.dart';
 
 class CustomForm extends StatelessWidget {
-  const CustomForm({
-    super.key,
-    this.hintText,
-    this.icon,
-    this.obscureText = false,
-    this.left = 12,  this.controller,
-  });
-  final String? hintText;
-  final Widget? icon;
-  final bool? obscureText;
-  final double left;
-  final TextEditingController? controller;
+  const CustomForm({super.key, required this.formModel});
+  final FormFieldModel formModel;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 10, left: left, bottom: 10),
-      child: TextField(
-        controller: controller,
+      padding: EdgeInsets.only(top: 10, left: formModel.left, bottom: 10),
+      child: TextFormField(
+        validator: formModel.validate,
+        forceErrorText: formModel.errorText,
+        keyboardType: formModel.keyboardType,
+        onChanged: formModel.onchanged,
+        controller: formModel.controller,
         style: TextStyle(fontSize: 18),
-        obscureText: obscureText!,
+        obscureText: formModel.obscureText!,
         cursorColor: Colors.black,
         decoration: InputDecoration(
+          border: border(),
           enabledBorder: border(),
           focusedBorder: border(color: Colors.black),
-          hintText: hintText,
+          hintText: formModel.hintText,
           hintStyle: TextStyle(color: Colors.blueGrey),
-          suffixIcon: icon,
+          suffixIcon: formModel.icon,
         ),
       ),
     );
