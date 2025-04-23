@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/home_views/profile_view.dart';
 import 'package:graduation_project/screens/home_views/services_view.dart';
 import 'package:graduation_project/screens/home_views/widgets/home_drawer_nav.dart';
-
 import '../../helper/colors_app.dart';
 import 'home_view_body.dart';
 
