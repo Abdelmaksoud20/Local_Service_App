@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 class HomeServiceItem extends StatelessWidget {
   const HomeServiceItem( BuildContext context , {
