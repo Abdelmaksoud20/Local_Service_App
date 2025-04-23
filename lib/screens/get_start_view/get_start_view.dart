@@ -8,13 +8,15 @@ class GetStartView extends StatelessWidget {
 
 @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Stack(
-        children: [
-          CustomAppTitle(),
-          ComponentGetStartView(),
-        ],
+    return SafeArea(
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: Stack(
+          children: [
+            CustomAppTitle(),
+            ComponentGetStartView(),
+          ],
+        ),
       ),
     );
   }

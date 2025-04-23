@@ -1,53 +1,83 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
-class CustomDropdownListLocation extends StatefulWidget {
-  const CustomDropdownListLocation({super.key});
-
+class CustomDropdownList extends StatefulWidget {
+  const CustomDropdownList({
+    super.key,
+    required this.data,
+    this.validator,
+    this.initialValue,
+    this.onChanged, required this.hintText,
+  });
+  final List<String> data;
+  final String? Function(String?)? validator;
+  final String? initialValue;
+  final ValueChanged<String?>? onChanged;
+  final String hintText;
   @override
-  State<CustomDropdownListLocation> createState() => _CustomDropdownListLocationState();
+  State<CustomDropdownList> createState() => CustomDropdownListState();
 }
 
-class _CustomDropdownListLocationState extends State<CustomDropdownListLocation> {
-  List<String> locations = ['Al-Sharq', 'Al-Arab', 'Al-Manakh','Al-Dawahi', 'Al-Zohour', 'Al-Janoub', 'Al-Gharb'];
+class CustomDropdownListState extends State<CustomDropdownList> {
   String? selectedItem;
   @override
+  void initState() {
+    super.initState();
+    selectedItem = widget.initialValue;
+  }
+
+  void reset() {
+    setState(() {
+      selectedItem = null;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10,bottom: 10),
-      child: SizedBox(
-        child: SingleChildScrollView(
-          child: DropdownButtonFormField2<String>(
+    return SingleChildScrollView(
+      padding: const EdgeInsets.only(top: 10, bottom: 10),
+      child: Column(
+        children: [
+          DropdownButtonFormField2<String>(
+            validator: widget.validator,
             isExpanded: true,
             decoration: InputDecoration(
+              border: border(),
               enabledBorder: border(),
               focusedBorder: border(color: Colors.black),
             ),
             value: selectedItem,
             hint: Text(
-              'select your location',
+              widget.hintText,
               style: TextStyle(color: Colors.blueGrey, fontSize: 18),
             ),
             items:
-                locations.map((item) {
-                  return DropdownMenuItem<String>(value: item, child: Text(item));
+                widget.data.map((item) {
+                  return DropdownMenuItem<String>(
+                    value: item,
+                    child: Text(item),
+                  );
                 }).toList(),
             onChanged: (value) {
               setState(() {
                 selectedItem = value!;
               });
+              if (widget.onChanged != null) widget.onChanged!(value);
             },
-            
+
             dropdownStyleData: DropdownStyleData(
+              direction: DropdownDirection.left,
               isOverButton: false,
-              maxHeight: 200,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
+              maxHeight: 150,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+              ),
             ),
             menuItemStyleData: const MenuItemStyleData(
               padding: EdgeInsets.symmetric(horizontal: 7),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
