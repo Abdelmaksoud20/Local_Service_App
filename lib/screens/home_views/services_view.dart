@@ -57,7 +57,10 @@ class ServicesItem extends StatelessWidget {
               Text("20-10-2025"),
               SizedBox(
                   width: 60,
-                  child: Text( name , maxLines: 2, overflow: TextOverflow.ellipsis,)),
+                  child: Text( name , maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+              ),
               Container(
                 //width: 70,
                 width: MediaQuery.sizeOf(context).width *.2,
@@ -66,7 +69,7 @@ class ServicesItem extends StatelessWidget {
                     color: color,
                     borderRadius: BorderRadius.circular(20)
                   ),
-                  child: Text(jobState , style: TextStyle(color: Colors.white),)),
+                  child: Text(jobState , style: TextStyle( fontSize : 12, color: Colors.white , ),)),
             ],
           ),
         ),

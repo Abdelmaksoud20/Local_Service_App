@@ -12,13 +12,13 @@ class HomeServiceItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 40),
+      padding: const EdgeInsets.only(top: 10),
       child: Card(
         color: Colors.white70,
         elevation:2 ,
         child: Container(
           //  width: 80,
-          width: size.width * .22,
+          width: size.width * .23,
           padding: EdgeInsets.all(10),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -32,8 +32,11 @@ class HomeServiceItem extends StatelessWidget {
                 // ),
                 Text(
                   name,
-                  maxLines: 2,
+                  maxLines: 1,
                   overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 13
+                  ),
                 ),
               ]),
         ),

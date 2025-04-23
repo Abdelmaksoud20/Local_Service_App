@@ -4,6 +4,8 @@ import 'package:graduation_project/shared_widget.dart/custom_form.dart';
 import 'package:graduation_project/shared_widget.dart/custom_text_form.dart';
 import 'package:graduation_project/shared_widget.dart/primary_button.dart';
 
+import '../../home_views/home_view.dart';
+
 class LoginComponent extends StatefulWidget {
   const LoginComponent({super.key});
 
@@ -44,7 +46,7 @@ class _LoginComponentState extends State<LoginComponent> {
           title: 'Login',
           radius: 15,
           onPressed: () {
-           // Navigator.pushReplacement(context, MaterialPageRoute(builder: ()=>))
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HomeView()));
             //! homePage clinetOrServiceProvider
             controller!.clear();
             controllerpassword!.clear();

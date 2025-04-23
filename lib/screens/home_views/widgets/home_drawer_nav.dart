@@ -12,20 +12,20 @@ class HomeDrawerNav extends StatelessWidget {
     return  Drawer(
       width: size.width *.77,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12 , vertical: 25),
+        padding: const EdgeInsets.symmetric(horizontal: 6 , vertical: 25),
         child: ListView(
           children: [
             Row(
               children :[
                 CircleAvatar(
                   //radius: 25,
-                  radius: size.height *.04,
+                  radius: size.height *.037,
                   backgroundImage: AssetImage("assets/images/lego.png" ) ,
                 ),
                 SizedBox(width: 10,),
                 Text("Mahmoud Shamrokh" , style: TextStyle(
                 fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                  fontSize: 14,
                 ),
                 ),
                 Spacer(),

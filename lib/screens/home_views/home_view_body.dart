@@ -44,6 +44,9 @@ class HomeViewBody extends StatelessWidget {
                       ),
                       Text(
                         "Al Slam Alycom Mahmoud",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
                       Spacer(
                         flex: 1,
@@ -108,17 +111,20 @@ class HomeViewBody extends StatelessWidget {
                   ),
                 ),
               ),
-              Wrap(
-                spacing: 20,
-                children: [
-                  HomeServiceItem(context , size: size, name: "Electrical", image: "assets/images/electricity.png", color: Colors.blueAccent,),
-                  HomeServiceItem(context , size: size, name:"Color man", image: "assets/images/paintwork.png",color: Colors.redAccent,),
-                  HomeServiceItem(context , size: size, name: "Builder", image: "assets/images/pipeline.png", color: Colors.teal,),
-                  HomeServiceItem(context , size: size, name: "Gardenar", image: "assets/images/tools.png", color: Colors.greenAccent,),
-                  HomeServiceItem(context , size: size, name: "Carpenter", image: "assets/images/tools.png", color: Colors.brown,),
-                  HomeServiceItem(context , size: size, name: "HomeLander", image: "assets/images/tools.png", color: Colors.purple,),
+              Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: Wrap(
+                  spacing: 15,
+                  children: [
+                    HomeServiceItem(context , size: size, name: "Electrical", image: "assets/images/electricity.png", color: Colors.blueAccent,),
+                    HomeServiceItem(context , size: size, name:"Color man", image: "assets/images/paintwork.png",color: Colors.redAccent,),
+                    HomeServiceItem(context , size: size, name: "Cleaner", image: "assets/images/pipeline.png", color: Colors.teal,),
+                    HomeServiceItem(context , size: size, name: "Plumber", image: "assets/images/tools.png", color: Colors.greenAccent,),
+                    HomeServiceItem(context , size: size, name: "Carpenter", image: "assets/images/tools.png", color: Colors.brown,),
+                    HomeServiceItem(context , size: size, name: "AC technical", image: "assets/images/tools.png", color: Colors.purple,),
 
-                ],
+                  ],
+                ),
               ),
             ],
           ),
