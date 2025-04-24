@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/home_views/widgets/profile_clipper.dart';
 
+import '../../../constant.dart';
 import '../../../helper/colors_app.dart';
+import '../../../helper/font_size.dart';
 
 class ProfileBody extends StatelessWidget {
   const ProfileBody({super.key});
@@ -26,7 +28,7 @@ class ProfileBody extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Profile" , style: TextStyle( fontSize: 22 , fontWeight: FontWeight.bold , color: Colors.white),),
+                    Text("Profile" , style: TextStyle( fontSize: FontSizeApp.fontSize23 , fontWeight: FontWeight.bold , color: Colors.white),),
                     SizedBox(height: 20),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -36,18 +38,18 @@ class ProfileBody extends StatelessWidget {
                         ),
                         CircleAvatar(
                           radius: size.height *.044 ,
-                          backgroundImage: AssetImage('assets/images/lego.png'),
+                          backgroundImage: AssetImage(profileImage),
                         ),
                         SizedBox(width: 10),
                         Column(
                           children: [
                             Text(
                               "Mahmoud Shamrokh",
-                              style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                              style: TextStyle(color: Colors.white, fontSize: FontSizeApp.fontSize18, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               "Shamrokh@gmail.com",
-                              style: TextStyle(color: Colors.white70, fontSize: 14),
+                              style: TextStyle(color: Colors.white70, fontSize: FontSizeApp.fontSize14),
                             ),
                           ],
                         ),

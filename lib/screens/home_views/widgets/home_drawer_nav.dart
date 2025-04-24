@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/screens/contact_view/contact_view.dart';
 
+import '../../../constant.dart';
 import '../../../helper/colors_app.dart';
 
 
@@ -20,7 +22,7 @@ class HomeDrawerNav extends StatelessWidget {
                 CircleAvatar(
                   //radius: 25,
                   radius: size.height *.037,
-                  backgroundImage: AssetImage("assets/images/lego.png" ) ,
+                  backgroundImage: AssetImage(profileImage ) ,
                 ),
                 SizedBox(width: 10,),
                 Text("Mahmoud Shamrokh" , style: TextStyle(
@@ -34,7 +36,11 @@ class HomeDrawerNav extends StatelessWidget {
             ),
             SizedBox(height: 50,),
             Text("Other" , style: TextStyle( fontSize: 24 , fontWeight: FontWeight.bold),),
-            CustomItemDrawer(text: "Contact us", icon:Icons.question_mark,),
+            CustomItemDrawer(text: "Contact us", icon:Icons.question_mark,
+              onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ContactView()));
+              },
+            ),
             CustomItemDrawer(text: "About App", icon:Icons.info_outline,),
             CustomItemDrawer(text: "Log Out", icon:Icons.logout,),
             SizedBox(
@@ -62,15 +68,16 @@ class HomeDrawerNav extends StatelessWidget {
 
 class CustomItemDrawer extends StatelessWidget {
   const CustomItemDrawer({
-    super.key, required this.text, required this.icon,
+    super.key, required this.text, required this.icon, this.onPressed,
   });
   final String text ;
   final IconData icon ;
+  final void Function()? onPressed ;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
       padding: EdgeInsets.zero,
-      onPressed: (){},
+      onPressed: onPressed,
       child: ListTile(
         titleTextStyle: TextStyle( fontSize: 16  , color: Colors.black),
         horizontalTitleGap: 0,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/home_views/widgets/home_clipper.dart';
 import 'package:graduation_project/screens/home_views/widgets/home_service_item.dart';
 import '../../helper/colors_app.dart';
+import '../../helper/font_size.dart';
 
 
 class HomeViewBody extends StatelessWidget {
@@ -88,7 +89,7 @@ class HomeViewBody extends StatelessWidget {
               Text(
                 "We Create The Best Service For Your Help ",
                 style: TextStyle(
-                  fontSize: 22,
+                  fontSize: FontSizeApp.fontSize23,
                   color: ColorsApp.primarycolor,
                   fontWeight: FontWeight.bold,
                 ),
@@ -105,7 +106,7 @@ class HomeViewBody extends StatelessWidget {
                 child: Text(
                   "Popular Service ",
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: FontSizeApp.fontSize23,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
@@ -116,12 +117,30 @@ class HomeViewBody extends StatelessWidget {
                 child: Wrap(
                   spacing: 15,
                   children: [
-                    HomeServiceItem(context , size: size, name: "Electrical", image: "assets/images/electricity.png", color: Colors.blueAccent,),
-                    HomeServiceItem(context , size: size, name:"Color man", image: "assets/images/paintwork.png",color: Colors.redAccent,),
-                    HomeServiceItem(context , size: size, name: "Cleaner", image: "assets/images/pipeline.png", color: Colors.teal,),
-                    HomeServiceItem(context , size: size, name: "Plumber", image: "assets/images/tools.png", color: Colors.greenAccent,),
-                    HomeServiceItem(context , size: size, name: "Carpenter", image: "assets/images/tools.png", color: Colors.brown,),
-                    HomeServiceItem(context , size: size, name: "AC technical", image: "assets/images/tools.png", color: Colors.purple,),
+                    // HomeServiceItem(context ,onTap: (){
+                    //  // Navigator.push(context, MaterialPageRoute(builder: (context) =>  ));
+                    //
+                    // } , size: size, name: "Electrical", image: "assets/images/electricity.png",),
+                    HomeServiceItem(context ,onTap: (){
+                      // Navigator.push(context, MaterialPageRoute(builder: (context) =>  ));
+
+                    }, size: size, name:"Color man", image: "assets/images/Peinter2.json",),
+                    HomeServiceItem(context ,onTap: (){
+                      // Navigator.push(context, MaterialPageRoute(builder: (context) =>  ));
+
+                    }, size: size, name: "Cleaner", image: "assets/images/Animation Cleaner.json",),
+                    HomeServiceItem(context ,onTap: (){
+                      // Navigator.push(context, MaterialPageRoute(builder: (context) =>  ));
+
+                    }, size: size, name: "Plumber", image: "assets/images/Animation Plumper.json",),
+                    HomeServiceItem(context ,onTap: (){
+                      // Navigator.push(context, MaterialPageRoute(builder: (context) =>  ));
+
+                    }, size: size, name: "Carpenter", image: "assets/images/Animation Carpenter.json", ),
+                    HomeServiceItem(context ,onTap: (){
+                      // Navigator.push(context, MaterialPageRoute(builder: (context) =>  ));
+
+                    }, size: size, name: "AC technical", image: "assets/images/Animation Peinter.json", ),
 
                   ],
                 ),
