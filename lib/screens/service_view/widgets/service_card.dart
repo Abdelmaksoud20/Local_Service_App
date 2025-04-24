@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/constant.dart';
+import 'package:graduation_project/screens/request_view/request_view.dart';
 
 class ServiceCard extends StatelessWidget {
   const ServiceCard({super.key});
@@ -22,10 +24,7 @@ class ServiceCard extends StatelessWidget {
               const SizedBox(height: 10),
               const Text(
                 'Service',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               Padding(
@@ -45,7 +44,10 @@ class ServiceCard extends StatelessWidget {
                     const Expanded(
                       child: Text(
                         'Maintenance and repair services for all plumbing malfunctions of the highest quality, in addition to installing plumbing for bathrooms, kitchens and bathtubs.',
-                        style: TextStyle(fontSize: 12, color: Color(0xff6D5C5C)),
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Color(0xff6D5C5C),
+                        ),
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -61,18 +63,20 @@ class ServiceCard extends StatelessWidget {
                     '\$100-200',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  const Text(
-                    '/Visit',
-                    style: TextStyle(fontSize: 16),
-                  ),
+                  const Text('/Visit', style: TextStyle(fontSize: 16)),
                   const SizedBox(width: 30),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => RequestView()),
+                      );
+                    },
                     child: Container(
                       height: 36,
                       width: 90,
                       decoration: BoxDecoration(
-                        color: const Color(0xff10B981),
+                        color: kPrimaryColor,
                         borderRadius: BorderRadius.circular(25),
                       ),
                       alignment: Alignment.center,
@@ -92,4 +96,3 @@ class ServiceCard extends StatelessWidget {
     );
   }
 }
-
