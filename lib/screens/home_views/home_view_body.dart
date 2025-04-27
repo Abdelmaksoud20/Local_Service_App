@@ -119,12 +119,12 @@ class HomeViewBody extends StatelessWidget {
                   child: Wrap(
                     spacing: 15,
                     children: [
-                      HomeServiceItem(context , size: size, name: "Electrical", image: "assets/images/electricity.png", color: Colors.blueAccent,),
-                      HomeServiceItem(context , size: size, name:"Color man", image: "assets/images/paintwork.png",color: Colors.redAccent,),
-                      HomeServiceItem(context , size: size, name: "Cleaner", image: "assets/images/pipeline.png", color: Colors.teal,),
-                      HomeServiceItem(context , size: size, name: "Plumber", image: "assets/images/tools.png", color: Colors.greenAccent,),
-                      HomeServiceItem(context , size: size, name: "Carpenter", image: "assets/images/tools.png", color: Colors.brown,),
-                      HomeServiceItem(context , size: size, name: "AC technical", image: "assets/images/tools.png", color: Colors.purple,),
+                      HomeServiceItem(context , size: size, name: "Electrical", image: "assets/images/Animation Peinter.json", ),
+                      HomeServiceItem(context , size: size, name:"Color man", image: "assets/images/Animation Peinter.json",),
+                      HomeServiceItem(context , size: size, name: "Cleaner", image: "assets/images/Animation Cleaner.json", ),
+                      HomeServiceItem(context , size: size, name: "Plumber", image: "assets/images/Animation Plumper.json", ),
+                      HomeServiceItem(context , size: size, name: "Carpenter", image: "assets/images/Animation Carpenter.json", ),
+                      HomeServiceItem(context , size: size, name: "AC technical", image: "assets/images/Peinter2.json", ),
 
                     ],
                   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/constant.dart';
 
 class ProviderCard extends StatelessWidget {
   const ProviderCard({super.key});
@@ -10,10 +11,7 @@ class ProviderCard extends StatelessWidget {
       width: 178,
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(
-          color: const Color(0xff74C69D),
-          width: 2,
-        ),
+        border: Border.all(color: const Color(0xff74C69D), width: 2),
         borderRadius: BorderRadius.circular(27),
       ),
       child: Padding(
@@ -98,7 +96,7 @@ class ProviderCard extends StatelessWidget {
                 height: 23,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: const Color(0xff10B981),
+                  color: kPrimaryColor,
                   borderRadius: BorderRadius.circular(25),
                 ),
                 alignment: Alignment.center,

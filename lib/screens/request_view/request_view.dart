@@ -26,7 +26,7 @@ class RequestView extends StatelessWidget {
             child: ListView(
               children: [
                 Image.asset(
-                  'assets/images/Vector.png',
+                  'assets/images/Vector_x.png',
                   height: 100,
                   width: double.infinity,
                   fit: BoxFit.contain,

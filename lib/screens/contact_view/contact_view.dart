@@ -35,7 +35,7 @@ class ContactView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset("assets/images/Vector.png" , width: 20,),
+                      Image.asset("assets/images/Vector_x.png" , width: 20,),
                       const SizedBox(width: 14,),
                       Image.asset("assets/images/Vector (1).png",width: 20,),
                       const SizedBox(width: 14,),
