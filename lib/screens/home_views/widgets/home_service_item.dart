@@ -20,20 +20,16 @@ class HomeServiceItem extends StatelessWidget {
         elevation:3 ,
         child: Container(
           //  width: 80,
-          width: size.width * .23,
-          height: 120,
+          width: size.width * .27,
           padding: EdgeInsets.all(10),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Image.asset(image,color: color,
-                // ),
+
                 Lottie.asset(
                   image,
-                  width: 70,
                                  //   height:110,
                 ),
-                Spacer(),
                 Text(
                   name,
                   maxLines: 1,

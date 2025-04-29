@@ -19,7 +19,6 @@ class ServiceView extends StatelessWidget {
       body: const Padding(
         padding: EdgeInsets.all(10.0),
         child: CustomScrollView(
-
           physics: BouncingScrollPhysics(),
           slivers: [
             SliverPadding(

@@ -64,7 +64,6 @@ class CustomDropdownListState extends State<CustomDropdownList> {
               });
               if (widget.onChanged != null) widget.onChanged!(value);
             },
-
             dropdownStyleData: DropdownStyleData(
               direction: DropdownDirection.left,
               isOverButton: false,

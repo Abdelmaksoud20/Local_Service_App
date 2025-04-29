@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/screens/contact_view/contact_view.dart';
 import 'package:graduation_project/screens/home_views/widgets/personal_information.dart';
 import 'package:graduation_project/screens/home_views/widgets/profile_information_title.dart';
 
@@ -38,7 +39,10 @@ class ProfileInformationList extends StatelessWidget {
           SizedBox(height: 20),
           SectionTitle(title: "Other"),
           ProfileItem(icon: Icons.history, text: "History of your services"),
-          ProfileItem(icon: Icons.help, text: "Contact Us"),
+          ProfileItem(icon: Icons.help, text: "Contact Us" , onTap: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> ContactView())) ;
+          },
+          ),
           ProfileItem(icon: Icons.info, text: "About App"),
         ],
       ),
