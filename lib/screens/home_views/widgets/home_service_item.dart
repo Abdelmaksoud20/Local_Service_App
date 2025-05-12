@@ -20,7 +20,7 @@ class HomeServiceItem extends StatelessWidget {
         elevation:3 ,
         child: Container(
           //  width: 80,
-          width: size.width * .27,
+          width: size.width * .232,
           padding: EdgeInsets.all(10),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
