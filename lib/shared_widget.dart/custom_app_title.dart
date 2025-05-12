@@ -4,12 +4,8 @@ import 'package:graduation_project/helper/colors_app.dart';
 import 'package:graduation_project/helper/font_size.dart';
 
 class CustomAppTitle extends StatelessWidget {
-  const CustomAppTitle({
-    super.key,
-     this.selectedPage,
-    this.paddingTop = 60,
-  });
-  final String? selectedPage;
+  const CustomAppTitle({super.key, this.paddingTop = 60, this.title});
+  final String? title;
   final double paddingTop;
   @override
   Widget build(BuildContext context) {
@@ -22,7 +18,8 @@ class CustomAppTitle extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.only(top: height * 0.06, left: width * 0.03),
         child: Text(
-          text(selectedPage ?? ''),
+          title!,
+
           style: GoogleFonts.poppins(
             color: Colors.white,
             fontSize: FontSizeApp.fontSize28,
@@ -31,17 +28,5 @@ class CustomAppTitle extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  String text(String selectPage) {
-    if (selectPage == 'login'  || selectPage == 'client') {
-      return 'Sign in-up to enjoy the best service';
-    } else if (selectPage == 'register') {
-      return "Don't Have an Account Yet?";
-    } else if (selectPage == 'serviceProvider') {
-      return "Let's Create Creative Work";
-    } else {
-      return 'Service At Your Fingertios';
-    }
   }
 }
