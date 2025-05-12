@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/screens/register_view/client/client_form.dart';
-import 'package:graduation_project/shared_widget.dart/custom_app_body.dart';
+import 'package:graduation_project/screens/register_view/service_provider/widgets/service_provider_register.dart';
 import 'package:graduation_project/shared_widget.dart/custom_app_title.dart';
 
-class ClientRegister extends StatelessWidget {
-  const ClientRegister({super.key});
+class ServiceProviderPageRegister extends StatelessWidget {
+  const ServiceProviderPageRegister({super.key});
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -14,8 +13,8 @@ class ClientRegister extends StatelessWidget {
           onTap: () => FocusScope.of(context).unfocus(), // update
           child: Stack(
             children: [
-              CustomAppTitle(title: "Sign in-up to enjoy the best service",),
-              CustomAppBody(child: SingleChildScrollView(child: ClientForm())),
+              CustomAppTitle(title: "Let's Create Creative Work",),
+              ServiceProviderComponent(),
             ],
           ),
         ),

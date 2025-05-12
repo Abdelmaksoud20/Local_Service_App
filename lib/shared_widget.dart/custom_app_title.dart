@@ -7,8 +7,9 @@ class CustomAppTitle extends StatelessWidget {
   const CustomAppTitle({
     super.key,
      this.selectedPage,
-    this.paddingTop = 60,
+    this.paddingTop = 60, this.title,
   });
+  final String? title;
   final String? selectedPage;
   final double paddingTop;
   @override
@@ -22,7 +23,8 @@ class CustomAppTitle extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.only(top: height * 0.06, left: width * 0.03),
         child: Text(
-          text(selectedPage ?? ''),
+          title !,
+          // text(selectedPage ?? ''),
           style: GoogleFonts.poppins(
             color: Colors.white,
             fontSize: FontSizeApp.fontSize28,

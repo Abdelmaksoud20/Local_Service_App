@@ -33,6 +33,7 @@ class _ClientFormState extends State<ClientForm> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: 25),
             CustomNameAndUsername(
               left: left,
               controllerFirst: controllerFirst,
