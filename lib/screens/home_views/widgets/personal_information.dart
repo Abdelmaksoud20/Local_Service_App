@@ -7,7 +7,11 @@ import '../../../shared_widget.dart/custom_drop_down_list.dart';
 
 class PersonalInformation extends StatelessWidget {
    PersonalInformation({super.key});
-  final TextEditingController textEditingController = TextEditingController();
+  final TextEditingController firstEditingController = TextEditingController();
+   final TextEditingController lastEditingController = TextEditingController();
+   final TextEditingController emailEditingController = TextEditingController();
+   final TextEditingController  phoneEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context) ;
@@ -16,80 +20,94 @@ class PersonalInformation extends StatelessWidget {
       body:  Column(
         children: [
           ProfileInformationTitle(size: size ),
-          SingleChildScrollView(
-            child: ListView(
-              shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            padding: EdgeInsets.all(20),
-            children: [
-              const SectionTitle(title: "Personal Information",),
-              const SizedBox(height: 15,),
-              InformationItem(textEditingController: textEditingController , text: "First Name:", info: "Your First Name" ,),
-              const SizedBox(height: 25,),
-              InformationItem(textEditingController: textEditingController , text: "Last Name:", info: "Your Last Name" ,),
-              const SizedBox(height: 25,),
-              InformationItem(textEditingController: textEditingController , text: "Email:", info: "Your Email" ,),
-              const SizedBox(height: 25,),
-              CustomDropdownList(
-                hintText: "Your Personal job" ,
-
-                data: [
-                  'Plumbing',
-                  'Cleaning',
-                  'Carpentry',
-                  'Painting',
-                  'Air conditionar',
-                  'Electrical',
-                ],
+          Expanded(
+            child: SingleChildScrollView(
+              child: ListView(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+              padding: EdgeInsets.all(20),
+              children: [
+                const SectionTitle(title: "Personal Information",),
+                const SizedBox(height: 15,),
+                InformationItem(textEditingController: firstEditingController , text: "First Name:", info: "Your First Name" ,),
+                const SizedBox(height: 25,),
+                InformationItem(textEditingController: lastEditingController , text: "Last Name:", info: "Your Last Name" ,),
+                const SizedBox(height: 25,),
+                InformationItem(textEditingController: emailEditingController , text: "Email:", info: "Your Email" ,),
+                const SizedBox(height: 25,),
+                Row(
+                  children: [
+                    Text("Area:"),
+                   const SizedBox(width:15,),
+                    Flexible(
+                      child: CustomDropdownList(
+                        data: [
+                          'Al-Sharq',
+                          'Al-Arab',
+                          'Al-Manakh',
+                          'Al-Dawahi',
+                          'Al-Zohour',
+                          'Al-Janoub',
+                          'Al-Gharb',
+                        ],
+                        hintText: 'Your Area',
+                      ),
+                    )
+                  ],
+                ),
+                const SizedBox(height: 25,),
+                InformationItem(textEditingController: phoneEditingController , text: "Phone Number:", info: "Your Phone" ,),
+              ],
               ),
-              const SizedBox(height: 25,),
-              InformationItem(textEditingController: textEditingController , text: "Phone Number:", info: "Your Phone" ,),
-            ],
             ),
           ),
-          Spacer(),
           Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.symmetric(vertical: 10 , horizontal: 20),
             child: Row(
               children: [
                 Expanded(
-                  child: Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(horizontal: 12,vertical: 7),
-                    decoration : BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(
-                            width: 3,
-                            color:  ColorsApp.primarycolor
-                        ),
-                    ),
-                    child: Text("Discard Change" , style: TextStyle(
-                      color:  ColorsApp.primarycolor,
-                    ),
+                  child: GestureDetector(
+                    onTap: (){},
+                    child: Container(
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.symmetric(horizontal: 12,vertical: 7),
+                      decoration : BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                              width: 3,
+                              color:  ColorsApp.primarycolor
+                          ),
+                      ),
+                      child: Text("Discard Change" , style: TextStyle(
+                        color:  ColorsApp.primarycolor,
+                      ),
+                      ),
                     ),
                   ),
                 ),
                 SizedBox(width: 15,),
                 Expanded(
-                  child: Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(horizontal: 17,vertical: 8),
-                    decoration : BoxDecoration(
-                        color: ColorsApp.primarycolor,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(
-                            width: 3,
-                            color:  ColorsApp.primarycolor
-                        ),
-                    ),
-                    child: Text("Save Change" , style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      color:  Colors.white,
-                    ),
+                  child: GestureDetector(
+                    onTap: (){},
+                    child: Container(
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.symmetric(horizontal: 17,vertical: 8),
+                      decoration : BoxDecoration(
+                          color: ColorsApp.primarycolor,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                              width: 3,
+                              color:  ColorsApp.primarycolor
+                          ),
+                      ),
+                      child: Text("Save Change" , style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color:  Colors.white,
+                      ),
+                      ),
                     ),
                   ),
                 ),
-
               ],
             ),
           ),

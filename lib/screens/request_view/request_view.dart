@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../constant.dart';
 import '../../shared_widget.dart/custom_text_form_field.dart';
-
-
 
 class RequestView extends StatelessWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -144,7 +141,7 @@ class RequestView extends StatelessWidget {
                       },
                       child: Container(
                         height: 60,
-                        width: 350,
+                        width: MediaQuery.sizeOf(context).width *.8,
                         decoration: BoxDecoration(
                           color: kPrimaryColor,
                           borderRadius: BorderRadius.circular(25),

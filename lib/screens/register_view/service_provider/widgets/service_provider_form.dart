@@ -112,7 +112,6 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
                 hintText: 'Enter your skils',
                 keyboardType: TextInputType.name,
                 left: left,
-
                 onchanged: (data) {},
               ),
             ),

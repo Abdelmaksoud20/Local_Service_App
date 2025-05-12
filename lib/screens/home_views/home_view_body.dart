@@ -21,7 +21,6 @@ class HomeViewBody extends StatelessWidget {
               child: Container(
                 // height: size.height * .3,
                  height: size.height * .25,
-
                 color: ColorsApp.primarycolor,
               ),
             ),
@@ -115,16 +114,16 @@ class HomeViewBody extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 20),
                 child: GestureDetector(
-                  onTap: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> ServiceView()));},
+                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> ServiceView()));},
                   child: Wrap(
                     spacing: 15,
                     children: [
-                      HomeServiceItem(context , size: size, name: "Electrical", image: "assets/images/Animation Peinter.json", ),
-                      HomeServiceItem(context , size: size, name:"Color man", image: "assets/images/Animation Peinter.json",),
+                      HomeServiceItem(context , size: size, name: "Electrical", image: "assets/images/electrical-electrician-working.json", ),
+                      HomeServiceItem(context , size: size, name:"Painter", image: "assets/images/color-painting-wall-service.json",),
                       HomeServiceItem(context , size: size, name: "Cleaner", image: "assets/images/Animation Cleaner.json", ),
-                      HomeServiceItem(context , size: size, name: "Plumber", image: "assets/images/Animation Plumper.json", ),
-                      HomeServiceItem(context , size: size, name: "Carpenter", image: "assets/images/Animation Carpenter.json", ),
-                      HomeServiceItem(context , size: size, name: "AC technical", image: "assets/images/Peinter2.json", ),
+                      HomeServiceItem(context , size: size, name: "Plumber", image: "assets/images/water-pipe-leakage-repair.json", ),
+                      HomeServiceItem(context , size: size, name: "Carpenter", image: "assets/images/carpenter-worker.json", ),
+                      HomeServiceItem(context , size: size, name: "AC technical", image: "assets/images/AC Installation.json", ),
 
                     ],
                   ),
