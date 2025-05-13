@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/constant.dart';
+import 'package:graduation_project/models/service_model.dart';
 import 'package:graduation_project/screens/request_view/request_view.dart';
 
 class ServiceCard extends StatelessWidget {
-  const ServiceCard({super.key});
-
+  const ServiceCard({super.key, required this.data});
+  final ServiceModel data;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,8 +23,9 @@ class ServiceCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 10),
-              const Text(
-                'Service',
+               Text(
+                textAlign: TextAlign.center,
+                data.name,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
@@ -34,21 +36,21 @@ class ServiceCard extends StatelessWidget {
                   children: [
                     ClipOval(
                       child: Image.asset(
-                        'assets/images/test_image.jpg',
+                         data.imageUrl,
                         height: 100,
                         width: 100,
                         fit: BoxFit.cover,
                       ),
                     ),
                     const SizedBox(width: 10),
-                    const Expanded(
+                     Expanded(
                       child: Text(
-                        'Maintenance and repair services for all plumbing malfunctions of the highest quality, in addition to installing plumbing for bathrooms, kitchens and bathtubs.',
-                        style: TextStyle(
+                           data.description,
+                           style: TextStyle(
                           fontSize: 12,
                           color: Color(0xff6D5C5C),
                         ),
-                        maxLines: 3,
+                        maxLines: 5,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -59,8 +61,8 @@ class ServiceCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    '\$100-200',
+                   Text(
+                    '\$ ${data.price}',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const Text('/Visit', style: TextStyle(fontSize: 16)),

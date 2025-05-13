@@ -1,10 +1,14 @@
-
 import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/home_views/widgets/home_clipper.dart';
 import 'package:graduation_project/screens/home_views/widgets/home_service_item.dart';
 import 'package:graduation_project/screens/service_view/service_view.dart';
+import 'package:graduation_project/screens/service_view/widgets/pages/air.dart';
+import 'package:graduation_project/screens/service_view/widgets/pages/carpenter.dart';
+import 'package:graduation_project/screens/service_view/widgets/pages/cleaning.dart';
+import 'package:graduation_project/screens/service_view/widgets/pages/electrical.dart';
+import 'package:graduation_project/screens/service_view/widgets/pages/painter.dart';
+import 'package:graduation_project/screens/service_view/widgets/pages/plumber.dart';
 import '../../helper/colors_app.dart';
-
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -20,7 +24,7 @@ class HomeViewBody extends StatelessWidget {
               clipper: HomeClip(),
               child: Container(
                 // height: size.height * .3,
-                 height: size.height * .25,
+                height: size.height * .25,
                 color: ColorsApp.primarycolor,
               ),
             ),
@@ -34,23 +38,14 @@ class HomeViewBody extends StatelessWidget {
                         onPressed: () {
                           Scaffold.of(context).openDrawer();
                         },
-                        icon: Icon(
-                          Icons.menu_rounded,
-                          color: Colors.white,
-                        ),
+                        icon: Icon(Icons.menu_rounded, color: Colors.white),
                       ),
-                      Spacer(
-                        flex: 1,
-                      ),
+                      Spacer(flex: 1),
                       Text(
                         "Al Slam Alycom Mahmoud",
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
+                        style: TextStyle(color: Colors.white),
                       ),
-                      Spacer(
-                        flex: 1,
-                      )
+                      Spacer(flex: 1),
                     ],
                   ),
                   SizedBox(
@@ -75,7 +70,6 @@ class HomeViewBody extends StatelessWidget {
                       ),
                     ),
                   ),
-
                 ],
               ),
             ),
@@ -93,14 +87,12 @@ class HomeViewBody extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
+              SizedBox(height: 10),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 50, vertical: 7),
                 decoration: BoxDecoration(
                   color: ColorsApp.primarycolor,
-                  borderRadius: BorderRadius.circular(12)
+                  borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
                   "Popular Service ",
@@ -113,20 +105,125 @@ class HomeViewBody extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(top: 20),
-                child: GestureDetector(
-                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> ServiceView()));},
-                  child: Wrap(
-                    spacing: 15,
-                    children: [
-                      HomeServiceItem(context , size: size, name: "Electrical", image: "assets/images/electrical-electrician-working.json", ),
-                      HomeServiceItem(context , size: size, name:"Painter", image: "assets/images/color-painting-wall-service.json",),
-                      HomeServiceItem(context , size: size, name: "Cleaner", image: "assets/images/Animation Cleaner.json", ),
-                      HomeServiceItem(context , size: size, name: "Plumber", image: "assets/images/water-pipe-leakage-repair.json", ),
-                      HomeServiceItem(context , size: size, name: "Carpenter", image: "assets/images/carpenter-worker.json", ),
-                      HomeServiceItem(context , size: size, name: "AC technical", image: "assets/images/AC Installation.json", ),
-
-                    ],
-                  ),
+                child: Wrap(
+                  spacing: 15,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ServiceView(
+                              title: 'Electrical',
+                              body: ServiceBodyElectrical(),
+                            ),
+                          ),
+                        );
+                      },
+                      child: HomeServiceItem(
+                        context,
+                        size: size,
+                        name: "Electrical",
+                        image:
+                            "assets/images/electrical-electrician-working.json",
+                      ),
+                    ),
+                    GestureDetector(
+                        onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ServiceView(
+                              title: 'Painter',
+                              body: ServiceBodyPainter(),
+                            ),
+                          ),
+                        );
+                      },
+                      child: HomeServiceItem(
+                        context,
+                        size: size,
+                        name: "Painter",
+                        image: "assets/images/color-painting-wall-service.json",
+                      ),
+                    ),
+                    GestureDetector(
+                          onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ServiceView(
+                              title: 'Cleaner',
+                              body: ServiceBodyCleaning(),
+                            ),
+                          ),
+                        );
+                      },
+                      child: HomeServiceItem(
+                        context,
+                        size: size,
+                        name: "Cleaner",
+                        image: "assets/images/Animation Cleaner.json",
+                      ),
+                    ),
+                    GestureDetector(
+                          onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ServiceView(
+                              title: 'Plumber',
+                              body: ServiceBodyPlumber(),
+                            ),
+                          ),
+                        );
+                      },
+                      child: HomeServiceItem(
+                        context,
+                        size: size,
+                        name: "Plumber",
+                        image: "assets/images/water-pipe-leakage-repair.json",
+                      ),
+                    ),
+                    GestureDetector(
+                          onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ServiceView(
+                              title: 'Carpenter',
+                              body: ServiceBodyCarpenter(),
+                            ),
+                          ),
+                        );
+                      },
+                      child: HomeServiceItem(
+                        context,
+                        size: size,
+                        name: "Carpenter",
+                        image: "assets/images/carpenter-worker.json",
+                      ),
+                    ),
+                    GestureDetector(
+                          onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ServiceView(
+                              title: 'AC technical',
+                              body: ServiceBodyAir(),
+                            ),
+                          ),
+                        );
+                      },
+                      child: HomeServiceItem(
+                        context,
+                        size: size,
+                        name: "AC technical",
+                        image: "assets/images/AC Installation.json",
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -143,6 +240,3 @@ class HomeViewBody extends StatelessWidget {
     );
   }
 }
-
-
-
