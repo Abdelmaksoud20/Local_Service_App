@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/contact_view/contact_view.dart';
-import 'package:graduation_project/screens/home_views/profile_view.dart';
 import 'package:graduation_project/screens/login_view.dart/login_view.dart';
 import 'package:graduation_project/screens/register_view/service_provider/service_provider_home.dart';
-import 'package:graduation_project/screens/service_view/widgets/provider_card.dart';
-import 'package:graduation_project/screens/service_view/widgets/provider_card_list_view.dart';
 
 import '../../../constant.dart';
 import '../../../helper/colors_app.dart';
@@ -12,9 +9,10 @@ import '../../../helper/colors_app.dart';
 
 class HomeDrawerNav extends StatelessWidget {
   const HomeDrawerNav({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
+
     Size size = MediaQuery.sizeOf(context) ;
     return  Drawer(
       width: size.width *.77,

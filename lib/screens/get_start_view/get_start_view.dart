@@ -8,6 +8,8 @@ class GetStartView extends StatelessWidget {
 
 @override
   Widget build(BuildContext context) {
+        var width = MediaQuery.sizeOf(context).width;
+    print(width);
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,

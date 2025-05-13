@@ -67,7 +67,7 @@ class ServiceCard extends StatelessWidget {
                   const SizedBox(width: 30),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushReplacement(
+                      Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => RequestView()),
                       );

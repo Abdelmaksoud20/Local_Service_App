@@ -10,7 +10,7 @@ class ServiceCardSliverList extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
-          return const ServiceCard();
+          return  ServiceCard();
         },
         childCount: 10,
       ),

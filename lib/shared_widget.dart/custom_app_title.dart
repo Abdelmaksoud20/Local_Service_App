@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:graduation_project/helper/app_style.dart';
 import 'package:graduation_project/helper/colors_app.dart';
-import 'package:graduation_project/helper/font_size.dart';
 
 class CustomAppTitle extends StatelessWidget {
   const CustomAppTitle({super.key, this.paddingTop = 60, this.title});
@@ -19,12 +18,8 @@ class CustomAppTitle extends StatelessWidget {
         padding: EdgeInsets.only(top: height * 0.06, left: width * 0.03),
         child: Text(
           title!,
+          style: AppStyle.fontBoldSize28
 
-          style: GoogleFonts.poppins(
-            color: Colors.white,
-            fontSize: FontSizeApp.fontSize28,
-            fontWeight: FontWeight.w600,
-          ),
         ),
       ),
     );
