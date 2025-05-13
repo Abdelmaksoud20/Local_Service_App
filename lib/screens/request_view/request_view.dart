@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/shared_widget.dart/custom_drop_down_list.dart';
 import '../../constant.dart';
 import '../../shared_widget.dart/custom_text_form_field.dart';
 
@@ -72,7 +73,8 @@ class RequestView extends StatelessWidget {
                       return 'Please enter an email';
                     }
                     final emailRegex = RegExp(
-                        r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
+                      r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
+                    );
                     if (!emailRegex.hasMatch(value)) {
                       return 'Enter a valid email';
                     }
@@ -95,14 +97,29 @@ class RequestView extends StatelessWidget {
                     return null;
                   },
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 8),
+                CustomDropdownList(
+                  color: kPrimaryColor,
+                  data: [
+                    'Al-Sharq District',
+                    'Al-Arab District',
+                    'Al-Manakh District',
+                    'Al-Dawahi District',
+                    'Al-Zohour District',
+                    'Al-Janoub District',
+                    'Al-Gharb District',
+                  ],
+                  hintText: 'Area',
+                ),
+
+                const SizedBox(height: 8),
                 CustomTextFormField(
-                  controller: areaController,
-                  labelText: 'Area',
-                  suffixIcon: Icons.list,
+                  controller: executionDayController,
+                  labelText: 'Enter Your Problem Address',
+                
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter the area';
+                      return 'Enter Your Problem Address ';
                     }
                     return null;
                   },
@@ -134,14 +151,16 @@ class RequestView extends StatelessWidget {
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
-                                content: Text(
-                                    'Please correct the errors and try again')),
+                              content: Text(
+                                'Please correct the errors and try again',
+                              ),
+                            ),
                           );
                         }
                       },
                       child: Container(
                         height: 60,
-                        width: MediaQuery.sizeOf(context).width *.8,
+                        width: MediaQuery.sizeOf(context).width * .8,
                         decoration: BoxDecoration(
                           color: kPrimaryColor,
                           borderRadius: BorderRadius.circular(25),
