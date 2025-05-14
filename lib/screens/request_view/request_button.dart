@@ -1,48 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/constant.dart';
+import 'package:graduation_project/models/request_button_model.dart';
 import 'package:graduation_project/screens/request_view/cubit/request_cubit.dart';
-import 'package:graduation_project/shared_widget.dart/custom_drop_down_list.dart';
 
 // ignore: must_be_immutable
 class RequestButton extends StatelessWidget {
   const RequestButton({
     super.key,
-    required this.formKey,
-    required this.nameController,
-    required this.emailController,
-    required this.mobileController,
-    required this.addressController,
-    required this.executionDayController,
     required this.service,
     required this.skill,
     required this.price,
-    required this.dropDownKey,
+    required this.data,
+    required this.formKey,
   });
-
+  final RequestButtonModel data;
   final GlobalKey<FormState> formKey;
-  final TextEditingController nameController;
-  final TextEditingController emailController;
-  final TextEditingController mobileController;
-  final TextEditingController addressController;
-  final TextEditingController executionDayController;
   final String service, skill, price;
-  final GlobalKey<CustomDropdownListState> dropDownKey;
   @override
   Widget build(BuildContext context) {
     // log('request Button');
     return BlocConsumer<RequestCubit, RequestState>(
       listener: (context, state) {
         if (state is RequestLoaded) {
-          nameController.clear();
-          emailController.clear();
-          mobileController.clear();
-          addressController.clear();
-          executionDayController.clear();
-          dropDownKey.currentState?.reset();
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(const SnackBar(content: Text('Processing Request')));
+          data.clearAll();
+          snakBar(context, 'successful request');
+        } else if (state is Requesterror) {
+          snakBar(context, state.err);
         }
       },
       builder: (context, state) {
@@ -52,39 +36,13 @@ class RequestButton extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 if (formKey.currentState!.validate()) {
-                  // log("""
-                  //       name: ${nameController.text},
-                  //       email: ${emailController.text},
-                  //       mobile: ${mobileController.text},
-                  //       area: $area,
-                  //       address: ${addressController.text},
-                  //       execution_day: ${executionDayController.text},
-                  //       service: $service,
-                  //       skill: $skill,
-                  //       price: $price,""");
                   try {
-                    context.read<RequestCubit>().sendDataRequest(
-                      sdata: {
-                        "name": nameController.text,
-                        "email": emailController.text,
-                        "mobile": mobileController.text,
-                        "area": "Al Manakh District",
-                        "address": addressController.text,
-                        "execution_day": executionDayController.text,
-                        "service": service,
-                        "skill": skill,
-                        "price": price,
-                      },
-                    );
+                    sendData(context);
                   } catch (e) {
-                    // log('error view =>$e');
+                    throw Exception('Send Data Error');
                   }
                 } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Please correct the errors and try again'),
-                    ),
-                  );
+                  snakBar(context, 'Please correct the errors and try again');
                 }
               },
               child: Container(
@@ -111,6 +69,28 @@ class RequestButton extends StatelessWidget {
             ),
           ],
         );
+      },
+    );
+  }
+
+  void snakBar(BuildContext context, String message) {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  void sendData(BuildContext context) {
+    context.read<RequestCubit>().sendDataRequest(
+      sdata: {
+        "name": data.nameController.text,
+        "email": data.emailController.text,
+        "mobile": data.mobileController.text,
+        "area": data.dropDownKey.currentState?.selectedItem,
+        "address": data.addressController.text,
+        "execution_day": data.executionDayController.text,
+        "service": service,
+        "skill": skill,
+        "price": price,
       },
     );
   }

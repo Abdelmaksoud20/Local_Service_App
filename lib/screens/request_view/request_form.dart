@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/constant.dart';
+import 'package:graduation_project/models/request_button_model.dart';
 import 'package:graduation_project/screens/request_view/request_button.dart';
 import 'package:graduation_project/shared_widget.dart/custom_drop_down_list.dart';
 import 'package:graduation_project/shared_widget.dart/custom_text_form_field.dart';
@@ -18,22 +19,21 @@ class FormRequest extends StatefulWidget {
 
 class _FormRequestState extends State<FormRequest> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  final TextEditingController nameController = TextEditingController();
-
-  final TextEditingController emailController = TextEditingController();
-
-  final TextEditingController mobileController = TextEditingController();
-
-  final TextEditingController areaController = TextEditingController();
-
-  final TextEditingController executionDayController = TextEditingController();
-
-  final TextEditingController addressController = TextEditingController();
-  final GlobalKey<CustomDropdownListState> dropDownKey = GlobalKey<CustomDropdownListState>();
-
-
+    // TextEditingController dateController = TextEditingController();
   String? area;
+  late final RequestButtonModel data;
+  @override
+  void initState() {
+    data = RequestButtonModel();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    data.disposeAll();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     // log('request form');
@@ -69,7 +69,7 @@ class _FormRequestState extends State<FormRequest> {
           ),
           const SizedBox(height: 20),
           CustomTextFormField(
-            controller: nameController,
+            controller: data.nameController,
             labelText: 'Full Name',
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -80,7 +80,7 @@ class _FormRequestState extends State<FormRequest> {
           ),
           const SizedBox(height: 15),
           CustomTextFormField(
-            controller: emailController,
+            controller: data.emailController,
             labelText: 'Email',
             prefixIcon: Icons.mail,
             validator: (value) {
@@ -92,7 +92,7 @@ class _FormRequestState extends State<FormRequest> {
           ),
           const SizedBox(height: 15),
           CustomTextFormField(
-            controller: mobileController,
+            controller: data.mobileController,
             labelText: 'Mobile',
             prefixIcon: Icons.phone,
             validator: (value) {
@@ -108,27 +108,23 @@ class _FormRequestState extends State<FormRequest> {
           ),
           const SizedBox(height: 8),
           CustomDropdownList(
-            key: dropDownKey,
-            onChanged: (value) {
-              setState(() {
-                area = value;
-              });
-            },
+            key: data.dropDownKey,
             color: kPrimaryColor,
             data: [
-              'Al-Sharq District',
-              'Al-Arab District',
-              'Al-Manakh District',
-              'Al-Dawahi District',
-              'Al-Zohour District',
-              'Al-Janoub District',
-              'Al-Gharb District',
+              'Al Zohour District',
+              'Al-talatini District',
+              'Al Manakh District',
+              'South District',
+              'East Port Said District',
+              'Al-dowahi District',
+              'West District',
             ],
+            // Al Manakh District,Al Zohour District,Al-talatini District,South District,East Port Said District,Al-dowahi District,West District
             hintText: 'Area',
           ),
           const SizedBox(height: 8),
           CustomTextFormField(
-            controller: addressController,
+            controller: data.addressController,
             labelText: 'Enter Your Problem Address',
 
             validator: (value) {
@@ -140,31 +136,49 @@ class _FormRequestState extends State<FormRequest> {
           ),
           const SizedBox(height: 15),
           CustomTextFormField(
-            controller: executionDayController,
-            labelText: 'Select The Execution Day',
+            controller: data.executionDayController,
+            labelText: 'The Execution Day:ex 2025-05-20',
             prefixIcon: Icons.calendar_month,
+            onTap: () async {
+              await showAndChooseDate(context);
+            },
+            
             validator: (value) {
+
               if (value == null || value.isEmpty) {
                 return 'Please select the execution day';
               }
+            
               return null;
             },
           ),
           const SizedBox(height: 40),
           RequestButton(
             formKey: formKey,
-            nameController: nameController,
-            emailController: emailController,
-            mobileController: mobileController,
-            addressController: addressController,
-            executionDayController: executionDayController,
+          data: data,
             service: widget.service,
             price: widget.price,
             skill: widget.skill,
-            dropDownKey: dropDownKey,
+          
           ),
         ],
       ),
     );
+  }
+
+  Future<void> showAndChooseDate(BuildContext context) async {
+      DateTime? pickedDate = await showDatePicker(
+    context: context,
+    initialDate: DateTime.now(),
+    firstDate: DateTime.now(),
+    lastDate: DateTime(2100),
+    
+                );
+      if (pickedDate != null) {
+    String formattedDate = "${pickedDate.year}-${pickedDate.month.toString().padLeft(2, '0')}-${pickedDate.day.toString().padLeft(2, '0')}";
+      setState(() {
+      data.executionDayController.text = formattedDate;
+    });
+      }
   }
 }
