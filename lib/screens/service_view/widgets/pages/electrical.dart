@@ -7,6 +7,7 @@ class ServiceBodyElectrical extends StatelessWidget {
   const ServiceBodyElectrical({super.key});
   static final List<ServiceModel> electricals = [
     ServiceModel(
+      servicename: 'Electrical',
       name: 'Wiring and cabling services',
       description:
           'Repairing damaged wires and ensuring safe electrical connections.Installing and upgrading electrical wiring in homes and office',
@@ -15,6 +16,7 @@ class ServiceBodyElectrical extends StatelessWidget {
       price: '200-250',
     ),
     ServiceModel(
+      servicename: 'Electrical',
       name: 'Installing and maintaining lighting systems',
       description:
           'Replacing and maintaining damaged light fixtures. Installing indoor and outdoor lights and timers',
@@ -23,6 +25,7 @@ class ServiceBodyElectrical extends StatelessWidget {
     ),
 
     ServiceModel(
+      servicename: 'Electrical',
       name: 'Installing and maintaining electrical panels',
       description:
           'Installing main and sub electrical panels for homes and buildings. Maintaining electrical panels to ensure safe and proper power distribution',
@@ -31,6 +34,7 @@ class ServiceBodyElectrical extends StatelessWidget {
     ),
 
     ServiceModel(
+      servicename: 'Electrical',
       name: 'Installing and maintaining alarm and home security',
       description:
           'Installing burglary and fire alarm systems. Maintaining and updating home security systems for enhanced protection',

@@ -7,6 +7,7 @@ class ServiceBodyPainter extends StatelessWidget {
   const ServiceBodyPainter({super.key});
   static final List<ServiceModel> painter = [
     ServiceModel(
+      servicename: 'Painting',
       name: 'Repair & Cover Defects',
       description:
           'Address cracks and holes in walls and ceilings and ensure smooth and beautiful installations',
@@ -15,6 +16,7 @@ class ServiceBodyPainter extends StatelessWidget {
     ),
 
     ServiceModel(
+      servicename: 'Painting',
       name: 'Painting Walls & Ceilings',
       description:
           'By using different types of paints and colors to improve the general appearance of places',
@@ -23,6 +25,7 @@ class ServiceBodyPainter extends StatelessWidget {
     ),
 
     ServiceModel(
+      servicename: 'Painting',
       name: 'Decorative Finishes',
       description:
           'Adding decorative effects such as murals and special decorations to give the place a unique character',
@@ -31,6 +34,7 @@ class ServiceBodyPainter extends StatelessWidget {
     ),
 
     ServiceModel(
+      servicename: 'Painting',
       name: 'Moisture treatment & insulation',
       description:
           'Applying sealing techniques and materials to preserve walls and ceilings from the effects of moisture',

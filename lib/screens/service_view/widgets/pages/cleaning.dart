@@ -7,6 +7,7 @@ class ServiceBodyCleaning extends StatelessWidget {
   const ServiceBodyCleaning({super.key});
   static final List<ServiceModel> cleaner = [
     ServiceModel(
+      servicename: 'Cleaning',
       name: 'Carpet & Upholstery',
       description:
           'Focuses on cleaning carpets, sofas, curtains, and other upholstery',
@@ -15,6 +16,7 @@ class ServiceBodyCleaning extends StatelessWidget {
     ),
 
     ServiceModel(
+      servicename: 'Cleaning',
       name: 'Post-Construction',
       description: 'Involves cleaning up after construction or renovation work',
       imageUrl: 'assets/images/cleaning/download(2).png',
@@ -22,6 +24,7 @@ class ServiceBodyCleaning extends StatelessWidget {
     ),
 
     ServiceModel(
+      servicename: 'Cleaning',
       name: 'Office Cleaning',
       description:
           'Involves cleaning offices, meeting rooms, bathrooms, and common areas',
@@ -30,6 +33,7 @@ class ServiceBodyCleaning extends StatelessWidget {
     ),
 
     ServiceModel(
+      servicename: 'Cleaning',
       name: 'Home Cleaning',
       description:
           'Includes cleaning rooms, kitchens, bathrooms, floors, windows, and furniture',

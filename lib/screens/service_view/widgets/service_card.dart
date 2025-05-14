@@ -71,7 +71,11 @@ class ServiceCard extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => RequestView()),
+                        MaterialPageRoute(builder: (context) => RequestView(
+                          price: data.price,
+                          skill: data.name,
+                          service: data.servicename,
+                        )),
                       );
                     },
                     child: Container(

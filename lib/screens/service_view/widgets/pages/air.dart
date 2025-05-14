@@ -8,6 +8,7 @@ class ServiceBodyAir extends StatelessWidget {
   const ServiceBodyAir({super.key});
   static final List<ServiceModel> air = [
    ServiceModel(
+  servicename: 'Air conditionar',
   name: 'Air Conditioning Cleaning and Summer Maintenance',
   description: 'Prepare your air conditioning for the heat. Professional cleaning service to ensure the best performance during the summer season.',
   imageUrl: 'assets/images/air/صورة واتساب بتاريخ 2025-02-25 في 19.43.39_487e84b4(1).png',
@@ -15,6 +16,7 @@ class ServiceBodyAir extends StatelessWidget {
 ),
 
 ServiceModel(
+  servicename: 'Air conditionar',
   name: 'Dismantling and Installing Air Conditioning',
   description: 'Professional technicians to deal with all types of air conditioners accurately and efficiently.',
   imageUrl: 'assets/images/air/صورة واتساب بتاريخ 2025-02-25 في 19.43.39_487e84b4(2).png',
@@ -22,6 +24,7 @@ ServiceModel(
 ),
 
 ServiceModel(
+  servicename: 'Air conditionar',
   name: 'Charging Freon Air Conditioning',
   description: 'Is it poor cooling? We offer a freon filling service to rejuvenate the efficiency of your air conditioning.',
   imageUrl: 'assets/images/air/صورة واتساب بتاريخ 2025-02-25 في 19.43.39_487e84b(3).png',
@@ -29,6 +32,7 @@ ServiceModel(
 ),
 
 ServiceModel(
+  servicename: 'Air conditionar',
   name: 'Air Conditioning Inspection and Inspection',
   description: 'To avoid sudden breakdowns, book a comprehensive preview to detect potential problems.',
   imageUrl: 'assets/images/air/صورة واتساب بتاريخ 2025-02-25 في 19.43.39_487e84b4(4).png',

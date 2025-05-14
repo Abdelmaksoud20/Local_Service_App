@@ -8,6 +8,7 @@ class ServiceBodyPlumber extends StatelessWidget {
   const ServiceBodyPlumber({super.key});
   static final List<ServiceModel> plumber = [
     ServiceModel(
+      servicename: 'Plumber',
       name: 'Fix A Leak',
       description:
           'Maintenance and repair services for all plumbing malfunctions of the highest quality, in addition to installing plumbing for bathrooms, kitchens and bathtubs.',
@@ -16,6 +17,7 @@ class ServiceBodyPlumber extends StatelessWidget {
     ),
 
     ServiceModel(
+      servicename: 'Plumber',
       name: 'Unclog The Drain',
       description:
           'The installation of drainage and feeding pipes includes two bathrooms with bathtub and one kitchen.',
@@ -24,6 +26,7 @@ class ServiceBodyPlumber extends StatelessWidget {
     ),
 
     ServiceModel(
+      servicename: 'Plumber',
       name: 'Install A New Sink',
       description:
           'Maintenance and repair services for all plumbing malfunctions with the highest quality, in addition to installing and replacing plumbing and a new sink.',
@@ -32,6 +35,7 @@ class ServiceBodyPlumber extends StatelessWidget {
     ),
 
     ServiceModel(
+      servicename: 'Plumber',
       name: 'Replace A Faucet',
       description:
           'Maintenance and repair services for all plumbing malfunctions with the highest quality, in addition to installing and replacing faucets.',
