@@ -7,13 +7,15 @@ class CustomDropdownList extends StatefulWidget {
     required this.data,
     this.validator,
     this.initialValue,
-    this.onChanged, required this.hintText,
+    this.onChanged,
+    required this.hintText, this.color,
   });
   final List<String> data;
   final String? Function(String?)? validator;
   final String? initialValue;
   final ValueChanged<String?>? onChanged;
   final String hintText;
+  final Color? color;
   @override
   State<CustomDropdownList> createState() => CustomDropdownListState();
 }
@@ -43,10 +45,11 @@ class CustomDropdownListState extends State<CustomDropdownList> {
             isExpanded: true,
             decoration: InputDecoration(
               border: border(),
-              enabledBorder: border(),
-              focusedBorder: border(color: Colors.black),
+              enabledBorder: border(color: widget.color),
+              focusedBorder: border(color: widget.color?? Colors.black),
             ),
             value: selectedItem,
+            
             hint: Text(
               widget.hintText,
               style: TextStyle(color: Colors.blueGrey, fontSize: 18),
@@ -81,7 +84,7 @@ class CustomDropdownListState extends State<CustomDropdownList> {
     );
   }
 
-  OutlineInputBorder border({Color? color}) {
+  OutlineInputBorder border({color}) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
       borderSide: BorderSide(color: color ?? Colors.blueGrey),

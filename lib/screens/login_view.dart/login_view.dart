@@ -1,21 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/shared_widget.dart/component_login_or_register.dart';
 import 'package:graduation_project/shared_widget.dart/custom_app_title.dart';
+import 'package:graduation_project/screens/login_view.dart/widgets/login.dart';
 
-class LoginView extends StatefulWidget {
+class LoginView extends StatelessWidget {
   const LoginView({super.key});
-  @override
-  State<LoginView> createState() => _LoginViewState();
-}
-
-class _LoginViewState extends State<LoginView> {
-  String selected = 'login';
-  void updatePageTitle(String select) {
-    setState(() {
-      selected = select;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -25,8 +13,8 @@ class _LoginViewState extends State<LoginView> {
           onTap: () => FocusScope.of(context).unfocus(), // update
           child: Stack(
             children: [
-              CustomAppTitle(selectedPage: selected),
-              ComponentLoginOrRegister(onSwitch: updatePageTitle),
+              CustomAppTitle(title: 'Sign in-up to enjoy the best service',),
+              Login(),
             ],
           ),
         ),

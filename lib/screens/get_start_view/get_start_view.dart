@@ -13,7 +13,7 @@ class GetStartView extends StatelessWidget {
         resizeToAvoidBottomInset: false,
         body: Stack(
           children: [
-            CustomAppTitle(),
+            CustomAppTitle(title: 'Service At Your Fingertios',),
             ComponentGetStartView(),
           ],
         ),

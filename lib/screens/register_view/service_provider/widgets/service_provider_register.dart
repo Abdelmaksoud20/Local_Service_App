@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/register_view/service_provider/widgets/service_provider_form.dart';
+import 'package:graduation_project/shared_widget.dart/custom_app_body.dart';
 
-class ServiceProviderRegister extends StatelessWidget {
-  const ServiceProviderRegister({super.key});
+class ServiceProviderComponent extends StatelessWidget {
+  const ServiceProviderComponent({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          SizedBox(height: 25),
-          ServiceProviderForm(),
-        ],
+    return CustomAppBody(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 25),
+            ServiceProviderForm(),
+          ],
+        ),
       ),
     );
   }
