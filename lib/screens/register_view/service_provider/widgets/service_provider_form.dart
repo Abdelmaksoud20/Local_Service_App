@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/models/auth_models/register_model.dart';
 import 'package:graduation_project/models/form_field_model.dart';
+import 'package:graduation_project/screens/register_view/register_message_diloge.dart';
+import 'package:graduation_project/services/auth_service.dart';
 import 'package:graduation_project/shared_widget.dart/custom_drop_down_list.dart';
 import 'package:graduation_project/shared_widget.dart/custom_form.dart';
 import 'package:graduation_project/shared_widget.dart/custom_text_form.dart';
@@ -17,7 +20,6 @@ class ServiceProviderForm extends StatefulWidget {
 
 class _ServiceProviderFormState extends State<ServiceProviderForm> {
   TextEditingController controllerFirst = TextEditingController();
-  TextEditingController controllerLast = TextEditingController();
   TextEditingController controllerUser = TextEditingController();
   TextEditingController controllerEmail = TextEditingController();
   TextEditingController controllerPhone = TextEditingController();
@@ -33,7 +35,6 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
   @override
   void dispose() {
     controllerFirst.dispose();
-    controllerLast.dispose();
     controllerUser.dispose();
     controllerEmail.dispose();
     controllerPhone.dispose();
@@ -44,7 +45,30 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
     controllerService.dispose();
     super.dispose();
   }
+  bool? isLoading;
+  late String place ;
+  late String jop ;
+  String? skill ;
+ Future<bool> registerUser() async {
+    final provider = RegisterModel(
+      name: controllerFirst.text,
+      email: controllerEmail.text,
+      password: controllerPassword.text,
+      phone: controllerPhone.text,
+      service: jop,
+      area : place ,
+    );
+    try {
+      var res = await AuthService().register(provider);
+      print(res.toString());
+     return true;
+    }catch(e){
 
+      print(e.toString());
+return false ;
+    }
+
+  }
   @override
   Widget build(BuildContext context) {
     double left = 5;
@@ -59,7 +83,6 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
             CustomNameAndUsername(
               left: left,
               controllerFirst: controllerFirst,
-              controllerLast: controllerLast,
               controllerUser: controllerUser,
             ),
             CustomEmailAndPhone(
@@ -69,6 +92,9 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
             ),
             CustomTextForm(title: 'Districts'),
             CustomDropdownList(
+              onChanged: (value){
+                place = value! ;
+              },
               key: districtKey,
               hintText: 'Select your district',
               validator: (value) {
@@ -78,17 +104,20 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
                 return null;
               },
               data: [
-                'Al-Sharq',
-                'Al-Arab',
-                'Al-Manakh',
-                'Al-Dawahi',
-                'Al-Zohour',
-                'Al-Janoub',
-                'Al-Gharb',
+                'Al Zohour District',
+                'Al-talatini District',
+                'Al Manakh District',
+                'South District',
+                'East Port Said District',
+                'Al-dowahi District',
+                'West District',
               ],
             ),
             CustomTextForm(title: 'The service your provide'),
             CustomDropdownList(
+              onChanged: (value){
+                jop = value! ;
+              },
               key: serviceKey,
               hintText: 'Select your service',
               validator: (value) {
@@ -112,7 +141,9 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
                 hintText: 'Enter your skils',
                 keyboardType: TextInputType.name,
                 left: left,
-                onchanged: (data) {},
+                onchanged: (data) {
+                  skill = data;
+                },
               ),
             ),
             CustomPassword(
@@ -124,10 +155,15 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
             PrimaryButton(
               title: 'Register',
               radius: 15,
-              onPressed: () {
+              onPressed: () async {
                 if (formKey.currentState!.validate()) {
+                  if(await registerUser()){
+                    RegisterMessageDiloge.showSuccessDialog(context , "Register done");
+                  }else{
+                    RegisterMessageDiloge.showErrorDialog(context , "something wrong");
+
+                  }
                   controllerFirst.clear();
-                  controllerLast.clear();
                   controllerUser.clear();
                   controllerEmail.clear();
                   controllerPhone.clear();
@@ -136,9 +172,8 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
                   districtKey.currentState?.reset();
                   serviceKey.currentState?.reset();
                 }
-                else{
+                else {
                   autovalidateMode = AutovalidateMode.always;
-                
                 }
                 //!HomePagetoServiceProvider
               },
@@ -149,4 +184,6 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
       ),
     );
   }
+
+
 }

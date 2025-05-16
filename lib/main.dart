@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/get_start_view/get_start_view.dart';
 
+
 void main() {
   runApp(
     LocalServicesApp(),);

@@ -1,8 +1,15 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_project/shared_widget.dart/form_widget/custom_email_and_phone.dart';
 import 'package:graduation_project/shared_widget.dart/form_widget/custom_name_and_username.dart';
 import 'package:graduation_project/shared_widget.dart/form_widget/custom_password.dart';
 import 'package:graduation_project/shared_widget.dart/primary_button.dart';
+
+import '../../../models/auth_models/register_model.dart';
+import '../../../services/auth_service.dart';
+import '../../../shared_widget.dart/custom_drop_down_list.dart';
+import '../../../shared_widget.dart/custom_text_form.dart';
+import '../register_message_diloge.dart';
 
 class ClientForm extends StatefulWidget {
   const ClientForm({super.key});
@@ -15,13 +22,54 @@ class _ClientFormState extends State<ClientForm> {
   GlobalKey<FormState> formKey = GlobalKey();
 
   TextEditingController controllerFirst = TextEditingController();
-  TextEditingController controllerLast = TextEditingController();
   TextEditingController controllerUser = TextEditingController();
   TextEditingController controllerEmail = TextEditingController();
   TextEditingController controllerpassword = TextEditingController();
   TextEditingController controllerconfirm = TextEditingController();
   TextEditingController controllerPhone = TextEditingController();
+  TextEditingController controllerDistrict = TextEditingController();
+  GlobalKey<CustomDropdownListState> districtKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
+  @override
+  void dispose() {
+    controllerFirst.dispose();
+    controllerUser.dispose();
+    controllerEmail.dispose();
+    controllerPhone.dispose();
+    controllerpassword.dispose();
+    controllerDistrict.dispose();
+    controllerconfirm.dispose();
+    super.dispose();
+  }
+
+  late String place ;
+
+  Future<bool> registerClient() async {
+    final client = RegisterModel(
+      name: controllerFirst.text,
+      email: controllerEmail.text,
+      password: controllerpassword.text,
+      phone: controllerPhone.text,
+      service: null,
+      area: place ,
+    );
+    try {
+      var res = await AuthService().registerClint(client);
+      print("Client======${res.toString()}========");
+      return true;
+    } on  DioException catch(e){
+      if (e.response != null) {
+        print("Error Status: ${e.response?.statusCode}");
+        print("Error Data: ${e.response?.data}");
+      } else {
+        print("Error sending request: ${e.message}");
+      }
+      return false ;
+    }
+
+  }
+
   @override
   Widget build(BuildContext context) {
     double left = 5;
@@ -36,13 +84,35 @@ class _ClientFormState extends State<ClientForm> {
             CustomNameAndUsername(
               left: left,
               controllerFirst: controllerFirst,
-              controllerLast: controllerLast,
               controllerUser: controllerUser,
             ),
             CustomEmailAndPhone(
               left: left,
               controllerEmail: controllerEmail,
               controllerPhone: controllerPhone,
+            ),
+            CustomTextForm(title: 'Districts'),
+            CustomDropdownList(
+              onChanged: (value){
+                place = value! ;
+              },
+              key: districtKey,
+              hintText: 'Select your district',
+              validator: (value) {
+                if (value == null) {
+                  return 'Please select a district';
+                }
+                return null;
+              },
+              data: [
+                'Al Zohour District',
+                'Al-talatini District',
+                'Al Manakh District',
+                'South District',
+                'East Port Said District',
+                'Al-dowahi District',
+                'West District',
+              ],
             ),
             CustomPassword(
               left: left,
@@ -53,16 +123,22 @@ class _ClientFormState extends State<ClientForm> {
             PrimaryButton(
               title: 'Register',
               radius: 15,
-              onPressed: () {
+              onPressed: () async {
                 if (formKey.currentState!.validate()) {
+                  if(await registerClient()){
+                    RegisterMessageDiloge.showSuccessDialog(context , "Register done");
+                  }else{
+                    RegisterMessageDiloge.showErrorDialog(context , "something wrong");
+
+                  }
                   FocusScope.of(context).unfocus();
                   controllerFirst.clear();
-                  controllerLast.clear();
                   controllerUser.clear();
                   controllerEmail.clear();
                   controllerPhone.clear();
                   controllerconfirm.clear();
                   controllerpassword.clear();
+                  districtKey.currentState?.reset();
                 }
                 else{
                   autovalidateMode = AutovalidateMode.always;

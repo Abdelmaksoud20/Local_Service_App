@@ -10,6 +10,10 @@ class ServiceProviderHomeAppBar extends StatelessWidget {
     return Row(
       spacing: 15,
       children: [
+        IconButton(
+            onPressed: (){
+          Scaffold.of(context).openDrawer();
+        }, icon: Icon(Icons.menu)),
         CircleAvatar(
           radius: 35,
           backgroundImage: AssetImage(

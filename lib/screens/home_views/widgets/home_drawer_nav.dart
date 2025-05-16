@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/contact_view/contact_view.dart';
-import 'package:graduation_project/screens/home_views/profile_view.dart';
+import 'package:graduation_project/screens/home_views/home_view.dart';
 import 'package:graduation_project/screens/login_view.dart/login_view.dart';
 import 'package:graduation_project/screens/register_view/service_provider/service_provider_home.dart';
-import 'package:graduation_project/screens/service_view/widgets/provider_card.dart';
-import 'package:graduation_project/screens/service_view/widgets/provider_card_list_view.dart';
-
 import '../../../constant.dart';
 import '../../../helper/colors_app.dart';
 
 
 class HomeDrawerNav extends StatelessWidget {
-  const HomeDrawerNav({super.key});
+  const HomeDrawerNav({super.key, required this.swichMode});
+
+  final String swichMode ;
 
   @override
   Widget build(BuildContext context) {
@@ -54,15 +53,21 @@ class HomeDrawerNav extends StatelessWidget {
               height: MediaQuery.sizeOf(context).height *.42 ,
             ),
             MaterialButton(onPressed: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ServiceProviderHome()));
-            },
+              if(swichMode == "Provider Mode") {
+                Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (context) => ServiceProviderHome()));
+              }else{
+                Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (context) => HomeView()));
+              }
+              },
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 40,vertical: 15),
               decoration: BoxDecoration(
                 color: ColorsApp.primarycolor,
                 borderRadius: BorderRadius.circular(30),
               ),
-                child: Text( "Service Provider Mode " , style: TextStyle(
+                child: Text( swichMode , style: TextStyle(
                 color: Colors.white
                 ),
                 ),
