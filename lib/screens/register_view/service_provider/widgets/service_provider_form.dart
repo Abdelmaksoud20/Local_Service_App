@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/models/auth_models/register_model.dart';
 import 'package:graduation_project/models/form_field_model.dart';
+import 'package:graduation_project/models/register_form_controller.dart';
 import 'package:graduation_project/screens/register_view/register_message_diloge.dart';
 import 'package:graduation_project/services/auth_service.dart';
 import 'package:graduation_project/shared_widget.dart/custom_drop_down_list.dart';
@@ -19,30 +20,21 @@ class ServiceProviderForm extends StatefulWidget {
 }
 
 class _ServiceProviderFormState extends State<ServiceProviderForm> {
-  TextEditingController controllerFirst = TextEditingController();
-  TextEditingController controllerUser = TextEditingController();
-  TextEditingController controllerEmail = TextEditingController();
-  TextEditingController controllerPhone = TextEditingController();
-  TextEditingController controllerPassword = TextEditingController();
-  TextEditingController controllerConfirmPassword = TextEditingController();
-  TextEditingController controllerSkills = TextEditingController();
-  TextEditingController controllerDistrict = TextEditingController();
-  TextEditingController controllerService = TextEditingController();
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  GlobalKey<CustomDropdownListState> districtKey = GlobalKey();
-  GlobalKey<CustomDropdownListState> serviceKey = GlobalKey();
+
+  late RegisterFormController registerFormController;
+
+  @override
+  void initState() {
+
+    registerFormController = RegisterFormController();
+
+    super.initState();
+  }
+
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
   void dispose() {
-    controllerFirst.dispose();
-    controllerUser.dispose();
-    controllerEmail.dispose();
-    controllerPhone.dispose();
-    controllerPassword.dispose();
-    controllerConfirmPassword.dispose();
-    controllerSkills.dispose();
-    controllerDistrict.dispose();
-    controllerService.dispose();
+   registerFormController.disposeRegisterController();
     super.dispose();
   }
   bool? isLoading;
@@ -51,10 +43,10 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
   String? skill ;
  Future<bool> registerUser() async {
     final provider = RegisterModel(
-      name: controllerFirst.text,
-      email: controllerEmail.text,
-      password: controllerPassword.text,
-      phone: controllerPhone.text,
+      name: registerFormController.controllerFirst.text,
+      email: registerFormController.controllerEmail.text,
+      password: registerFormController.controllerPassword.text,
+      phone: registerFormController.controllerPhone.text,
       service: jop,
       area : place ,
     );
@@ -75,27 +67,27 @@ return false ;
     return Padding(
       padding: const EdgeInsets.only(left: 10),
       child: Form(
-        key: formKey,
+        key: registerFormController.formKey,
         autovalidateMode: autovalidateMode,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomNameAndUsername(
               left: left,
-              controllerFirst: controllerFirst,
-              controllerUser: controllerUser,
+              controllerFirst: registerFormController.controllerFirst,
+              controllerUser: registerFormController.controllerUser,
             ),
             CustomEmailAndPhone(
               left: left,
-              controllerEmail: controllerEmail,
-              controllerPhone: controllerPhone,
+              controllerEmail: registerFormController.controllerEmail,
+              controllerPhone: registerFormController.controllerPhone,
             ),
             CustomTextForm(title: 'Districts'),
             CustomDropdownList(
               onChanged: (value){
                 place = value! ;
               },
-              key: districtKey,
+              key: registerFormController.districtKey,
               hintText: 'Select your district',
               validator: (value) {
                 if (value == null) {
@@ -118,7 +110,7 @@ return false ;
               onChanged: (value){
                 jop = value! ;
               },
-              key: serviceKey,
+              key: registerFormController.serviceKey,
               hintText: 'Select your service',
               validator: (value) {
                 if (value == null) {
@@ -148,29 +140,22 @@ return false ;
             ),
             CustomPassword(
               left: left,
-              controllerpassword: controllerPassword,
-              controllerconfirm: controllerConfirmPassword,
+              controllerpassword: registerFormController.controllerPassword,
+              controllerconfirm: registerFormController.controllerConfirmPassword,
             ),
             SizedBox(height: 15),
             PrimaryButton(
               title: 'Register',
               radius: 15,
               onPressed: () async {
-                if (formKey.currentState!.validate()) {
+                if (registerFormController.formKey.currentState!.validate()) {
                   if(await registerUser()){
                     RegisterMessageDiloge.showSuccessDialog(context , "Register done");
                   }else{
                     RegisterMessageDiloge.showErrorDialog(context , "something wrong");
 
                   }
-                  controllerFirst.clear();
-                  controllerUser.clear();
-                  controllerEmail.clear();
-                  controllerPhone.clear();
-                  controllerConfirmPassword.clear();
-                  controllerPassword.clear();
-                  districtKey.currentState?.reset();
-                  serviceKey.currentState?.reset();
+                registerFormController.clearRegisterController();
                 }
                 else {
                   autovalidateMode = AutovalidateMode.always;

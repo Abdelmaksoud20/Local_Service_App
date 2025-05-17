@@ -34,7 +34,7 @@ class _LoginComponentState extends State<LoginComponent> {
       var res = await AuthService().login(loginModel);
       if(res["user"]["service"]== ""){
         Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => HomeView()));
+            MaterialPageRoute(builder: (context) => HomeView( response: res["user"]["id"],)));
       }else{
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => ServiceProviderHome()));

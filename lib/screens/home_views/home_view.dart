@@ -1,5 +1,6 @@
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/home_views/profile_view.dart';
 import 'package:graduation_project/screens/home_views/services_view.dart';
@@ -8,13 +9,16 @@ import '../../helper/colors_app.dart';
 import 'home_view_body.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+  const HomeView({super.key,  this.response});
+
+  final Response? response;
 
   @override
   State<HomeView> createState() => _HomeViewState();
 }
 
 class _HomeViewState extends State<HomeView> {
+
   List<Widget> pages = [
     HomeViewBody(),
     ServicesView(),
