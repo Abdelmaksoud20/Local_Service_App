@@ -3,10 +3,9 @@ import 'package:graduation_project/screens/home_views/widgets/profile_body.dart'
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
-
+  // final String id;
   @override
   Widget build(BuildContext context) {
     return ProfileBody();
   }
 }
-
