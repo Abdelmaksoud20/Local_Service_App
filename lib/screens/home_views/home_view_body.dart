@@ -9,7 +9,6 @@ import 'package:graduation_project/screens/service_view/widgets/pages/electrical
 import 'package:graduation_project/screens/service_view/widgets/pages/painter.dart';
 import 'package:graduation_project/screens/service_view/widgets/pages/plumber.dart';
 import '../../helper/colors_app.dart';
-
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
   @override

@@ -37,7 +37,19 @@ class RequestButton extends StatelessWidget {
               onTap: () {
                 if (formKey.currentState!.validate()) {
                   try {
-                    sendData(context);
+                    context.read<RequestCubit>().sendDataRequestMethod(
+                      senddata: {
+                        "name": data.nameController.text,
+                        "email": data.emailController.text,
+                        "mobile": data.mobileController.text,
+                        "area": data.dropDownKey.currentState?.selectedItem,
+                        "address": data.addressController.text,
+                        "execution_day": data.executionDayController.text,
+                        "service": service,
+                        "skill": skill,
+                        "price": price,
+                      },
+                    );
                   } catch (e) {
                     throw Exception('Send Data Error');
                   }
@@ -80,8 +92,8 @@ class RequestButton extends StatelessWidget {
   }
 
   void sendData(BuildContext context) {
-    context.read<RequestCubit>().sendDataRequest(
-      sdata: {
+    context.read<RequestCubit>().sendDataRequestMethod(
+      senddata: {
         "name": data.nameController.text,
         "email": data.emailController.text,
         "mobile": data.mobileController.text,
