@@ -57,8 +57,11 @@ class ServicesItem extends StatelessWidget {
               Text("20-10-2025"),
               SizedBox(
                   width: 60,
-                  child: Text( name , maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text( name , maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
               ),
               Container(

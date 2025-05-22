@@ -7,18 +7,20 @@ class CustomRequestInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-
-        RequestServiceNameAndPrice(),
-        RequestClientNameAndLocation(),
-        Divider(
-          height: 40,
-          color: Colors.grey,
-          thickness: 2,
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          RequestServiceNameAndPrice(),
+          RequestClientNameAndLocation(),
+          Divider(
+            height: 40,
+            color: Colors.grey,
+            thickness: 2,
+          ),
+        ],
+      ),
     );
   }
 }

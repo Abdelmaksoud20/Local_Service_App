@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:graduation_project/models/auth_models/login_model.dart';
 import 'package:graduation_project/models/form_field_model.dart';
+import 'package:graduation_project/screens/register_view/service_provider/service_provider_home.dart';
 import 'package:graduation_project/shared_widget.dart/custom_form.dart';
 import 'package:graduation_project/shared_widget.dart/custom_text_form.dart';
 import 'package:graduation_project/shared_widget.dart/primary_button.dart';
 
+import '../../../services/auth_service.dart';
 import '../../home_views/home_view.dart';
 
 class LoginComponent extends StatefulWidget {
@@ -15,11 +18,36 @@ class LoginComponent extends StatefulWidget {
 }
 
 class _LoginComponentState extends State<LoginComponent> {
+
   bool? obscureText = true;
-  TextEditingController? controller = TextEditingController();
+  TextEditingController? controllerEmail = TextEditingController();
   TextEditingController? controllerpassword = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
+  Future <void> loginUser() async {
+    final LoginModel loginModel = LoginModel(
+      email: controllerEmail!.text ,
+      password: controllerpassword!.text ,
+    );
+    try {
+      var res = await AuthService().login(loginModel);
+      if(res["user"]["service"]== ""){
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => HomeView( response: res["user"]["id"],)));
+      }else{
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => ServiceProviderHome()));
+      }
+      print("${res["user"]["service"]}+++++++++++++++");
+    }catch(e){
+      print("${e.toString()}----------------------");
+
+    }
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -40,7 +68,7 @@ class _LoginComponentState extends State<LoginComponent> {
               },
               left: 5,
               hintText: 'exapmle@gmail.com',
-              controller: controller,
+              controller: controllerEmail,
             ),
           ),
           CustomTextForm(title: 'Password'),
@@ -74,17 +102,15 @@ class _LoginComponentState extends State<LoginComponent> {
           PrimaryButton(
             title: 'Login',
             radius: 15,
-            onPressed: () {
+            onPressed: () async {
               if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
-                controller!.clear();
-                controllerpassword!.clear();
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HomeView()));
-              } else {
+                loginUser();
+                  formKey.currentState!.save();
+                  controllerEmail!.clear();
+                  controllerpassword!.clear();
+                } else {
                 autovalidateMode = AutovalidateMode.always;
-                setState(() {
-                  
-                });
+                setState(() {});
               }
             
             },
