@@ -36,12 +36,14 @@ class _LoginComponentState extends State<LoginComponent> {
       if (res["user"]["service"] == "") {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => HomeView(data:data)),
+          MaterialPageRoute(builder: (context) => HomeView(data: data)),
         );
       } else {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => ServiceProviderHome()),
+          MaterialPageRoute(builder: (context) => ServiceProviderHome(
+            providerData: data,
+          )),
         );
       }
       print("${res["user"]["service"]}+++++++++++++++");

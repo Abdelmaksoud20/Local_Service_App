@@ -24,7 +24,7 @@ class _PersonalInformationState extends State<PersonalInformation> {
         body: Column(
           children: [
             ProfileInformationTitle(size: size,name: widget.data!.name,email:widget.data!.email),
-            Expanded(child: FormPersonalInformation(controalls: controalls,data: widget.data!,)),
+            Expanded(child: FormPersonalInformationProvider(controalls: controalls,data: widget.data!,)),
             PersonalInformationButtons(),
             SizedBox(height: 15),
           ],

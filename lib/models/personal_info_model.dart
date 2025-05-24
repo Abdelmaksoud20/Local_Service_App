@@ -3,8 +3,11 @@ class PersonalInfoModel {
   final String email;
   final String area;
   final dynamic phone;
+   String? service;
 
-  PersonalInfoModel({
+  PersonalInfoModel(
+    {
+    this.service,
     required this.name,
     required this.email,
     required this.area,
@@ -16,6 +19,16 @@ class PersonalInfoModel {
       email: data['user']['email'],
       area: data['user']['area'],
       phone: data['user']['phone'],
+        service: data["user"]["service"]
     );
   }
+    Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'email': email,
+      'area': area,
+      'phone': phone,
+    };
+  }
+
 }
