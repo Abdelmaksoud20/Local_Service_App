@@ -34,7 +34,7 @@ class _HomeViewState extends State<HomeView> {
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       body: pages[pageNum],
-      drawer: HomeDrawerNav(swichMode: "Provider Mode"),
+      drawer: HomeDrawerNav(swichMode: "Provider Mode",name: widget.data!.name,),
       bottomNavigationBar: Container(
         clipBehavior: Clip.hardEdge,
         margin: EdgeInsets.symmetric(vertical: 12, horizontal: 30),

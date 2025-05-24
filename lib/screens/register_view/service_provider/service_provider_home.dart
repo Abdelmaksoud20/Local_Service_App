@@ -20,7 +20,7 @@ class _ServiceProviderHomeState extends State<ServiceProviderHome> {
   int pageNum = 0;
   @override
   void initState() {
-    pages = [ServiceProviderHomeBody(), ProfileView(data: widget.providerData,)];
+    pages = [ServiceProviderHomeBody(name: widget.providerData!.name,), ProfileView(data: widget.providerData,)];
     super.initState();
   }
   @override
@@ -54,7 +54,7 @@ class _ServiceProviderHomeState extends State<ServiceProviderHome> {
           ],
         ),
       ),
-      drawer: HomeDrawerNav(swichMode: "Client Mode"),
+      drawer: HomeDrawerNav(swichMode: "Client Mode",name: widget.providerData!.name,),
     );
   }
 }
