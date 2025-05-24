@@ -8,12 +8,16 @@ class ProfileInformationTitle extends StatelessWidget {
   const ProfileInformationTitle({
     super.key,
     required this.size,
+    required this.name, required this.email,
   });
-
+  final String name;
   final Size size;
+  final String email;
 
   @override
   Widget build(BuildContext context) {
+    List<String> word = name.split(" ");
+    String username = "${word[0]} ${word[1]}";
     return Stack(
       children: [
         ClipPath(
@@ -25,32 +29,47 @@ class ProfileInformationTitle extends StatelessWidget {
         ),
         SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0 , vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Profile" , style: TextStyle( fontSize: FontSizeApp.fontSize23 , fontWeight: FontWeight.bold , color: Colors.white),),
+                Text(
+                  "Profile",
+                  style: TextStyle(
+                    fontSize: FontSizeApp.fontSize23,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
                 SizedBox(height: 20),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  // mainAxisAlignment: MainAxisAlignment.start,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      width: 8,
-                    ),
+                    SizedBox(width: 8),
                     CircleAvatar(
-                      radius: size.height *.044 ,
+                      radius: size.height * .044,
                       backgroundImage: AssetImage(profileImage),
                     ),
                     SizedBox(width: 10),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Mahmoud Shamrokh",
-                          style: TextStyle(color: Colors.white, fontSize: FontSizeApp.fontSize18, fontWeight: FontWeight.bold),
+                          username,
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: FontSizeApp.fontSize18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         Text(
-                          "Shamrokh@gmail.com",
-                          style: TextStyle(color: Colors.white70, fontSize: FontSizeApp.fontSize14),
+                          email,
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: FontSizeApp.fontSize14,
+                          ),
                         ),
                       ],
                     ),

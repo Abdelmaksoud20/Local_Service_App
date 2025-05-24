@@ -1,8 +1,6 @@
-import 'dart:developer';
-
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-// import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:graduation_project/models/personal_info_model.dart';
 import 'package:graduation_project/screens/home_views/profile_view.dart';
 import 'package:graduation_project/screens/home_views/services_view.dart';
 import 'package:graduation_project/screens/home_views/widgets/home_drawer_nav.dart';
@@ -10,19 +8,28 @@ import '../../helper/colors_app.dart';
 import 'home_view_body.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({super.key, this.id});
-  // final Response? response;
-  final int? id;
+  const HomeView({super.key, this.data});
+  final PersonalInfoModel? data;
   @override
   State<HomeView> createState() => _HomeViewState();
 }
 
 class _HomeViewState extends State<HomeView> {
-  List<Widget> pages = [HomeViewBody(), ServicesView(), ProfileView()];
+  late List<Widget> pages;
   int pageNum = 0;
   @override
+  void initState() {
+    pages = [HomeViewBody(
+      name: widget.data!.name,
+    ), ServicesView(), ProfileView(
+      data: widget.data,
+      )];
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    log(widget.id.toString());
+    // log('home view name => ${widget.data!.name}');
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,

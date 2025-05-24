@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:cookie_jar/cookie_jar.dart';
@@ -9,7 +11,7 @@ class ApiService {
 
   late Dio _dio;
   bool _initialized = false;
-  final String baseUrl = "https://f486-45-242-205-202.ngrok-free.app";
+  final String baseUrl = "https://306f-45-242-56-157.ngrok-free.app";
   ApiService._internal();
 
   Future<Dio> get dio async {
@@ -36,7 +38,11 @@ class ApiService {
   Future<dynamic> getRequest(String endpoint) async {
     final d = await dio;
     final response = await d.get(endpoint);
-    return response.data;
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return response.data;
+    } else {
+      log('error get data');
+    }
   }
 
   Future<dynamic> postRequest(

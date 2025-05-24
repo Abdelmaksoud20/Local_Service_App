@@ -9,11 +9,16 @@ import 'package:graduation_project/screens/service_view/widgets/pages/electrical
 import 'package:graduation_project/screens/service_view/widgets/pages/painter.dart';
 import 'package:graduation_project/screens/service_view/widgets/pages/plumber.dart';
 import '../../helper/colors_app.dart';
+
 class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({super.key});
+  const HomeViewBody({super.key, required this.name});
+  final String name;
   @override
   Widget build(BuildContext context) {
+    List<String> words = name.split(" ");
+    String fristName = words[0];
     Size size = MediaQuery.of(context).size;
+    double width = MediaQuery.of(context).size.width;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -29,9 +34,10 @@ class HomeViewBody extends StatelessWidget {
             ),
             SafeArea(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       IconButton(
                         onPressed: () {
@@ -39,12 +45,12 @@ class HomeViewBody extends StatelessWidget {
                         },
                         icon: Icon(Icons.menu_rounded, color: Colors.white),
                       ),
-                      Spacer(flex: 1),
+                      SizedBox(width: width*0.2,),
                       Text(
-                        "Al Slam Alycom Mahmoud",
+                        "Al Slam Alycom $fristName",
                         style: TextStyle(color: Colors.white),
                       ),
-                      Spacer(flex: 1),
+                    
                     ],
                   ),
                   SizedBox(
@@ -112,10 +118,11 @@ class HomeViewBody extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ServiceView(
-                              title: 'Electrical',
-                              body: ServiceBodyElectrical(),
-                            ),
+                            builder:
+                                (context) => ServiceView(
+                                  title: 'Electrical',
+                                  body: ServiceBodyElectrical(),
+                                ),
                           ),
                         );
                       },
@@ -128,14 +135,15 @@ class HomeViewBody extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                        onTap: () {
+                      onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ServiceView(
-                              title: 'Painter',
-                              body: ServiceBodyPainter(),
-                            ),
+                            builder:
+                                (context) => ServiceView(
+                                  title: 'Painter',
+                                  body: ServiceBodyPainter(),
+                                ),
                           ),
                         );
                       },
@@ -147,14 +155,15 @@ class HomeViewBody extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                          onTap: () {
+                      onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ServiceView(
-                              title: 'Cleaner',
-                              body: ServiceBodyCleaning(),
-                            ),
+                            builder:
+                                (context) => ServiceView(
+                                  title: 'Cleaner',
+                                  body: ServiceBodyCleaning(),
+                                ),
                           ),
                         );
                       },
@@ -166,14 +175,15 @@ class HomeViewBody extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                          onTap: () {
+                      onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ServiceView(
-                              title: 'Plumber',
-                              body: ServiceBodyPlumber(),
-                            ),
+                            builder:
+                                (context) => ServiceView(
+                                  title: 'Plumber',
+                                  body: ServiceBodyPlumber(),
+                                ),
                           ),
                         );
                       },
@@ -185,14 +195,15 @@ class HomeViewBody extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                          onTap: () {
+                      onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ServiceView(
-                              title: 'Carpenter',
-                              body: ServiceBodyCarpenter(),
-                            ),
+                            builder:
+                                (context) => ServiceView(
+                                  title: 'Carpenter',
+                                  body: ServiceBodyCarpenter(),
+                                ),
                           ),
                         );
                       },
@@ -204,14 +215,15 @@ class HomeViewBody extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                          onTap: () {
+                      onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ServiceView(
-                              title: 'AC technical',
-                              body: ServiceBodyAir(),
-                            ),
+                            builder:
+                                (context) => ServiceView(
+                                  title: 'AC technical',
+                                  body: ServiceBodyAir(),
+                                ),
                           ),
                         );
                       },

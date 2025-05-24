@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:graduation_project/models/auth_models/login_model.dart';
 import 'package:graduation_project/models/form_field_model.dart';
+import 'package:graduation_project/models/personal_info_model.dart';
 import 'package:graduation_project/screens/register_view/service_provider/service_provider_home.dart';
 import 'package:graduation_project/shared_widget.dart/custom_form.dart';
 import 'package:graduation_project/shared_widget.dart/custom_text_form.dart';
@@ -18,35 +19,36 @@ class LoginComponent extends StatefulWidget {
 }
 
 class _LoginComponentState extends State<LoginComponent> {
-
   bool? obscureText = true;
   TextEditingController? controllerEmail = TextEditingController();
   TextEditingController? controllerpassword = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
-  Future <void> loginUser() async {
+  Future<void> loginUser() async {
     final LoginModel loginModel = LoginModel(
-      email: controllerEmail!.text ,
-      password: controllerpassword!.text ,
+      email: controllerEmail!.text,
+      password: controllerpassword!.text,
     );
     try {
       var res = await AuthService().login(loginModel);
-      if(res["user"]["service"]== ""){
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => HomeView(id: res["user"]["id"],)));
-      }else{
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => ServiceProviderHome()));
+      var data = PersonalInfoModel.formjson(res);
+      if (res["user"]["service"] == "") {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomeView(data:data)),
+        );
+      } else {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => ServiceProviderHome()),
+        );
       }
       print("${res["user"]["service"]}+++++++++++++++");
-    }catch(e){
+    } catch (e) {
       print("${e.toString()}----------------------");
-
     }
-
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -105,14 +107,13 @@ class _LoginComponentState extends State<LoginComponent> {
             onPressed: () async {
               if (formKey.currentState!.validate()) {
                 loginUser();
-                  formKey.currentState!.save();
-                  controllerEmail!.clear();
-                  controllerpassword!.clear();
-                } else {
+                formKey.currentState!.save();
+                controllerEmail!.clear();
+                controllerpassword!.clear();
+              } else {
                 autovalidateMode = AutovalidateMode.always;
                 setState(() {});
               }
-            
             },
           ),
           Padding(
