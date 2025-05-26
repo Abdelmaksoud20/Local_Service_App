@@ -3,8 +3,7 @@ import 'package:graduation_project/screens/register_view/service_provider/widget
 import 'package:graduation_project/screens/register_view/service_provider/widgets_service_provider_home/widgets_request/custom_request_info.dart';
 
 class ServiceProviderHomeBody extends StatelessWidget {
-  const ServiceProviderHomeBody({super.key, required this.name});
-  final String name;
+  const ServiceProviderHomeBody({super.key});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -12,7 +11,7 @@ class ServiceProviderHomeBody extends StatelessWidget {
         Container(
           padding: EdgeInsets.only(top: 30, bottom: 15, left: 7, right: 7),
           color: Colors.grey.shade200,
-          child: ServiceProviderHomeAppBar(name: name),
+          child: ServiceProviderHomeAppBar(),
         ),
         Expanded(
           child: ListView.builder(

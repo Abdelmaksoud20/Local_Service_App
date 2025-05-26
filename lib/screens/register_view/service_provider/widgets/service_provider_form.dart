@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:graduation_project/models/auth_models/register_model.dart';
 import 'package:graduation_project/models/form_field_model.dart';
@@ -52,11 +54,11 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
     );
     try {
       var res = await AuthService().register(provider);
-      print(res.toString());
+      log(res.toString());
      return true;
     }catch(e){
 
-      print(e.toString());
+      log(e.toString());
 return false ;
     }
 
@@ -150,8 +152,10 @@ return false ;
               onPressed: () async {
                 if (registerFormController.formKey.currentState!.validate()) {
                   if(await registerUser()){
+                    // ignore: use_build_context_synchronously
                     RegisterMessageDiloge.showSuccessDialog(context , "Register done");
                   }else{
+                    // ignore: use_build_context_synchronously
                     RegisterMessageDiloge.showErrorDialog(context , "something wrong");
 
                   }

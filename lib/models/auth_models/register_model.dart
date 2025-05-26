@@ -25,7 +25,7 @@ class RegisterModel {
   String? phone;
   String? area;
   String? service;
-
+  
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

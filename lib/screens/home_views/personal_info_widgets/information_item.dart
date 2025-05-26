@@ -5,9 +5,9 @@ class InformationItem extends StatelessWidget {
     super.key,
     required this.textEditingController,
     required this.text,
-    required this.info,
+    required this.info, this.data,
   });
-
+  final void Function(String?)? data;
   final TextEditingController textEditingController;
   final String text;
   final String info;
@@ -19,6 +19,7 @@ class InformationItem extends StatelessWidget {
         const SizedBox(width: 6),
         Expanded(
           child: TextField(
+            onChanged: data,
             controller: textEditingController,
             textAlign: TextAlign.center,
             decoration: InputDecoration(

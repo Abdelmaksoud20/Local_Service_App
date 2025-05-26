@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:graduation_project/models/auth_models/login_model.dart';
@@ -32,23 +34,27 @@ class _LoginComponentState extends State<LoginComponent> {
     );
     try {
       var res = await AuthService().login(loginModel);
-      var data = PersonalInfoModel.formjson(res);
+      var data = PersonalInfoModel.formjsonProviderData(res);
+      var userData = PersonalInfoModel.formjsonUserData(res);
       if (res["user"]["service"] == "") {
         Navigator.pushReplacement(
+          // ignore: use_build_context_synchronously
           context,
-          MaterialPageRoute(builder: (context) => HomeView(data: data)),
+          MaterialPageRoute(builder: (context) => HomeView(id: res['user']['id'],data: userData,)),
         );
       } else {
         Navigator.pushReplacement(
+          // ignore: use_build_context_synchronously
           context,
           MaterialPageRoute(builder: (context) => ServiceProviderHome(
-            providerData: data,
+          id: res['user']['id'],
+          data : data,
           )),
         );
       }
-      print("${res["user"]["service"]}+++++++++++++++");
+      log("${res["user"]["service"]}+++++++++++++++");
     } catch (e) {
-      print("${e.toString()}----------------------");
+      log("${e.toString()}----------------------");
     }
   }
 

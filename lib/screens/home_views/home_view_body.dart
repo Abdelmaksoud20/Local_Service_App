@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project/helper/font_size.dart';
+import 'package:graduation_project/screens/home_views/personal_info_widgets/utils/cubit/get_info/personal_info_cubit.dart';
 import 'package:graduation_project/screens/home_views/widgets/home_clipper.dart';
 import 'package:graduation_project/screens/home_views/widgets/home_service_item.dart';
+import 'package:graduation_project/screens/home_views/widgets/profile_information_title.dart';
 import 'package:graduation_project/screens/service_view/service_view.dart';
 import 'package:graduation_project/screens/service_view/widgets/pages/air.dart';
+import 'package:graduation_project/screens/service_view/widgets/pages/appliance.dart';
 import 'package:graduation_project/screens/service_view/widgets/pages/carpenter.dart';
-import 'package:graduation_project/screens/service_view/widgets/pages/cleaning.dart';
 import 'package:graduation_project/screens/service_view/widgets/pages/electrical.dart';
 import 'package:graduation_project/screens/service_view/widgets/pages/painter.dart';
 import 'package:graduation_project/screens/service_view/widgets/pages/plumber.dart';
 import '../../helper/colors_app.dart';
 
 class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({super.key, required this.name});
-  final String name;
+  const HomeViewBody({super.key});
   @override
   Widget build(BuildContext context) {
-    List<String> words = name.split(" ");
-    String fristName = words[0];
     Size size = MediaQuery.of(context).size;
     double width = MediaQuery.of(context).size.width;
     return Column(
@@ -45,12 +46,29 @@ class HomeViewBody extends StatelessWidget {
                         },
                         icon: Icon(Icons.menu_rounded, color: Colors.white),
                       ),
-                      SizedBox(width: width*0.2,),
-                      Text(
-                        "Al Slam Alycom $fristName",
-                        style: TextStyle(color: Colors.white),
+                      SizedBox(width: width * 0.2),
+                      BlocBuilder<PersonalInfoCubit, PersonalInfoState>(
+                        builder: (context, state) {
+                          if (state is PersonalInfoLoaded) {
+                            String fristName = cutName(
+                              name: state.infoModel.name,
+                              wordsnumber: 1,
+                            );
+                            return Text(
+                              "Al Slam Alycom $fristName",
+                              style: TextStyle(color: Colors.white),
+                            );
+                          } else {
+                            return Text(
+                              'Wating for data...',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: FontSizeApp.fontSize14,
+                              ),
+                            );
+                          }
+                        },
                       ),
-                    
                     ],
                   ),
                   SizedBox(
@@ -120,7 +138,7 @@ class HomeViewBody extends StatelessWidget {
                           MaterialPageRoute(
                             builder:
                                 (context) => ServiceView(
-                                  title: 'Electrical',
+                                  title: 'Electrical Work Service',
                                   body: ServiceBodyElectrical(),
                                 ),
                           ),
@@ -141,7 +159,7 @@ class HomeViewBody extends StatelessWidget {
                           MaterialPageRoute(
                             builder:
                                 (context) => ServiceView(
-                                  title: 'Painter',
+                                  title: 'Painting Service',
                                   body: ServiceBodyPainter(),
                                 ),
                           ),
@@ -161,8 +179,8 @@ class HomeViewBody extends StatelessWidget {
                           MaterialPageRoute(
                             builder:
                                 (context) => ServiceView(
-                                  title: 'Cleaner',
-                                  body: ServiceBodyCleaning(),
+                                  title: 'Appliance Service',
+                                  body: ServiceBodyAppliance(),
                                 ),
                           ),
                         );
@@ -181,7 +199,7 @@ class HomeViewBody extends StatelessWidget {
                           MaterialPageRoute(
                             builder:
                                 (context) => ServiceView(
-                                  title: 'Plumber',
+                                  title: 'Plumbing Service',
                                   body: ServiceBodyPlumber(),
                                 ),
                           ),
@@ -190,7 +208,7 @@ class HomeViewBody extends StatelessWidget {
                       child: HomeServiceItem(
                         context,
                         size: size,
-                        name: "Plumber",
+                        name: "Plumbing",
                         image: "assets/images/water-pipe-leakage-repair.json",
                       ),
                     ),
@@ -201,7 +219,7 @@ class HomeViewBody extends StatelessWidget {
                           MaterialPageRoute(
                             builder:
                                 (context) => ServiceView(
-                                  title: 'Carpenter',
+                                  title: 'Carpentry Service',
                                   body: ServiceBodyCarpenter(),
                                 ),
                           ),
@@ -221,7 +239,7 @@ class HomeViewBody extends StatelessWidget {
                           MaterialPageRoute(
                             builder:
                                 (context) => ServiceView(
-                                  title: 'AC technical',
+                                  title: 'Air Conditioning Service',
                                   body: ServiceBodyAir(),
                                 ),
                           ),

@@ -18,7 +18,7 @@ class CustomNameAndUsername extends StatefulWidget {
 }
 
 class _CustomNameAndUsernameState extends State<CustomNameAndUsername> {
-  String? Name;
+  String? name;
   String? userName;
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class _CustomNameAndUsernameState extends State<CustomNameAndUsername> {
             hintText: 'Enter your FirstName',
             keyboardType: TextInputType.name,
             onchanged: (data) {
-              Name = data;
+              name = data;
             },
             validate: (data) {
               if (data!.isEmpty) {

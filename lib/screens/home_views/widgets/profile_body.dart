@@ -1,27 +1,38 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/models/personal_info_model.dart';
 import 'package:graduation_project/screens/contact_view/contact_view.dart';
+import 'package:graduation_project/screens/home_views/personal_info_widgets/utils/cubit/get_info/personal_info_cubit.dart';
 import 'package:graduation_project/screens/home_views/widgets/personal_information.dart';
 import 'package:graduation_project/screens/home_views/widgets/profile_information_title.dart';
 
 class ProfileBody extends StatelessWidget {
-  const ProfileBody({super.key, this.data});
+  const ProfileBody({super.key, required this.id, required this.check, this.data});
+  final int id;
+  final bool check;
   final PersonalInfoModel? data;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
     return Column(
       children: [
-        ProfileInformationTitle(size: size,name: data!.name,email: data!.email,),
-        ProfileInformationList(data: data,),
+        ProfileInformationTitle(size: size),
+        ProfileInformationList(id: id, check: check,data: data,),
       ],
     );
   }
 }
 
 class ProfileInformationList extends StatelessWidget {
-  const ProfileInformationList({super.key, this.data});
-  final dynamic data;
+  const ProfileInformationList({
+    super.key,
+    required this.id,
+    required this.check, this.data,
+  });
+  final int id;
+  final bool check;
+  final PersonalInfoModel? data;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -37,7 +48,12 @@ class ProfileInformationList extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder:
-                      (context) => PersonalInformation(data: data,),
+                      (context) => BlocProvider(
+                        create:
+                            (context) =>
+                                PersonalInfoCubit()..personalInfoMethod(id: id),
+                        child: PersonalInformation(check: check,data:data),
+                      ),
                 ),
               );
             },
@@ -87,8 +103,8 @@ class ProfileItem extends StatelessWidget {
 
 class SectionTitle extends StatelessWidget {
   final String title;
-
-  const SectionTitle({super.key, required this.title});
+  final double? fontSize;
+  const SectionTitle({super.key, required this.title, this.fontSize});
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +113,7 @@ class SectionTitle extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(
-          fontSize: 20,
+          fontSize: fontSize ?? 20,
           fontWeight: FontWeight.bold,
           color: Colors.black54,
         ),

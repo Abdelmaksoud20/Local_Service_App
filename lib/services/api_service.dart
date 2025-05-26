@@ -11,7 +11,7 @@ class ApiService {
 
   late Dio _dio;
   bool _initialized = false;
-  final String baseUrl = "https://306f-45-242-56-157.ngrok-free.app";
+  final String baseUrl = "https://28ba-45-242-89-178.ngrok-free.app";
   ApiService._internal();
 
   Future<Dio> get dio async {

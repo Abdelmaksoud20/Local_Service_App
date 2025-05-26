@@ -17,12 +17,24 @@ class Requests {
     final String url = "/api/users/user/profile/$id";
     try {
       var response = await apiService.getRequest(url);
-      log(response.toString());
       final PersonalInfoModel info = PersonalInfoModel.formjson(response);
       return info;
     } catch (e) {
       log(e.toString());
       throw Exception("Failed to data: $e");
+    }
+  }
+
+  Future<Map<String, dynamic>> updateData({
+    required Map<String, dynamic> data, required int id,
+  }) async {
+    final String url = '/api/users/user/profile/$id';
+    try{
+      var response = await apiService.postRequest(url, data);
+     return response;
+    }
+    catch (e) {
+      throw Exception("Failed to update data: $e");
     }
   }
 }

@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project/helper/font_size.dart';
 import 'package:graduation_project/screens/contact_view/contact_view.dart';
 import 'package:graduation_project/screens/home_views/home_view.dart';
+import 'package:graduation_project/screens/home_views/personal_info_widgets/utils/cubit/get_info/personal_info_cubit.dart';
+import 'package:graduation_project/screens/home_views/widgets/profile_information_title.dart';
 import 'package:graduation_project/screens/login_view.dart/login_view.dart';
 import 'package:graduation_project/screens/register_view/service_provider/service_provider_home.dart';
 import '../../../constant.dart';
 import '../../../helper/colors_app.dart';
 
 class HomeDrawerNav extends StatelessWidget {
-  const HomeDrawerNav({super.key, required this.swichMode,  this.name});
-  final String? name;
+  const HomeDrawerNav({super.key, required this.swichMode});
   final String swichMode;
 
   @override
   Widget build(BuildContext context) {
-    List<String> words = name!.split(" ");
-    String proname = "${words[0]} ${words[1]}";
     Size size = MediaQuery.sizeOf(context);
     return Drawer(
       width: size.width * .77,
@@ -30,14 +31,33 @@ class HomeDrawerNav extends StatelessWidget {
                   backgroundImage: AssetImage(profileImage),
                 ),
                 SizedBox(width: 10),
-                Text(
-                  proname,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-                ),
-                Spacer(),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.arrow_forward_ios_rounded),
+                BlocBuilder<PersonalInfoCubit, PersonalInfoState>(
+                  builder: (context, state) {
+                    if (state is PersonalInfoLoaded) {
+                      String name = cutName(
+                        name: state.infoModel.name,
+                        wordsnumber: 2,
+                      );
+                      return FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          name,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          ),
+                        ),
+                      );
+                    } else {
+                      return Text(
+                        'Wating for data...',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: FontSizeApp.fontSize14,
+                        ),
+                      );
+                    }
+                  },
                 ),
               ],
             ),

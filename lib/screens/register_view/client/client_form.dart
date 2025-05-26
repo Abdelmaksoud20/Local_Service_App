@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_project/shared_widget.dart/form_widget/custom_email_and_phone.dart';
@@ -56,14 +58,14 @@ class _ClientFormState extends State<ClientForm> {
     );
     try {
       var res = await AuthService().registerClint(client);
-      print("Client======${res.toString()}========");
+      log("Client======${res.toString()}========");
       return true;
     } on  DioException catch(e){
       if (e.response != null) {
-        print("Error Status: ${e.response?.statusCode}");
-        print("Error Data: ${e.response?.data}");
+        log("Error Status: ${e.response?.statusCode}");
+        log("Error Data: ${e.response?.data}");
       } else {
-        print("Error sending request: ${e.message}");
+        log("Error sending request: ${e.message}");
       }
       return false ;
     }
@@ -127,11 +129,14 @@ class _ClientFormState extends State<ClientForm> {
               onPressed: () async {
                 if (formKey.currentState!.validate()) {
                   if(await registerClient()){
+                    // ignore: use_build_context_synchronously
                     RegisterMessageDiloge.showSuccessDialog(context , "Register done");
                   }else{
+                    // ignore: use_build_context_synchronously
                     RegisterMessageDiloge.showErrorDialog(context , "something wrong");
 
                   }
+                  // ignore: use_build_context_synchronously
                   FocusScope.of(context).unfocus();
                   controllerFirst.clear();
                   controllerUser.clear();
