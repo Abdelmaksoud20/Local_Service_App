@@ -4,12 +4,11 @@ import 'package:graduation_project/screens/service_view/widgets/provider_card_li
 import 'package:graduation_project/screens/service_view/widgets/service_card_sliver_list.dart';
 
 class ServiceBodyElectrical extends StatelessWidget {
-
   const ServiceBodyElectrical({super.key});
   static final List<ServiceModel> electricals = [
     ServiceModel(
       servicename: 'Electrical',
-      name: 'Wiring and Cabling Services',
+      name: 'Wiring and cabling services',
       description:
           'Repairing damaged wires and ensuring safe electrical connections.Installing and upgrading electrical wiring in homes and office',
       imageUrl:
@@ -18,7 +17,7 @@ class ServiceBodyElectrical extends StatelessWidget {
     ),
     ServiceModel(
       servicename: 'Electrical',
-      name: 'Installing and Maintaining Lighting Systems',
+      name: 'Installing and maintaining lighting systems',
       description:
           'Replacing and maintaining damaged light fixtures. Installing indoor and outdoor lights and timers',
       imageUrl: 'assets/images/electrical/download(2).png',
@@ -27,7 +26,7 @@ class ServiceBodyElectrical extends StatelessWidget {
 
     ServiceModel(
       servicename: 'Electrical',
-      name: 'IInstalling and Maintaining Electrical Panels',
+      name: 'Installing and maintaining electrical panels',
       description:
           'Installing main and sub electrical panels for homes and buildings. Maintaining electrical panels to ensure safe and proper power distribution',
       imageUrl: 'assets/images/electrical/download(3).png',
@@ -36,7 +35,7 @@ class ServiceBodyElectrical extends StatelessWidget {
 
     ServiceModel(
       servicename: 'Electrical',
-      name: 'Installing and Maintaining Alarm and Home Security Systems',
+      name: 'Installing and maintaining alarm and home system security',
       description:
           'Installing burglary and fire alarm systems. Maintaining and updating home security systems for enhanced protection',
       imageUrl: 'assets/images/electrical/download(4).png',

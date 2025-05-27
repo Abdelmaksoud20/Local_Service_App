@@ -6,24 +6,28 @@ class CustomRequestButton extends StatelessWidget {
   const CustomRequestButton({
     super.key,
     required this.buttonTitle,
-    required this.color,
+    required this.color, this.onTap,
   });
   final String buttonTitle;
   final Color color;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 30),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Text(
-        buttonTitle,
-        style: GoogleFonts.poppins(
-          fontSize: FontSizeApp.fontSize13,
-          fontWeight: FontWeight.w600,
-          color: Colors.white,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 30),
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Text(
+          buttonTitle,
+          style: GoogleFonts.poppins(
+            fontSize: FontSizeApp.fontSize13,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+          ),
         ),
       ),
     );

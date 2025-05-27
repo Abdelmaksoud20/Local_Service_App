@@ -19,7 +19,6 @@ class CustomAppTitle extends StatelessWidget {
         child: Text(
           title!,
           style: AppStyle.fontBoldSize28
-
         ),
       ),
     );

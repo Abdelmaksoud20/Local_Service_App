@@ -5,14 +5,14 @@ import 'package:graduation_project/helper/font_size.dart';
 class RequestServiceNameAndPrice extends StatelessWidget {
   const RequestServiceNameAndPrice({super.key, this.serviceName, this.servicePrice});
    final String? serviceName;
-   final int? servicePrice;
+   final String? servicePrice;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         // ServiceName
         Text(
-          'Unclog The Drain',
+          serviceName ?? "unKnown Service",
           style: GoogleFonts.poppins(
             fontSize: FontSizeApp.fontSize16,
             fontWeight: FontWeight.w700,
@@ -29,7 +29,7 @@ class RequestServiceNameAndPrice extends StatelessWidget {
           ),
           child: Text(
             textAlign: TextAlign.center,
-            "185 \$",
+            servicePrice ?? "unKnown price",
             style: GoogleFonts.poppins(
               fontSize: FontSizeApp.fontSize18,
               fontWeight: FontWeight.w700,

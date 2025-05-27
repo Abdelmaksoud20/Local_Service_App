@@ -4,8 +4,10 @@ import 'package:graduation_project/screens/register_view/service_provider/widget
 import 'package:graduation_project/screens/register_view/service_provider/widgets_service_provider_home/widgets_request/custom_request_client_name_location.dart';
 
 class RequestClientNameAndLocation extends StatelessWidget {
-  const RequestClientNameAndLocation({super.key});
+  const RequestClientNameAndLocation({super.key, this.nameClient, this.area});
 
+  final String? nameClient ;
+  final String? area ;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,11 +18,11 @@ class RequestClientNameAndLocation extends StatelessWidget {
           SizedBox(height: 5),
           CustomRequestClientNameAndLoction(
             text: 'Client : ',
-            title: 'Abdelmaksoud',
+            title: nameClient ?? "unKnown client",
           ),
           CustomRequestClientNameAndLoction(
-            text: 'Location : ',
-            title: 'Al-Manakh District',
+            text: 'Area : ',
+            title: area ?? "uunKnown Area",
           ),
           SizedBox(height: 20),
           Row(
@@ -28,6 +30,7 @@ class RequestClientNameAndLocation extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomRequestButton(
+                onTap: (){},
                 buttonTitle: 'Confirm',
                 color: ColorsApp.requestServiceProviderColor,
               ),
