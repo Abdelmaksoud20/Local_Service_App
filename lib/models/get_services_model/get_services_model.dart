@@ -15,6 +15,7 @@
 /// created_at : "2025-05-12T23:51:47.000000Z"
 /// updated_at : "2025-05-12T23:51:47.000000Z"
 /// accepted_provider : null
+library;
 
 class GetRequestServicesModel {
   GetRequestServicesModel({
