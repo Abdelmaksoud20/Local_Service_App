@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/models/personal_info_model.dart';
@@ -8,7 +7,12 @@ import 'package:graduation_project/screens/home_views/widgets/personal_informati
 import 'package:graduation_project/screens/home_views/widgets/profile_information_title.dart';
 
 class ProfileBody extends StatelessWidget {
-  const ProfileBody({super.key, required this.id, required this.check, this.data});
+  const ProfileBody({
+    super.key,
+    required this.id,
+    required this.check,
+    this.data,
+  });
   final int id;
   final bool check;
   final PersonalInfoModel? data;
@@ -18,7 +22,7 @@ class ProfileBody extends StatelessWidget {
     return Column(
       children: [
         ProfileInformationTitle(size: size),
-        ProfileInformationList(id: id, check: check,data: data,),
+        ProfileInformationList(id: id, check: check, data: data),
       ],
     );
   }
@@ -28,7 +32,8 @@ class ProfileInformationList extends StatelessWidget {
   const ProfileInformationList({
     super.key,
     required this.id,
-    required this.check, this.data,
+    required this.check,
+    this.data,
   });
   final int id;
   final bool check;
@@ -52,7 +57,7 @@ class ProfileInformationList extends StatelessWidget {
                         create:
                             (context) =>
                                 PersonalInfoCubit()..personalInfoMethod(id: id),
-                        child: PersonalInformation(check: check,data:data),
+                        child: PersonalInformation(check: check, data: data),
                       ),
                 ),
               );

@@ -22,12 +22,10 @@ class ServiceProviderForm extends StatefulWidget {
 }
 
 class _ServiceProviderFormState extends State<ServiceProviderForm> {
-
   late RegisterFormController registerFormController;
 
   @override
   void initState() {
-
     registerFormController = RegisterFormController();
 
     super.initState();
@@ -36,33 +34,33 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
   void dispose() {
-   registerFormController.disposeRegisterController();
+    registerFormController.disposeRegisterController();
     super.dispose();
   }
+
   bool? isLoading;
-  late String place ;
-  late String jop ;
-  String? skill ;
- Future<bool> registerUser() async {
+  late String place;
+  late String jop;
+  String? skill;
+  Future<bool> registerUser() async {
     final provider = RegisterModel(
       name: registerFormController.controllerFirst.text,
       email: registerFormController.controllerEmail.text,
       password: registerFormController.controllerPassword.text,
       phone: registerFormController.controllerPhone.text,
       service: jop,
-      area : place ,
+      area: place,
     );
     try {
       var res = await AuthService().register(provider);
       log(res.toString());
-     return true;
-    }catch(e){
-
+      return true;
+    } catch (e) {
       log(e.toString());
-return false ;
+      return false;
     }
-
   }
+
   @override
   Widget build(BuildContext context) {
     double left = 5;
@@ -86,8 +84,8 @@ return false ;
             ),
             CustomTextForm(title: 'Districts'),
             CustomDropdownList(
-              onChanged: (value){
-                place = value! ;
+              onChanged: (value) {
+                place = value!;
               },
               key: registerFormController.districtKey,
               hintText: 'Select your district',
@@ -109,8 +107,8 @@ return false ;
             ),
             CustomTextForm(title: 'The service your provide'),
             CustomDropdownList(
-              onChanged: (value){
-                jop = value! ;
+              onChanged: (value) {
+                jop = value!;
               },
               key: registerFormController.serviceKey,
               hintText: 'Select your service',
@@ -143,7 +141,8 @@ return false ;
             CustomPassword(
               left: left,
               controllerpassword: registerFormController.controllerPassword,
-              controllerconfirm: registerFormController.controllerConfirmPassword,
+              controllerconfirm:
+                  registerFormController.controllerConfirmPassword,
             ),
             SizedBox(height: 15),
             PrimaryButton(
@@ -151,17 +150,21 @@ return false ;
               radius: 15,
               onPressed: () async {
                 if (registerFormController.formKey.currentState!.validate()) {
-                  if(await registerUser()){
+                  if (await registerUser()) {
                     // ignore: use_build_context_synchronously
-                    RegisterMessageDiloge.showSuccessDialog(context , "Register done");
-                  }else{
+                    RegisterMessageDiloge.showSuccessDialog(
+                      context,
+                      "Register done",
+                    );
+                  } else {
                     // ignore: use_build_context_synchronously
-                    RegisterMessageDiloge.showErrorDialog(context , "something wrong");
-
+                    RegisterMessageDiloge.showErrorDialog(
+                      context,
+                      "something wrong",
+                    );
                   }
-                registerFormController.clearRegisterController();
-                }
-                else {
+                  registerFormController.clearRegisterController();
+                } else {
                   autovalidateMode = AutovalidateMode.always;
                 }
                 //!HomePagetoServiceProvider
@@ -173,6 +176,4 @@ return false ;
       ),
     );
   }
-
-
 }

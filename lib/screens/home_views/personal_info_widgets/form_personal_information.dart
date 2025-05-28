@@ -233,7 +233,7 @@ class UserDetails extends StatelessWidget {
                         'West District',
                       ],
                       hintText: state.infoModel.area,
-                        onChanged: (value) {
+                      onChanged: (value) {
                         controallers.setSelectedArea(value);
                       },
                     ),

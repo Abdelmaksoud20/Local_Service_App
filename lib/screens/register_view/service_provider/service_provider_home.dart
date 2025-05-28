@@ -24,7 +24,7 @@ class _ServiceProviderHomeState extends State<ServiceProviderHome> {
   void initState() {
     pages = [
       ServiceProviderHomeBody(),
-      ProfileView(id: widget.id!, check: provider,data: widget.data),
+      ProfileView(id: widget.id!, check: provider, data: widget.data),
     ];
     super.initState();
   }

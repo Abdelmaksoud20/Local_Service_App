@@ -60,7 +60,7 @@ class HomeViewBody extends StatelessWidget {
                             );
                           } else {
                             return Text(
-                              'Wating for data...',
+                              's for data...',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: FontSizeApp.fontSize14,
@@ -218,7 +218,7 @@ class HomeViewBody extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder:
-                                (context) => ServiceView(
+                                (contextt) => ServiceView(
                                   title: 'Carpentry Service',
                                   body: ServiceBodyCarpenter(),
                                 ),

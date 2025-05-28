@@ -1,13 +1,12 @@
-
 class RegisterModel {
   RegisterModel({
-      this.name, 
-      this.email, 
-      this.phone, 
-      this.area, 
-      this.service, 
+    this.name,
+    this.email,
+    this.phone,
+    this.area,
+    this.service,
     this.password,
-});
+  });
 
   RegisterModel.fromJson(dynamic json) {
     name = json['name'];
@@ -16,8 +15,6 @@ class RegisterModel {
     area = json['area'];
     service = json['service'];
     password = json['password'];
-
-
   }
   String? name;
   String? password;
@@ -25,7 +22,6 @@ class RegisterModel {
   String? phone;
   String? area;
   String? service;
-  
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -38,5 +34,4 @@ class RegisterModel {
 
     return map;
   }
-
 }

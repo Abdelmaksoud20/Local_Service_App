@@ -12,7 +12,7 @@ final class PersonalInfoInitialUpdate extends PersonalInfoUpdateState {}
 final class PersonalInfoLoadingUpdate extends PersonalInfoUpdateState {}
 
 final class PersonalInfoLoadedUpdate extends PersonalInfoUpdateState {
-  final Map<String,dynamic> updatedData;
+  final Map<String, dynamic> updatedData;
 
   const PersonalInfoLoadedUpdate({required this.updatedData});
 }

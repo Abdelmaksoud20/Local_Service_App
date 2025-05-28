@@ -5,9 +5,10 @@ class RequestButtonModel {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController mobileController = TextEditingController();
-  final TextEditingController addressController= TextEditingController();
+  final TextEditingController addressController = TextEditingController();
   final TextEditingController executionDayController = TextEditingController();
-  final GlobalKey<CustomDropdownListState> dropDownKey=GlobalKey<CustomDropdownListState>();
+  final GlobalKey<CustomDropdownListState> dropDownKey =
+      GlobalKey<CustomDropdownListState>();
   void clearAll() {
     nameController.clear();
     emailController.clear();
@@ -16,13 +17,12 @@ class RequestButtonModel {
     executionDayController.clear();
     addressController.clear();
   }
-  void disposeAll(){
+
+  void disposeAll() {
     nameController.dispose();
     emailController.dispose();
     mobileController.dispose();
     executionDayController.dispose();
     addressController.dispose();
   }
-
-
 }

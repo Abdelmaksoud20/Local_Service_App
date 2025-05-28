@@ -5,7 +5,7 @@ class ServiceModel {
   final String imageUrl;
   final String price;
 
-  ServiceModel( {
+  ServiceModel({
     required this.servicename,
     required this.name,
     required this.description,

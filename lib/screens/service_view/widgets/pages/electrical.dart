@@ -4,7 +4,6 @@ import 'package:graduation_project/screens/service_view/widgets/provider_card_li
 import 'package:graduation_project/screens/service_view/widgets/service_card_sliver_list.dart';
 
 class ServiceBodyElectrical extends StatelessWidget {
-
   const ServiceBodyElectrical({super.key});
   static final List<ServiceModel> electricals = [
     ServiceModel(
@@ -52,7 +51,7 @@ class ServiceBodyElectrical extends StatelessWidget {
         slivers: [
           SliverPadding(
             padding: EdgeInsets.only(bottom: 10),
-            sliver: ServiceCardSliverList(services: electricals,),
+            sliver: ServiceCardSliverList(services: electricals),
           ),
           SliverToBoxAdapter(child: ProviderCardListView()),
         ],

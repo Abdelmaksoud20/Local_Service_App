@@ -11,6 +11,7 @@ class RequestCubit extends Cubit<RequestState> {
     emit(RequestLoading());
     try {
       final response = await data.sendData(data: senddata);
+      log(response.toString());
       emit(RequestLoaded(data: response));
     } catch (error) {
       log(error.toString());
@@ -18,4 +19,3 @@ class RequestCubit extends Cubit<RequestState> {
     }
   }
 }
-

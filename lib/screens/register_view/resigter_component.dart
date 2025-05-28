@@ -4,35 +4,35 @@ import 'package:graduation_project/screens/register_view/service_provider/widget
 import 'package:graduation_project/shared_widget.dart/primary_button.dart';
 
 class RegisterComponent extends StatelessWidget {
-  const RegisterComponent({
-    super.key,
-
-  });
+  const RegisterComponent({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       children: [
         SizedBox(height: 120),
         PrimaryButton(
           title: 'Client',
           radius: 40,
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(
-              builder: (context) => ClientRegister(),
-            ));
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ClientRegister()),
+            );
           },
         ),
         SizedBox(height: 27),
         PrimaryButton(
           title: 'Service Provider',
           radius: 40,
-            onPressed: () {
-            Navigator.push(context, MaterialPageRoute(
-              builder: (context) => ServiceProviderPageRegister(),
-            ));
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ServiceProviderPageRegister(),
+              ),
+            );
           },
-        
         ),
       ],
     );

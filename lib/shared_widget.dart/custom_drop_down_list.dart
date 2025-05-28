@@ -8,7 +8,8 @@ class CustomDropdownList extends StatefulWidget {
     this.validator,
     this.initialValue,
     this.onChanged,
-    required this.hintText, this.color,
+    required this.hintText,
+    this.color,
   });
   final List<String> data;
   final String? Function(String?)? validator;
@@ -46,10 +47,10 @@ class CustomDropdownListState extends State<CustomDropdownList> {
             decoration: InputDecoration(
               border: border(),
               enabledBorder: border(color: widget.color),
-              focusedBorder: border(color: widget.color?? Colors.black),
+              focusedBorder: border(color: widget.color ?? Colors.black),
             ),
             value: selectedItem,
-            
+
             hint: Text(
               widget.hintText,
               style: TextStyle(color: Colors.blueGrey, fontSize: 18),

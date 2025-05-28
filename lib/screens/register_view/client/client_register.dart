@@ -14,7 +14,7 @@ class ClientRegister extends StatelessWidget {
           onTap: () => FocusScope.of(context).unfocus(), // update
           child: Stack(
             children: [
-              CustomAppTitle(title: "Sign in-up to enjoy the best service",),
+              CustomAppTitle(title: "Sign in-up to enjoy the best service"),
               CustomAppBody(child: SingleChildScrollView(child: ClientForm())),
             ],
           ),

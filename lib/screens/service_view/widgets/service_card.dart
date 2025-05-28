@@ -23,7 +23,7 @@ class ServiceCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 10),
-               Text(
+              Text(
                 textAlign: TextAlign.center,
                 data.name,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -36,17 +36,17 @@ class ServiceCard extends StatelessWidget {
                   children: [
                     ClipOval(
                       child: Image.asset(
-                         data.imageUrl,
+                        data.imageUrl,
                         height: 100,
                         width: 100,
                         fit: BoxFit.cover,
                       ),
                     ),
                     const SizedBox(width: 10),
-                     Expanded(
+                    Expanded(
                       child: Text(
-                           data.description,
-                           style: TextStyle(
+                        data.description,
+                        style: TextStyle(
                           fontSize: 12,
                           color: Color(0xff6D5C5C),
                         ),
@@ -61,7 +61,7 @@ class ServiceCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                   Text(
+                  Text(
                     '\$ ${data.price}',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
@@ -71,11 +71,14 @@ class ServiceCard extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => RequestView(
-                          price: data.price,
-                          skill: data.name,
-                          service: data.servicename,
-                        )),
+                        MaterialPageRoute(
+                          builder:
+                              (context) => RequestView(
+                                price: data.price,
+                                skill: data.name,
+                                service: data.servicename,
+                              ),
+                        ),
                       );
                     },
                     child: Container(

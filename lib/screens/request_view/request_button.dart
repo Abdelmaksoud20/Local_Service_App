@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/constant.dart';
 import 'package:graduation_project/models/request_button_model.dart';
+import 'package:graduation_project/models/request_model.dart';
+import 'package:graduation_project/screens/home_views/services_view_state.dart';
+
 import 'package:graduation_project/screens/request_view/cubit/request_cubit.dart';
+
 
 // ignore: must_be_immutable
 class RequestButton extends StatelessWidget {
@@ -18,11 +22,17 @@ class RequestButton extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   final String service, skill, price;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext contextt) {
     // log('request Button');
     return BlocConsumer<RequestCubit, RequestState>(
       listener: (context, state) {
         if (state is RequestLoaded) {
+           Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ServicesViewState(requestId: state.data['data']['id']),
+        ),
+      );
           data.clearAll();
           snakBar(context, 'successful request');
         } else if (state is Requesterror) {
@@ -37,18 +47,20 @@ class RequestButton extends StatelessWidget {
               onTap: () {
                 if (formKey.currentState!.validate()) {
                   try {
+                    RequestModel requestCubit = RequestModel(
+                      name: data.nameController.text,
+                      email: data.emailController.text,
+                      mobile: data.mobileController.text,
+                      area: data.dropDownKey.currentState!.selectedItem!,
+                      address: data.addressController.text,
+                      executionday: data.executionDayController.text,
+                      service: service,
+                      skill: skill,
+                      price: price,
+                    );
+                    dynamic requestData = requestCubit.toJson();
                     context.read<RequestCubit>().sendDataRequestMethod(
-                      senddata: {
-                        "name": data.nameController.text,
-                        "email": data.emailController.text,
-                        "mobile": data.mobileController.text,
-                        "area": data.dropDownKey.currentState?.selectedItem,
-                        "address": data.addressController.text,
-                        "execution_day": data.executionDayController.text,
-                        "service": service,
-                        "skill": skill,
-                        "price": price,
-                      },
+                      senddata: requestData,
                     );
                   } catch (e) {
                     throw Exception('Send Data Error');
@@ -89,21 +101,5 @@ class RequestButton extends StatelessWidget {
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(SnackBar(content: Text(message)));
-  }
-
-  void sendData(BuildContext context) {
-    context.read<RequestCubit>().sendDataRequestMethod(
-      senddata: {
-        "name": data.nameController.text,
-        "email": data.emailController.text,
-        "mobile": data.mobileController.text,
-        "area": data.dropDownKey.currentState?.selectedItem,
-        "address": data.addressController.text,
-        "execution_day": data.executionDayController.text,
-        "service": service,
-        "skill": skill,
-        "price": price,
-      },
-    );
   }
 }

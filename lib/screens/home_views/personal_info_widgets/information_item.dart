@@ -5,7 +5,8 @@ class InformationItem extends StatelessWidget {
     super.key,
     required this.textEditingController,
     required this.text,
-    required this.info, this.data,
+    required this.info,
+    this.data,
   });
   final void Function(String?)? data;
   final TextEditingController textEditingController;

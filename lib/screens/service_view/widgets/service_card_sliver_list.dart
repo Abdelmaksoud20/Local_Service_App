@@ -11,11 +11,8 @@ class ServiceCardSliverList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverList(
       delegate: SliverChildBuilderDelegate((context, index) {
-        return ServiceCard(
-           data: services[index],
-        );
-      }, childCount: services.length
-      ),
+        return ServiceCard(data: services[index]);
+      }, childCount: services.length),
     );
   }
 }

@@ -9,17 +9,29 @@ class HomeClip extends CustomClipper<Path> {
     var firstStart = Offset(size.width * .03, size.height * .9);
     var firstEnd = Offset(size.width * .17, size.height * .9);
     path.quadraticBezierTo(
-        firstStart.dx, firstStart.dy, firstEnd.dx, firstEnd.dy);
+      firstStart.dx,
+      firstStart.dy,
+      firstEnd.dx,
+      firstEnd.dy,
+    );
 
     var secondStart = Offset(size.width * .9, size.height * .9);
     var secondEnd = Offset(size.width * .9, size.height * .9);
     path.quadraticBezierTo(
-        secondStart.dx, secondStart.dy, secondEnd.dx, secondEnd.dy);
+      secondStart.dx,
+      secondStart.dy,
+      secondEnd.dx,
+      secondEnd.dy,
+    );
 
     var thirdStart = Offset(size.width * .97, size.height * .9);
     var thirdEnd = Offset(size.width, size.height * .71);
     path.quadraticBezierTo(
-        thirdStart.dx, thirdStart.dy, thirdEnd.dx, thirdEnd.dy);
+      thirdStart.dx,
+      thirdStart.dy,
+      thirdEnd.dx,
+      thirdEnd.dy,
+    );
 
     var fourStart = Offset(size.width, size.height * .69);
     var fourEnd = Offset(size.width, 0);

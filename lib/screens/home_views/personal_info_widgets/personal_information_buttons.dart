@@ -54,8 +54,8 @@ class PersonalInformationButtons extends StatelessWidget {
                       controllers.phoneEditingController.text.isEmpty
                           ? data.phone
                           : controllers.phoneEditingController.text,
-                  area: controllers.selectedArea?? data.area,
-                    
+                  area: controllers.selectedArea ?? data.area,
+
                   service: data.service,
                   skills: data.skills,
                 );
@@ -89,6 +89,4 @@ class PersonalInformationButtons extends StatelessWidget {
       ),
     );
   }
-
-
 }

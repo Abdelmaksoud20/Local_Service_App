@@ -4,16 +4,15 @@ import 'package:graduation_project/shared_widget.dart/custom_app_title.dart';
 
 class GetStartView extends StatelessWidget {
   const GetStartView({super.key});
-  
 
-@override
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: Stack(
           children: [
-            CustomAppTitle(title: 'Service At Your Fingertios',),
+            CustomAppTitle(title: 'Service At Your Fingertios'),
             ComponentGetStartView(),
           ],
         ),

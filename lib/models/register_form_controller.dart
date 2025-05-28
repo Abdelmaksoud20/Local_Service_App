@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../shared_widget.dart/custom_drop_down_list.dart';
 
-class RegisterFormController{
+class RegisterFormController {
   TextEditingController controllerFirst = TextEditingController();
   TextEditingController controllerUser = TextEditingController();
   TextEditingController controllerEmail = TextEditingController();
@@ -16,7 +16,7 @@ class RegisterFormController{
   GlobalKey<CustomDropdownListState> districtKey = GlobalKey();
   GlobalKey<CustomDropdownListState> serviceKey = GlobalKey();
 
-  void disposeRegisterController(){
+  void disposeRegisterController() {
     controllerFirst.dispose();
     controllerUser.dispose();
     controllerEmail.dispose();
@@ -28,8 +28,7 @@ class RegisterFormController{
     controllerService.dispose();
   }
 
-  void clearRegisterController(){
-
+  void clearRegisterController() {
     controllerFirst.clear();
     controllerUser.clear();
     controllerEmail.clear();
@@ -39,5 +38,4 @@ class RegisterFormController{
     districtKey.currentState?.reset();
     serviceKey.currentState?.reset();
   }
-
 }

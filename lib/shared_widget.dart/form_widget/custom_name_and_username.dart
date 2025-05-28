@@ -4,7 +4,7 @@ import 'package:graduation_project/shared_widget.dart/custom_form.dart';
 import 'package:graduation_project/shared_widget.dart/custom_text_form.dart';
 
 class CustomNameAndUsername extends StatefulWidget {
-  const  CustomNameAndUsername({
+  const CustomNameAndUsername({
     super.key,
     required this.left,
     required this.controllerFirst,

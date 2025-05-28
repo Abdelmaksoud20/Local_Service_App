@@ -19,19 +19,23 @@ class ServerFailuer extends Failures {
         return ServerFailuer("badCertificate With ApiServer");
       case DioExceptionType.badResponse:
         return ServerFailuer.fromResponse(
-            dioException.response!.statusCode!, dioException.response!.data);
+          dioException.response!.statusCode!,
+          dioException.response!.data,
+        );
       case DioExceptionType.cancel:
         return ServerFailuer("badCertificate With ApiServer");
       case DioExceptionType.connectionError:
         return ServerFailuer("internet Connection Error");
       case DioExceptionType.unknown:
-      return ServerFailuer("Unexpected Error ,Please Try again");
+        return ServerFailuer("Unexpected Error ,Please Try again");
       // default:
       //   return ServerFailuer("opps there was an error,please try again");
     }
   }
   factory ServerFailuer.fromResponse(
-      int statusCode, Map<String, dynamic> response) {
+    int statusCode,
+    Map<String, dynamic> response,
+  ) {
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
       return ServerFailuer(response["error"]["message"]);
     } else if (statusCode == 404) {

@@ -40,16 +40,20 @@ class _LoginComponentState extends State<LoginComponent> {
         Navigator.pushReplacement(
           // ignore: use_build_context_synchronously
           context,
-          MaterialPageRoute(builder: (context) => HomeView(id: res['user']['id'],data: userData,)),
+          MaterialPageRoute(
+            builder:
+                (context) => HomeView(id: res['user']['id'], data: userData),
+          ),
         );
       } else {
         Navigator.pushReplacement(
           // ignore: use_build_context_synchronously
           context,
-          MaterialPageRoute(builder: (context) => ServiceProviderHome(
-          id: res['user']['id'],
-          data : data,
-          )),
+          MaterialPageRoute(
+            builder:
+                (context) =>
+                    ServiceProviderHome(id: res['user']['id'], data: data),
+          ),
         );
       }
       log("${res["user"]["service"]}+++++++++++++++");

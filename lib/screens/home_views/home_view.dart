@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/models/personal_info_model.dart';
 import 'package:graduation_project/screens/home_views/personal_info_widgets/utils/cubit/get_info/personal_info_cubit.dart';
 import 'package:graduation_project/screens/home_views/profile_view.dart';
-import 'package:graduation_project/screens/home_views/services_view.dart';
+import 'package:graduation_project/screens/home_views/services_view_state.dart';
 import 'package:graduation_project/screens/home_views/widgets/home_drawer_nav.dart';
 import '../../helper/colors_app.dart';
 import 'home_view_body.dart';
@@ -23,15 +23,25 @@ class _HomeViewState extends State<HomeView> {
   int pageNum = 0;
   @override
   void initState() {
-    pages = [HomeViewBody(), ServicesView(), ProfileView(id: widget.id!, check: user, data: widget.data)];
+    pages = [
+      HomeViewBody(),
+      ServicesViewState(),
+      ProfileView(id: widget.id!, check: user, data: widget.data),
+    ];
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create:
-          (context) => PersonalInfoCubit()..personalInfoMethod(id: widget.id!),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create:
+              (context) =>
+                  PersonalInfoCubit()..personalInfoMethod(id: widget.id!),
+        ),
+      
+      ],
       child: Scaffold(
         backgroundColor: Colors.white,
         resizeToAvoidBottomInset: false,

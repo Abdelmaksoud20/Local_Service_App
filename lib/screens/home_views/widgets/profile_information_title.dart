@@ -52,7 +52,10 @@ class ProfileInformationTitle extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                cutName(name: state.infoModel.name, wordsnumber: 2),
+                                cutName(
+                                  name: state.infoModel.name,
+                                  wordsnumber: 2,
+                                ),
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
                                   color: Colors.white,
@@ -63,14 +66,15 @@ class ProfileInformationTitle extends StatelessWidget {
                               Text(
                                 state.infoModel.email,
                                 style: TextStyle(
-                                  color:   Colors.white,
+                                  color: Colors.white,
                                   fontSize: FontSizeApp.fontSize14,
                                 ),
                               ),
                             ],
                           );
                         } else {
-                          return Text('Wating for data...',
+                          return Text(
+                            'Wating for data...',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: FontSizeApp.fontSize14,

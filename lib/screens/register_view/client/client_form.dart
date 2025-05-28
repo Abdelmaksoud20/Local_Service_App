@@ -45,7 +45,7 @@ class _ClientFormState extends State<ClientForm> {
     super.dispose();
   }
 
-  late String place ;
+  late String place;
 
   Future<bool> registerClient() async {
     final client = RegisterModel(
@@ -54,22 +54,21 @@ class _ClientFormState extends State<ClientForm> {
       password: controllerpassword.text,
       phone: controllerPhone.text,
       service: null,
-      area: place ,
+      area: place,
     );
     try {
       var res = await AuthService().registerClint(client);
       log("Client======${res.toString()}========");
       return true;
-    } on  DioException catch(e){
+    } on DioException catch (e) {
       if (e.response != null) {
         log("Error Status: ${e.response?.statusCode}");
         log("Error Data: ${e.response?.data}");
       } else {
         log("Error sending request: ${e.message}");
       }
-      return false ;
+      return false;
     }
-
   }
 
   @override
@@ -96,8 +95,8 @@ class _ClientFormState extends State<ClientForm> {
             ),
             CustomTextForm(title: 'Districts'),
             CustomDropdownList(
-              onChanged: (value){
-                place = value! ;
+              onChanged: (value) {
+                place = value!;
               },
               key: districtKey,
               hintText: 'Select your district',
@@ -128,13 +127,18 @@ class _ClientFormState extends State<ClientForm> {
               radius: 15,
               onPressed: () async {
                 if (formKey.currentState!.validate()) {
-                  if(await registerClient()){
+                  if (await registerClient()) {
                     // ignore: use_build_context_synchronously
-                    RegisterMessageDiloge.showSuccessDialog(context , "Register done");
-                  }else{
+                    RegisterMessageDiloge.showSuccessDialog(
+                      context,
+                      "Register done",
+                    );
+                  } else {
                     // ignore: use_build_context_synchronously
-                    RegisterMessageDiloge.showErrorDialog(context , "something wrong");
-
+                    RegisterMessageDiloge.showErrorDialog(
+                      context,
+                      "something wrong",
+                    );
                   }
                   // ignore: use_build_context_synchronously
                   FocusScope.of(context).unfocus();
@@ -145,12 +149,11 @@ class _ClientFormState extends State<ClientForm> {
                   controllerconfirm.clear();
                   controllerpassword.clear();
                   districtKey.currentState?.reset();
-                }
-                else{
+                } else {
                   autovalidateMode = AutovalidateMode.always;
                   setState(() {});
                 }
-                
+
                 //!HomePageClient
               },
             ),

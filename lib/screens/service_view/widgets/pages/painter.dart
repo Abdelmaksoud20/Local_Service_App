@@ -4,8 +4,6 @@ import 'package:graduation_project/screens/service_view/widgets/provider_card_li
 import 'package:graduation_project/screens/service_view/widgets/service_card_sliver_list.dart';
 
 class ServiceBodyPainter extends StatelessWidget {
-  
-
   const ServiceBodyPainter({super.key});
   static final List<ServiceModel> painter = [
     ServiceModel(
