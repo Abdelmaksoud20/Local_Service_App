@@ -1,13 +1,11 @@
-import 'dart:developer';
-
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_project/models/auth_models/register_model.dart';
-import 'package:graduation_project/models/form_field_model.dart';
 import 'package:graduation_project/models/register_form_controller.dart';
 import 'package:graduation_project/screens/register_view/register_message_diloge.dart';
+import 'package:graduation_project/screens/register_view/service_provider/widgets/service_provider_check_box.dart';
 import 'package:graduation_project/services/auth_service.dart';
 import 'package:graduation_project/shared_widget.dart/custom_drop_down_list.dart';
-import 'package:graduation_project/shared_widget.dart/custom_form.dart';
 import 'package:graduation_project/shared_widget.dart/custom_text_form.dart';
 import 'package:graduation_project/shared_widget.dart/form_widget/custom_email_and_phone.dart';
 import 'package:graduation_project/shared_widget.dart/form_widget/custom_name_and_username.dart';
@@ -39,25 +37,32 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
   }
 
   bool? isLoading;
-  late String place;
-  late String jop;
-  String? skill;
-  Future<bool> registerUser() async {
+  late String place ;
+  String jop  = "Carpentry Service";
+   List<String> skill  = [
+     "Wiring and Cabling Services",
+     "Installing and Maintaining Electrical Panels",
+     "Installing and Maintaining Lighting Systems",
+     "Installing and Maintaining Alarm and Home Security Systems"
+   ];
+ Future<bool> registerUser() async {
     final provider = RegisterModel(
       name: registerFormController.controllerFirst.text,
       email: registerFormController.controllerEmail.text,
       password: registerFormController.controllerPassword.text,
       phone: registerFormController.controllerPhone.text,
       service: jop,
-      area: place,
+      area : place ,
+      skillsList: skill
     );
     try {
       var res = await AuthService().register(provider);
-      log(res.toString());
-      return true;
-    } catch (e) {
-      log(e.toString());
-      return false;
+      print(res.toString());
+      print("+++++++++++++++$skill ---------------");
+     return true;
+    }on DioException catch(e) {
+      print(e);
+return false ;
     }
   }
 
@@ -107,8 +112,9 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
             ),
             CustomTextForm(title: 'The service your provide'),
             CustomDropdownList(
-              onChanged: (value) {
-                jop = value!;
+              onChanged: (value){
+                jop = value! ;
+                setState(() {});
               },
               key: registerFormController.serviceKey,
               hintText: 'Select your service',
@@ -119,24 +125,24 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
                 return null;
               },
               data: [
-                'Plumbing',
-                'Cleaning',
-                'Carpentry',
-                'Painting',
-                'Air conditionar',
-                'Electrical',
+                'Air Conditioning Service',
+                'Carpentry Service',
+                'Electrical Work Service',
+                'Appliance Service',
+                'Painting Service',
+                'Plumbing Service',
               ],
             ),
-            CustomTextForm(title: 'Skils(optional)'),
-            CustomForm(
-              formModel: FormFieldModel(
-                hintText: 'Enter your skils',
-                keyboardType: TextInputType.name,
-                left: left,
-                onchanged: (data) {
-                  skill = data;
-                },
-              ),
+            CustomTextForm(title: 'Skills'),
+            CustomCheckboxList(
+              data: skillsList(jop: jop) ,
+              hintText: 'Select your skills',
+              color: Colors.blueGrey,
+              initialSelectedItems: skill,
+              onChanged: (selectedSkills) {
+                skill = selectedSkills;
+                 print(skill);
+              },
             ),
             CustomPassword(
               left: left,
@@ -150,18 +156,11 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
               radius: 15,
               onPressed: () async {
                 if (registerFormController.formKey.currentState!.validate()) {
-                  if (await registerUser()) {
-                    // ignore: use_build_context_synchronously
-                    RegisterMessageDiloge.showSuccessDialog(
-                      context,
-                      "Register done",
-                    );
-                  } else {
-                    // ignore: use_build_context_synchronously
-                    RegisterMessageDiloge.showErrorDialog(
-                      context,
-                      "something wrong",
-                    );
+                  if(await registerUser()){
+                    RegisterMessageDiloge.showSuccessDialog(context , "Register done");
+                  }else{
+                    RegisterMessageDiloge.showErrorDialog(context , "something wrong");
+
                   }
                   registerFormController.clearRegisterController();
                 } else {
@@ -176,4 +175,59 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
       ),
     );
   }
+ List<String> skillsList({required String jop}){
+   switch (jop) {
+     case "Electrical Work Service":
+       return [
+         "Wiring and Cabling Services",
+         "Installing and Maintaining Electrical Panels",
+         "Installing and Maintaining Lighting Systems",
+         "Installing and Maintaining Alarm and Home Security Systems"
+       ];
+     case "Carpentry Service":
+       return [
+         "Door Installation and Repair",
+         "Window Framing and Repair",
+         "Bedroom Furniture Assembly",
+         "Table Crafting and Restoration"
+       ];
+     case "Air Conditioning Service":
+       return [
+         "Air conditioning cleaning & summer maintenance",
+         "Air conditioning inspection",
+         "Charging Freon air conditioning",
+         "Dismantling and installing Air conditioning"
+       ];
+
+     case "Appliance Service":
+       return [
+         "Washing Machine Repair",
+         "Refrigerator Repair",
+         "Water Heater Repair",
+         "Oven Repair"
+       ];
+     case "Painting Service":
+       return [
+         "Interior Wall Painting",
+         "Exterior House Painting",
+         "Cabinet Refinishing",
+         "Decorative Painting"
+       ];
+     case "Plumbing Service":
+       return [
+         "Fix Leak",
+         "Unclog The Drain",
+         "Install A New Sink",
+         "Replace A Faucet"
+       ];
+
+     default:
+       return [];
+   }
+
+ }
+
 }
+
+
+
