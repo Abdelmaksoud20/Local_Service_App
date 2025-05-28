@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/constant.dart';
 
-import '../../../notification/notification.dart';
+// import '../../../notification/notification.dart';
 
 class ProviderCard extends StatelessWidget {
   const ProviderCard({super.key});
@@ -94,7 +94,7 @@ class ProviderCard extends StatelessWidget {
             const SizedBox(height: 6),
             GestureDetector(
               onTap: () {
-                NotificationApp().showNotification();
+                // NotificationApp().showNotification();
               },
               child: Container(
                 height: 23,
