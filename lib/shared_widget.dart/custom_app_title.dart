@@ -16,11 +16,7 @@ class CustomAppTitle extends StatelessWidget {
       width: double.infinity,
       child: Padding(
         padding: EdgeInsets.only(top: height * 0.06, left: width * 0.03),
-        child: Text(
-          title!,
-          style: AppStyle.fontBoldSize28
-
-        ),
+        child: Text(title!, style: AppStyle.fontBoldSize28),
       ),
     );
   }

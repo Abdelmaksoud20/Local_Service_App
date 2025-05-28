@@ -8,7 +8,9 @@ class CustomButtonSwitch extends StatelessWidget {
     required this.title,
     this.onPressed,
     required this.color,
-    this.fontWeight = FontWeight.w500,  this.paddingLeft =0 ,  this.paddingRight=0,
+    this.fontWeight = FontWeight.w500,
+    this.paddingLeft = 0,
+    this.paddingRight = 0,
   });
   final String title;
   final VoidCallback? onPressed;
@@ -21,7 +23,7 @@ class CustomButtonSwitch extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Padding(
-        padding:  EdgeInsets.only(left: paddingLeft, right: paddingRight),
+        padding: EdgeInsets.only(left: paddingLeft, right: paddingRight),
         child: Container(
           height: 45,
           decoration: BoxDecoration(

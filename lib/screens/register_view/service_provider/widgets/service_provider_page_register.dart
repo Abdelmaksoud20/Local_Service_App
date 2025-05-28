@@ -13,7 +13,7 @@ class ServiceProviderPageRegister extends StatelessWidget {
           onTap: () => FocusScope.of(context).unfocus(), // update
           child: Stack(
             children: [
-              CustomAppTitle(title: "Let's Create Creative Work",),
+              CustomAppTitle(title: "Let's Create Creative Work"),
               ServiceProviderComponent(),
             ],
           ),

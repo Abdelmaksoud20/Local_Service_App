@@ -11,7 +11,7 @@ class FormFieldModel {
   final String? errorText;
   final String? Function(String?)? validate;
 
-  FormFieldModel( {
+  FormFieldModel({
     this.validate,
     this.errorText,
     this.hintText,

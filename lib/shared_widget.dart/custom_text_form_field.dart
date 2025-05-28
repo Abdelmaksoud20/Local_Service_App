@@ -20,7 +20,8 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.prefixOnPressed,
     this.suffixOnPressed,
-    this.validator, this.onTap,
+    this.validator,
+    this.onTap,
   });
 
   @override

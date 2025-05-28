@@ -8,27 +8,24 @@ class CustomNameAndUsername extends StatefulWidget {
     super.key,
     required this.left,
     required this.controllerFirst,
-    required this.controllerLast,
     required this.controllerUser,
   });
   final double left;
   final TextEditingController controllerFirst;
-  final TextEditingController controllerLast;
   final TextEditingController controllerUser;
   @override
   State<CustomNameAndUsername> createState() => _CustomNameAndUsernameState();
 }
 
 class _CustomNameAndUsernameState extends State<CustomNameAndUsername> {
-  String? firstName;
-  String? lastName;
+  String? name;
   String? userName;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CustomTextForm(title: 'First Name'),
+        CustomTextForm(title: ' Name'),
         CustomForm(
           formModel: FormFieldModel(
             controller: widget.controllerFirst,
@@ -36,7 +33,7 @@ class _CustomNameAndUsernameState extends State<CustomNameAndUsername> {
             hintText: 'Enter your FirstName',
             keyboardType: TextInputType.name,
             onchanged: (data) {
-              firstName = data;
+              name = data;
             },
             validate: (data) {
               if (data!.isEmpty) {
@@ -49,27 +46,7 @@ class _CustomNameAndUsernameState extends State<CustomNameAndUsername> {
             },
           ),
         ),
-        CustomTextForm(title: 'Last Name'),
-        CustomForm(
-          formModel: FormFieldModel(
-            controller: widget.controllerLast,
-            hintText: 'Enter your LastName',
-            keyboardType: TextInputType.name,
-            left: widget.left,
-            onchanged: (data) {
-              lastName = data;
-            },
-            validate: (data) {
-              if (data!.isEmpty) {
-                return 'Last Name is required';
-              } else if (data.length < 3) {
-                return 'Last Name must be at least 3 characters long';
-              } else {
-                return null;
-              }
-            },
-          ),
-        ),
+
         CustomTextForm(title: 'User Name'),
         CustomForm(
           formModel: FormFieldModel(

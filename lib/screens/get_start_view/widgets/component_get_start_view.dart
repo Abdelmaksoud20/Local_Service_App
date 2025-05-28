@@ -6,7 +6,7 @@ import 'package:graduation_project/shared_widget.dart/custom_app_body.dart';
 import 'package:graduation_project/shared_widget.dart/primary_button.dart';
 
 class ComponentGetStartView extends StatelessWidget {
-  const ComponentGetStartView({super.key,});
+  const ComponentGetStartView({super.key});
   @override
   Widget build(BuildContext context) {
     return CustomAppBody(

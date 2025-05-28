@@ -5,7 +5,7 @@ import 'package:graduation_project/helper/colors_app.dart';
 import 'package:graduation_project/shared_widget.dart/custom_app_body.dart';
 
 class Login extends StatelessWidget {
-  const Login({super.key, });
+  const Login({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -9,12 +9,7 @@ class ServiceProviderComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppBody(
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 25),
-            ServiceProviderForm(),
-          ],
-        ),
+        child: Column(children: [SizedBox(height: 25), ServiceProviderForm()]),
       ),
     );
   }

@@ -8,7 +8,8 @@ class PrimaryButton extends StatelessWidget {
     super.key,
     required this.title,
     this.onPressed,
-    this.radius = 10,  this.fontSize = FontSizeApp.fontSize28,
+    this.radius = 10,
+    this.fontSize = FontSizeApp.fontSize28,
   });
   final String title;
   final VoidCallback? onPressed;

@@ -4,7 +4,12 @@ import 'package:graduation_project/shared_widget.dart/custom_form.dart';
 import 'package:graduation_project/shared_widget.dart/custom_text_form.dart';
 
 class CustomEmailAndPhone extends StatefulWidget {
-  const CustomEmailAndPhone({super.key, required this.left, required this.controllerEmail, required this.controllerPhone});
+  const CustomEmailAndPhone({
+    super.key,
+    required this.left,
+    required this.controllerEmail,
+    required this.controllerPhone,
+  });
   final double left;
   final TextEditingController controllerEmail;
   final TextEditingController controllerPhone;

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:graduation_project/screens/service_view/widgets/provider_card.dart';
 

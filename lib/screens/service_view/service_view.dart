@@ -20,5 +20,3 @@ class ServiceView extends StatelessWidget {
     );
   }
 }
-
-

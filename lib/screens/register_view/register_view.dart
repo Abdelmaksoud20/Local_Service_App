@@ -16,13 +16,18 @@ class RegisterView extends StatelessWidget {
           onTap: () => FocusScope.of(context).unfocus(), // update
           child: Stack(
             children: [
-              CustomAppTitle(title: "Don't Have an Account Yet?",),
-              CustomAppBody(child: Column(
-                children: [
-                  SwitchingLoginAndSignUp(loginColor: ColorsApp.switchColor, registerColor: Colors.white,),
-                  RegisterComponent(),
-                ],
-              )),
+              CustomAppTitle(title: "Don't Have an Account Yet?"),
+              CustomAppBody(
+                child: Column(
+                  children: [
+                    SwitchingLoginAndSignUp(
+                      loginColor: ColorsApp.switchColor,
+                      registerColor: Colors.white,
+                    ),
+                    RegisterComponent(),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

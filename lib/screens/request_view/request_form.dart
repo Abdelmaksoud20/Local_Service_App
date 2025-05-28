@@ -19,7 +19,7 @@ class FormRequest extends StatefulWidget {
 
 class _FormRequestState extends State<FormRequest> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-    // TextEditingController dateController = TextEditingController();
+  // TextEditingController dateController = TextEditingController();
   String? area;
   late final RequestButtonModel data;
   @override
@@ -142,24 +142,23 @@ class _FormRequestState extends State<FormRequest> {
             onTap: () async {
               await showAndChooseDate(context);
             },
-            
-            validator: (value) {
 
+            validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please select the execution day';
               }
-            
+
               return null;
             },
           ),
           const SizedBox(height: 40),
           RequestButton(
             formKey: formKey,
-          data: data,
+            data: data,
             service: widget.service,
             price: widget.price,
             skill: widget.skill,
-          
+            // dropDownKey: dropDownKey,
           ),
         ],
       ),
@@ -167,18 +166,18 @@ class _FormRequestState extends State<FormRequest> {
   }
 
   Future<void> showAndChooseDate(BuildContext context) async {
-      DateTime? pickedDate = await showDatePicker(
-    context: context,
-    initialDate: DateTime.now(),
-    firstDate: DateTime.now(),
-    lastDate: DateTime(2100),
-    
-                );
-      if (pickedDate != null) {
-    String formattedDate = "${pickedDate.year}-${pickedDate.month.toString().padLeft(2, '0')}-${pickedDate.day.toString().padLeft(2, '0')}";
+    DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2100),
+    );
+    if (pickedDate != null) {
+      String formattedDate =
+          "${pickedDate.year}-${pickedDate.month.toString().padLeft(2, '0')}-${pickedDate.day.toString().padLeft(2, '0')}";
       setState(() {
-      data.executionDayController.text = formattedDate;
-    });
-      }
+        data.executionDayController.text = formattedDate;
+      });
+    }
   }
 }

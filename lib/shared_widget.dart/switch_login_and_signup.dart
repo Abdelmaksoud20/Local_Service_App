@@ -3,6 +3,7 @@ import 'package:graduation_project/screens/login_view.dart/login_view.dart';
 import 'package:graduation_project/screens/register_view/register_view.dart';
 import 'package:graduation_project/shared_widget.dart/custom_button_switch.dart';
 import 'package:graduation_project/helper/colors_app.dart';
+
 class SwitchingLoginAndSignUp extends StatelessWidget {
   const SwitchingLoginAndSignUp({
     super.key,
@@ -31,8 +32,11 @@ class SwitchingLoginAndSignUp extends StatelessWidget {
         children: [
           Expanded(
             child: CustomButtonSwitch(
-              onPressed: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginView()));
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginView()),
+                );
               },
               paddingLeft: 18,
               title: 'Login',
@@ -42,8 +46,11 @@ class SwitchingLoginAndSignUp extends StatelessWidget {
           ),
           Expanded(
             child: CustomButtonSwitch(
-              onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> RegisterView()));
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RegisterView()),
+                );
               },
               paddingRight: 18,
               title: 'Register',
@@ -56,4 +63,3 @@ class SwitchingLoginAndSignUp extends StatelessWidget {
     );
   }
 }
-

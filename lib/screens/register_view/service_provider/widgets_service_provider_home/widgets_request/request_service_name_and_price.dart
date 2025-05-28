@@ -3,9 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:graduation_project/helper/font_size.dart';
 
 class RequestServiceNameAndPrice extends StatelessWidget {
-  const RequestServiceNameAndPrice({super.key, this.serviceName, this.servicePrice});
-   final String? serviceName;
-   final int? servicePrice;
+  const RequestServiceNameAndPrice({
+    super.key,
+    this.serviceName,
+    this.servicePrice,
+  });
+  final String? serviceName;
+  final int? servicePrice;
   @override
   Widget build(BuildContext context) {
     return Row(
