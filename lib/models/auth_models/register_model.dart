@@ -6,6 +6,7 @@ class RegisterModel {
     this.area,
     this.service,
     this.password,
+    this.skillsList ,
   });
 
   RegisterModel.fromJson(dynamic json) {
@@ -15,6 +16,9 @@ class RegisterModel {
     area = json['area'];
     service = json['service'];
     password = json['password'];
+
+    skillsList = json['skills'] != null ? json['skills'].cast<String>() : [];
+
   }
   String? name;
   String? password;
@@ -22,6 +26,10 @@ class RegisterModel {
   String? phone;
   String? area;
   String? service;
+
+  List<String>? skillsList ;
+
+
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -31,7 +39,7 @@ class RegisterModel {
     map['area'] = area;
     map['service'] = service;
     map['password'] = password;
-
+    map["skills"] = skillsList;
     return map;
   }
 }
