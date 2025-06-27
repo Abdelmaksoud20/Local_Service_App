@@ -6,6 +6,7 @@ import 'package:graduation_project/screens/home_views/personal_info_widgets/util
 import 'package:graduation_project/screens/home_views/profile_view.dart';
 import 'package:graduation_project/screens/home_views/services_view_state.dart';
 import 'package:graduation_project/screens/home_views/widgets/home_drawer_nav.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../helper/colors_app.dart';
 import 'home_view_body.dart';
 
@@ -23,12 +24,18 @@ class _HomeViewState extends State<HomeView> {
   int pageNum = 0;
   @override
   void initState() {
+    _loadUserId();
     pages = [
       HomeViewBody(),
       ServicesViewState(),
       ProfileView(id: widget.id!, check: user, data: widget.data),
     ];
     super.initState();
+  }
+
+  Future<void> _loadUserId() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('id', widget.id!);
   }
 
   @override
@@ -40,7 +47,6 @@ class _HomeViewState extends State<HomeView> {
               (context) =>
                   PersonalInfoCubit()..personalInfoMethod(id: widget.id!),
         ),
-      
       ],
       child: Scaffold(
         backgroundColor: Colors.white,

@@ -2,6 +2,7 @@ import 'accepted_provider.dart';
 
 class RequestStateModel {
   int? id;
+  String? email;
   String? service;
   String? executionDay;
   AcceptedProvider? acceptedProvider;
@@ -10,6 +11,7 @@ class RequestStateModel {
   int? acceptedProviderId;
 
   RequestStateModel({
+    this.email,
     this.id,
     this.executionDay,
     this.service,
@@ -20,9 +22,9 @@ class RequestStateModel {
   });
 
   factory RequestStateModel.fromJson(Map<String, dynamic> json) {
-
     return RequestStateModel(
       id: json['id'] as int?,
+      email: json['email'] as String?,
       executionDay: json['execution_day'] as String?,
       service: json['service'] as String?,
       requestKey: json['request_key'] as String?,
@@ -39,6 +41,7 @@ class RequestStateModel {
 
   Map<String, dynamic> toJson() => {
     'id': id,
+    'email': email,
     'execution_day': executionDay,
     'service': service,
     'request_key': requestKey,

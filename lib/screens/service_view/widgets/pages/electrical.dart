@@ -51,7 +51,7 @@ class ServiceBodyElectrical extends StatelessWidget {
         slivers: [
           SliverPadding(
             padding: EdgeInsets.only(bottom: 10),
-            sliver: ServiceCardSliverList(services: electricals),
+            sliver: ServiceCardSliverList(services: electricals,),
           ),
           SliverToBoxAdapter(child: ProviderCardListView()),
         ],

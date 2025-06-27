@@ -15,7 +15,7 @@ import 'package:graduation_project/screens/service_view/widgets/pages/plumber.da
 import '../../helper/colors_app.dart';
 
 class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({super.key});
+  const HomeViewBody({super.key,});
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -60,7 +60,7 @@ class HomeViewBody extends StatelessWidget {
                             );
                           } else {
                             return Text(
-                              's for data...',
+                              'waiting for data...',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: FontSizeApp.fontSize14,
