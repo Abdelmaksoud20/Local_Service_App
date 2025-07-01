@@ -6,23 +6,38 @@ part 'request_state_state.dart';
 
 class RequestStateCubit extends Cubit<RequestStateState> {
   RequestStateCubit() : super(RequestStateInitial());
-  Requests data = Requests();
-  List<RequestStateModel> dataList = [];
-  Future requestDetailsMethod({required int id}) async {
-    emit(RequestStateLoading());
-    try {
-      final response = await data.requestDetails(id: id);
+  final Requests data = Requests();
+  final Map<int, List<RequestStateModel>> userRequests = {};
 
-      final exists = dataList.any((element) => element.id == response.id);
-      if (!exists) {
-        dataList = List.from(dataList)..add(response); // ✅ نسخة جديدة
+  Future<void> requestDetailsMethod({required int id, required int userId}) async {
+    emit(RequestStateLoading());
+
+    try {
+      final response = await data.requestDetails(id: id); 
+      final currentList = userRequests[userId] ?? [];
+
+      // فحص إذا الطلب موجود
+      final index = currentList.indexWhere((e) => e.id == response.id);
+      if (index == -1) {
+        currentList.add(response); // إضافة طلب جديد
       } else {
-        dataList =
-            dataList.map((e) => e.id == response.id ? response : e).toList();
+        currentList[index] = response; // تحديث الطلب الموجود
       }
-      emit(RequestStateLoaded(details: [...dataList]));
+
+      // تحديث بيانات المستخدم
+      userRequests[userId] = currentList;
+
+      // إرسال الحالة المحدثة فقط لهذا المستخدم
+      emit(RequestStateLoaded(details: List.from(userRequests[userId]!)));
     } catch (e) {
       emit(RequestStateError(errMessage: e.toString()));
     }
   }
+
+  // اختيارية: مسح طلبات مستخدم عند الـ Logout
+  void clearUserRequests(int userId) {
+    userRequests.remove(userId);
+    emit(RequestStateInitial());
+  }
 }
+

@@ -4,7 +4,7 @@ import 'package:graduation_project/models/service_model.dart';
 import 'package:graduation_project/screens/request_view/request_view.dart';
 
 class ServiceCard extends StatelessWidget {
-  const ServiceCard({super.key, required this.data});
+  const ServiceCard({super.key, required this.data,});
   final ServiceModel data;
   @override
   Widget build(BuildContext context) {
@@ -74,6 +74,7 @@ class ServiceCard extends StatelessWidget {
                         MaterialPageRoute(
                           builder:
                               (context) => RequestView(
+                                // id: id,
                                 price: data.price,
                                 skill: data.name,
                                 service: data.servicename,

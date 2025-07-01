@@ -7,7 +7,6 @@ import 'package:graduation_project/screens/home_views/services_view_state.dart';
 
 import 'package:graduation_project/screens/request_view/cubit/request_cubit.dart';
 
-
 // ignore: must_be_immutable
 class RequestButton extends StatelessWidget {
   const RequestButton({
@@ -17,6 +16,7 @@ class RequestButton extends StatelessWidget {
     required this.price,
     required this.data,
     required this.formKey,
+  
   });
   final RequestButtonModel data;
   final GlobalKey<FormState> formKey;
@@ -26,13 +26,18 @@ class RequestButton extends StatelessWidget {
     // log('request Button');
     return BlocConsumer<RequestCubit, RequestState>(
       listener: (context, state) {
+        
         if (state is RequestLoaded) {
-           Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ServicesViewState(requestId: state.data['data']['id']),
-        ),
-      );
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder:
+                  (context) => ServicesViewState(
+                    requestId: state.data['data']['id'],
+                  
+                  ),
+            ),
+          );
           data.clearAll();
           snakBar(context, 'successful request');
         } else if (state is Requesterror) {

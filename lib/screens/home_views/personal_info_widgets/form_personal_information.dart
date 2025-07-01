@@ -136,7 +136,7 @@ class ProviderDetails extends StatelessWidget {
 
               const SizedBox(height: 16),
               Text('Skills:', style: TextStyle(fontSize: 16)),
-              // CustomSkills(skills: state.infoModel.skills!),
+              CustomSkills(skills: state.infoModel.skills!),
             ],
           );
         } else if (state is PersonalInfoLoading) {
@@ -186,13 +186,14 @@ class CustomSkills extends StatelessWidget {
 }
 
 class UserDetails extends StatelessWidget {
-  const UserDetails({super.key, required this.controallers});
+   const UserDetails({super.key, required this.controallers});
   final PersonalInfoControalls controallers;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PersonalInfoCubit, PersonalInfoState>(
       builder: (context, state) {
         if (state is PersonalInfoLoaded) {
+           // Update email from state
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

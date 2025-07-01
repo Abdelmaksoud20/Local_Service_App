@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/screens/home_views/utils/cubit/request_state_cubit.dart';
@@ -28,36 +26,35 @@ class _ServicesViewStateState extends State<ServicesViewState> {
   }
 
   Future<void> _initAndStartPolling() async {
-
     final prefs = await SharedPreferences.getInstance();
-    List<String> storedIds = prefs.getStringList('request_ids') ?? [];
+    int? userId = prefs.getInt('id');
+    // final key = 'request_ids_${widget.userId}';
+    List<String> storedIds = prefs.getStringList(userId.toString()) ?? [];
 
     if (widget.requestId != null) {
       final idStr = widget.requestId.toString();
       if (!storedIds.contains(idStr)) {
         storedIds.add(idStr);
-        await prefs.setStringList('request_ids', storedIds);
+        await prefs.setStringList(userId.toString(), storedIds);
       }
     }
 
     final parsedIds = storedIds.map(int.parse).toList();
 
     if (parsedIds.isNotEmpty) {
-      log('parsed IDs: $parsedIds');
       setState(() {
         requestIds = parsedIds;
       });
-        log('Request IDs: $requestIds');
 
       final cubit = context.read<RequestStateCubit>();
 
       for (int id in requestIds) {
-        cubit.requestDetailsMethod(id: id);
+        cubit.requestDetailsMethod(id: id, userId: userId!);
       }
 
-      _pollingTimer = Timer.periodic(const Duration(seconds: 7), (timer) {
+      _pollingTimer = Timer.periodic(const Duration(seconds: 10), (timer) {
         for (int id in requestIds) {
-          cubit.requestDetailsMethod(id: id);
+          cubit.requestDetailsMethod(id: id, userId: userId!);
         }
       });
     }
