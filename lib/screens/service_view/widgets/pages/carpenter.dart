@@ -3,8 +3,38 @@ import 'package:graduation_project/models/service_model.dart';
 import 'package:graduation_project/screens/service_view/widgets/provider_card_list_view.dart';
 import 'package:graduation_project/screens/service_view/widgets/service_card_sliver_list.dart';
 
+import '../../../../models/provider_model.dart';
+
 class ServiceBodyCarpenter extends StatelessWidget {
-  const ServiceBodyCarpenter({super.key});
+  ServiceBodyCarpenter({super.key});
+
+  final List<ProviderModel> models = [
+    ProviderModel(
+      image: 'assets/images/top/51733077-plumber-man.jpg',
+      name: "Tarek Hesham Nabil",
+      job: 'Door Installation and Repair',
+      desjob: 'Master carpenter specializing in custom door installations',
+      years: '  10+ years ',
+      rate: '5',
+    ),
+    ProviderModel(
+      image:
+          'assets/images/top/depositphotos_137592562-stock-photo-young-handsome-plumber.jpg',
+      name: 'Zeyad Nasser Tawfik',
+      job: 'Window Framing and Repair',
+      desjob: 'Window framing expert with custom woodworking skills',
+      years: '  8+ years  ',
+      rate: '4.5',
+    ),
+    ProviderModel(
+      image: 'assets/images/top/istockphoto-1835093714-612x612.jpg',
+      name: 'Sherif Tamer AbdElAzeez',
+      job: 'Bedroom Furniture Assembly',
+      desjob: 'Bedroom furniture specialist with bespoke designs',
+      years: ' 7+ years ',
+      rate: '4.5',
+    ),
+  ];
   static final List<ServiceModel> carpenter = [
     ServiceModel(
       servicename: 'Carpenter',
@@ -42,6 +72,7 @@ class ServiceBodyCarpenter extends StatelessWidget {
       price: '200–250',
     ),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -53,7 +84,7 @@ class ServiceBodyCarpenter extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 10),
             sliver: ServiceCardSliverList(services: carpenter),
           ),
-          SliverToBoxAdapter(child: ProviderCardListView()),
+          SliverToBoxAdapter(child: ProviderCardListView(providers: models)),
         ],
       ),
     );

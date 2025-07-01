@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/constant.dart';
+import 'package:graduation_project/models/provider_model.dart';
 
 // import '../../../notification/notification.dart';
 
 class ProviderCard extends StatelessWidget {
-  const ProviderCard({super.key});
+  const ProviderCard({super.key, required this.data});
+  final ProviderModel? data;
 
   @override
   Widget build(BuildContext context) {
@@ -25,26 +27,26 @@ class ProviderCard extends StatelessWidget {
               children: [
                 ClipOval(
                   child: Image.asset(
-                    'assets/images/test_image.jpg',
+                    data!.image,
                     width: 54,
                     height: 54,
                     fit: BoxFit.cover,
                   ),
                 ),
                 const SizedBox(width: 6),
-                const Expanded(
+                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Provider Name',
+                        data!.name,
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
-                        'Service Provider',
+                        data!.job,
                         style: TextStyle(
                           fontSize: 10,
                           color: Color(0xff4B5563),
@@ -57,25 +59,25 @@ class ProviderCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 5),
-            const Text(
-              'Describe of service goes here  i test it again and again and again',
+            Text(
+              data!.desjob,
               style: TextStyle(fontSize: 10, color: Color(0xff6D5C5C)),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 5),
-            const Row(
+             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(Icons.handyman, color: Color(0xff4B5563), size: 20),
                 SizedBox(width: 10),
                 Text(
-                  '7+ Years',
+                 data!.years,
                   style: TextStyle(fontSize: 10, color: Color(0xff4B5563)),
                 ),
                 SizedBox(width: 10),
                 Text(
-                  '3.5',
+                 data!.rate,
                   style: TextStyle(fontSize: 10, color: Color(0xff4B5563)),
                 ),
               ],

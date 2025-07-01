@@ -52,7 +52,7 @@ class _ServicesViewStateState extends State<ServicesViewState> {
         cubit.requestDetailsMethod(id: id, userId: userId!);
       }
 
-      _pollingTimer = Timer.periodic(const Duration(seconds: 10), (timer) {
+      _pollingTimer = Timer.periodic(const Duration(seconds: 7), (timer) {
         for (int id in requestIds) {
           cubit.requestDetailsMethod(id: id, userId: userId!);
         }
