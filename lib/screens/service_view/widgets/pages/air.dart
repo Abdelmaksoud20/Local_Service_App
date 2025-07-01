@@ -1,10 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/models/provider_model.dart';
 import 'package:graduation_project/models/service_model.dart';
 import 'package:graduation_project/screens/service_view/widgets/provider_card_list_view.dart';
 import 'package:graduation_project/screens/service_view/widgets/service_card_sliver_list.dart';
 
 class ServiceBodyAir extends StatelessWidget {
-  const ServiceBodyAir({super.key});
+  ServiceBodyAir({super.key});
+
+  final List<ProviderModel> modles = [
+    ProviderModel(
+      image: 'assets/images/top/51733077-plumber-man.jpg',
+      name: "Ali Mostafa Zedan",
+      job: 'Air conditioning cleaning & summer maintenance',
+      desjob: 'AC specialist in maintenance and cleaning services',
+      years: ' 8+ years',
+      rate: '5',
+    ),
+    ProviderModel(
+      image:
+          'assets/images/top/depositphotos_137592562-stock-photo-young-handsome-plumber.jpg',
+      name: 'Youssef Soliman Fouad',
+      job: 'Charging Freon air conditioning',
+      desjob: 'AC technician specializing in freon charging and repairs',
+      years: '  7+ years ',
+      rate: '4.5',
+    ),
+    ProviderModel(
+      image: 'assets/images/top/istockphoto-1835093714-612x612.jpg',
+      name: 'Mohamed Sami Youssef',
+      job: 'Dismantling and installing Air conditioning',
+      desjob: 'AC expert specializing in installation and dismantling',
+      years: '6+ years ',
+      rate: ' 4.5',
+    ),
+  ];
+
   static final List<ServiceModel> air = [
     ServiceModel(
       servicename: 'Air conditionar',
@@ -46,6 +76,7 @@ class ServiceBodyAir extends StatelessWidget {
       price: '175–200',
     ),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -57,7 +88,7 @@ class ServiceBodyAir extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 10),
             sliver: ServiceCardSliverList(services: air),
           ),
-          SliverToBoxAdapter(child: ProviderCardListView()),
+          SliverToBoxAdapter(child: ProviderCardListView(providers: modles)),
         ],
       ),
     );

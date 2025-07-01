@@ -6,21 +6,23 @@ import '../../../../models/get_services_model/get_provider_dash_board.dart';
 import '../../../../services/get_provider_dashboard_service.dart';
 
 class ServiceProviderHomeBody extends StatefulWidget {
-  const ServiceProviderHomeBody( {super.key });
+  const ServiceProviderHomeBody({super.key});
 
   @override
-  State<ServiceProviderHomeBody> createState() => _ServiceProviderHomeBodyState();
+  State<ServiceProviderHomeBody> createState() =>
+      _ServiceProviderHomeBodyState();
 }
 
 class _ServiceProviderHomeBodyState extends State<ServiceProviderHomeBody> {
-  late  GetProviderDashBoard getProviderDashBoard ;
-  bool isLoading  = true;
-  Future<void> getData()async{
-    ProviderDashBoardService providerDashBoardService = ProviderDashBoardService();
+  late GetProviderDashBoard getProviderDashBoard;
+  bool isLoading = true;
+  Future<void> getData() async {
+    ProviderDashBoardService providerDashBoardService =
+        ProviderDashBoardService();
     final data = await providerDashBoardService.getProviderDashboard();
     setState(() {
       getProviderDashBoard = data;
-      isLoading = false ;
+      isLoading = false;
     });
   }
 
@@ -32,22 +34,54 @@ class _ServiceProviderHomeBodyState extends State<ServiceProviderHomeBody> {
 
   @override
   Widget build(BuildContext context) {
-    return isLoading ?  Center(child: CircularProgressIndicator()) : Column(
-      children: [
-        Container(
-            padding: EdgeInsets.only(top: 30 ,bottom: 15 ,left: 7 ,right: 7),
-            color:Colors.grey.shade200 ,
-            child: ServiceProviderHomeAppBar()),
-         Expanded(
-           child: ListView.builder(
-             itemCount: getProviderDashBoard.data?.serviceRequests?.length ?? 0,
-             itemBuilder: (context, index) {
-               return CustomRequestInfo(data: getProviderDashBoard.data?.serviceRequests?[index],);
-    },
-    ),
-    )
-      ],
-    );
+    return isLoading
+        ? Center(child: CircularProgressIndicator())
+        : Column(
+          children: [
+            Container(
+              padding: EdgeInsets.only(top: 30, bottom: 15, left: 7, right: 7),
+              color: Colors.grey.shade200,
+              child: ServiceProviderHomeAppBar(),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount:
+                    getProviderDashBoard.data?.serviceRequests
+                        ?.where((request) => request.status == "pending")
+                        .length ??
+                    0,
+                itemBuilder: (context, index) {
+                  final filteredRequests =
+                      getProviderDashBoard.data?.serviceRequests
+                          ?.where((request) => request.status == "pending")
+                          .toList();
 
+                  // Debug print to verify the status
+                  print(
+                    "${filteredRequests?[index].status}-------------------------++556777",
+                  );
+
+                  // Return the widget for the filtered item
+                  return CustomRequestInfo(
+                    data: filteredRequests?[index],
+                    onCancel: () {
+                      getProviderDashBoard.data?.serviceRequests?.removeAt(
+                        index,
+                      );
+                    },
+                    onAccept: () {
+                      final key =
+                          getProviderDashBoard
+                              .data
+                              ?.serviceRequests?[index]
+                              .requestKey;
+                      RequestStatus().accepted(key!);
+                    },
+                  );
+                },
+              ),
+            ),
+          ],
+        );
   }
 }

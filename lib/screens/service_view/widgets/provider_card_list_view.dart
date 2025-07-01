@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/models/provider_model.dart';
 import 'package:graduation_project/screens/service_view/widgets/provider_card.dart';
 
 class ProviderCardListView extends StatelessWidget {
-  const ProviderCardListView({super.key});
+  const ProviderCardListView({super.key, required this.providers});
+  final List<ProviderModel> providers;
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +20,11 @@ class ProviderCardListView extends StatelessWidget {
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           physics: const BouncingScrollPhysics(),
-          itemCount: 10,
+          itemCount: providers.length,
           itemBuilder: (context, index) {
-            return const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.0),
-              child: ProviderCard(),
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: ProviderCard(data: providers[index],),
             );
           },
         ),

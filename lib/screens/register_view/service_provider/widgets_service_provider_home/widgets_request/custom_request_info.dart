@@ -5,8 +5,10 @@ import 'package:graduation_project/screens/register_view/service_provider/widget
 import '../../../../../models/get_services_model/get_provider_dash_board.dart';
 
 class CustomRequestInfo extends StatelessWidget {
-  const CustomRequestInfo({super.key,  this.data});
+  const CustomRequestInfo({super.key,  this.data, required this.onCancel, required this.onAccept,});
   final ServiceRequests? data ;
+  final VoidCallback onCancel;
+  final VoidCallback onAccept;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class CustomRequestInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           RequestServiceNameAndPrice( serviceName: data?.service, servicePrice: data?.price,),
-          RequestClientNameAndLocation(nameClient: data?.name, area: data?.area,),
+          RequestClientNameAndLocation(nameClient: data?.name, area: data?.area, requestKey: data?.requestKey, onCancel: onCancel, onAccept: onAccept,  ),
           Divider(
             height: 40,
             color: Colors.grey,

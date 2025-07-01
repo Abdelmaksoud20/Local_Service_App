@@ -6,6 +6,7 @@ import 'package:graduation_project/screens/home_views/personal_info_widgets/util
 import 'package:graduation_project/screens/register_view/service_provider/widgets_service_provider_home/service_provider_body.dart';
 import '../../../helper/colors_app.dart';
 import '../../home_views/profile_view.dart';
+import '../../home_views/services_view_state.dart';
 import '../../home_views/widgets/home_drawer_nav.dart';
 
 class ServiceProviderHome extends StatefulWidget {
@@ -24,7 +25,8 @@ class _ServiceProviderHomeState extends State<ServiceProviderHome> {
   void initState() {
     pages = [
       ServiceProviderHomeBody(),
-      ProfileView(id: widget.id!, check: provider, data: widget.data),
+      ServicesViewState(),
+      ProfileView(id: widget.id!, check: provider,data: widget.data),
     ];
     super.initState();
   }
@@ -58,10 +60,13 @@ class _ServiceProviderHomeState extends State<ServiceProviderHome> {
               Icon(
                 Icons.home,
                 color: pageNum == 0 ? Colors.black : Colors.white,
+              ),Icon(
+                Icons.settings_applications_outlined,
+                color: pageNum == 1 ? Colors.black : Colors.white,
               ),
               Icon(
                 Icons.perm_identity_outlined,
-                color: pageNum == 1 ? Colors.black : Colors.white,
+                color: pageNum == 2 ? Colors.black : Colors.white,
               ),
             ],
           ),

@@ -1,10 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/models/provider_model.dart';
 import 'package:graduation_project/models/service_model.dart';
 import 'package:graduation_project/screens/service_view/widgets/provider_card_list_view.dart';
 import 'package:graduation_project/screens/service_view/widgets/service_card_sliver_list.dart';
 
 class ServiceBodyPlumber extends StatelessWidget {
-  const ServiceBodyPlumber({super.key});
+  ServiceBodyPlumber({super.key});
+
+  final List<ProviderModel> models = [
+    ProviderModel(
+      image: 'assets/images/top/51733077-plumber-man.jpg',
+      name: "Akram Hossni Harab",
+      job: 'Fix Leak',
+      desjob: 'Plumbing service specialist in leak repair',
+      years: ' 8+ years',
+      rate: ' 5',
+    ),
+    ProviderModel(
+      image:
+      'assets/images/top/depositphotos_137592562-stock-photo-young-handsome-plumber.jpg',
+      name: 'Amin Badr Fouad',
+      job: 'Unclog The Drain',
+      desjob: 'Plumbing service specialist in drain unclogging',
+      years: ' 7+ years ',
+      rate: '4.5',
+    ),
+    ProviderModel(
+      image: 'assets/images/top/istockphoto-1835093714-612x612.jpg',
+      name: 'Karim Mahmoud Gamal',
+      job: 'Install A New Sink',
+      desjob: 'Plumbing specialist in bathroom sink installations',
+      years: ' 6+ years ',
+      rate: '4.5',
+    ),
+  ];
   static final List<ServiceModel> plumber = [
     ServiceModel(
       servicename: 'Plumber',
@@ -46,6 +75,7 @@ class ServiceBodyPlumber extends StatelessWidget {
       price: '200–250',
     ),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -57,7 +87,7 @@ class ServiceBodyPlumber extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 10),
             sliver: ServiceCardSliverList(services: plumber),
           ),
-          SliverToBoxAdapter(child: ProviderCardListView()),
+          SliverToBoxAdapter(child: ProviderCardListView(providers: models)),
         ],
       ),
     );

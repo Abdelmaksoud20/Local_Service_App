@@ -6,13 +6,14 @@ import 'package:graduation_project/screens/home_views/home_view.dart';
 import 'package:graduation_project/screens/home_views/personal_info_widgets/utils/cubit/get_info/personal_info_cubit.dart';
 import 'package:graduation_project/screens/home_views/widgets/profile_information_title.dart';
 import 'package:graduation_project/screens/login_view.dart/login_view.dart';
-import 'package:graduation_project/screens/register_view/service_provider/service_provider_home.dart';
 import '../../../constant.dart';
 import '../../../helper/colors_app.dart';
+import '../../../notification/notification.dart';
 
 class HomeDrawerNav extends StatelessWidget {
   const HomeDrawerNav({super.key, required this.swichMode});
   final String swichMode;
+
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +78,9 @@ class HomeDrawerNav extends StatelessWidget {
               },
             ),
             CustomItemDrawer(text: "About App", icon: Icons.info_outline),
+            FilledButton(onPressed: (){
+              NotificationService.showNotification(id: 0, title: "first time" , body: "content of the body");
+            }, child: Text("Test notification ")),
             CustomItemDrawer(
               text: "Log Out",
               icon: Icons.logout,
@@ -94,7 +98,7 @@ class HomeDrawerNav extends StatelessWidget {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ServiceProviderHome(),
+                      builder: (context) => LoginView(),
                     ),
                   );
                 } else {

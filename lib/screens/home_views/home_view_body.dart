@@ -188,8 +188,8 @@ class HomeViewBody extends StatelessWidget {
                       child: HomeServiceItem(
                         context,
                         size: size,
-                        name: "Cleaner",
-                        image: "assets/images/Animation Cleaner.json",
+                        name: "Appliance Service",
+                        image: "assets/images/man-repairing-motherboard.json",
                       ),
                     ),
                     GestureDetector(

@@ -51,12 +51,10 @@ class _ServicesViewStateState extends State<ServicesViewState> {
 
       final cubit = context.read<RequestStateCubit>();
 
-      // تحميل الطلبات لأول مرة
       for (int id in requestIds) {
         cubit.requestDetailsMethod(id: id);
       }
 
-      // بدء الـ polling
       _pollingTimer = Timer.periodic(const Duration(seconds: 7), (timer) {
         for (int id in requestIds) {
           cubit.requestDetailsMethod(id: id);

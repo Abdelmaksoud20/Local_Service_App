@@ -4,9 +4,13 @@ import 'package:graduation_project/screens/register_view/service_provider/widget
 import 'package:graduation_project/screens/register_view/service_provider/widgets_service_provider_home/widgets_request/custom_request_client_name_location.dart';
 
 class RequestClientNameAndLocation extends StatelessWidget {
-  const RequestClientNameAndLocation({super.key, this.nameClient, this.area});
-
+  const RequestClientNameAndLocation({super.key, this.nameClient, this.area, this.requestKey, required this.onCancel, required this.onAccept, });
+  final String? requestKey ;
   final String? nameClient ;
+  final VoidCallback onCancel;
+  final VoidCallback onAccept;
+
+
   final String? area ;
   @override
   Widget build(BuildContext context) {
@@ -30,11 +34,12 @@ class RequestClientNameAndLocation extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomRequestButton(
-                onTap: (){},
+                onTap:onAccept ,
                 buttonTitle: 'Confirm',
                 color: ColorsApp.requestServiceProviderColor,
               ),
-              CustomRequestButton(buttonTitle: 'Cancel', color: Colors.red),
+              CustomRequestButton(buttonTitle: 'Cancel', color: Colors.red , onTap: onCancel,
+              ),
             ],
           ),
         ],
