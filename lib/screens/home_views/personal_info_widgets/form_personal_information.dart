@@ -136,7 +136,7 @@ class ProviderDetails extends StatelessWidget {
 
               const SizedBox(height: 16),
               Text('Skills:', style: TextStyle(fontSize: 16)),
-              // CustomSkills(skills: state.infoModel.skills!),
+              CustomSkills(skills: state.infoModel.skills!),
             ],
           );
         } else if (state is PersonalInfoLoading) {
