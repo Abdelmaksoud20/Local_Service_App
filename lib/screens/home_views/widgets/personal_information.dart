@@ -20,6 +20,7 @@ class _PersonalInformationState extends State<PersonalInformation> {
   PersonalInfoControalls controalls = PersonalInfoControalls();
   @override
   Widget build(BuildContext context) {
+    
     Size size = MediaQuery.sizeOf(context);
     return SafeArea(
       top: false,

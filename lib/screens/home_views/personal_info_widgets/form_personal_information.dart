@@ -186,13 +186,14 @@ class CustomSkills extends StatelessWidget {
 }
 
 class UserDetails extends StatelessWidget {
-  const UserDetails({super.key, required this.controallers});
+   const UserDetails({super.key, required this.controallers});
   final PersonalInfoControalls controallers;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PersonalInfoCubit, PersonalInfoState>(
       builder: (context, state) {
         if (state is PersonalInfoLoaded) {
+           // Update email from state
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
