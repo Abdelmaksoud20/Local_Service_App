@@ -11,7 +11,7 @@ class ApiService {
 
   late Dio _dio;
   bool _initialized = false;
-  final String baseUrl = "https://ba2b-45-242-65-39.ngrok-free.app";
+  final String baseUrl = "https://3bcc-45-242-65-39.ngrok-free.app";
   ApiService._internal();
 
   Future<Dio> get dio async {
@@ -54,6 +54,26 @@ class ApiService {
 
     return response.data;
   }
+
+  Future<dynamic> acceptRequest(String requestKey, ) async {
+    final d = await dio;
+    try{
+      final response = await d.post(
+        '/api/service-request/$requestKey',
+      );
+      print("${response.toString()}--00000000000000000000000000");
+
+      // if (response.statusCode == 200 || response.statusCode == 201) {
+      //   return response.data;
+      // } else {
+      //   throw Exception(
+      //       "Failed to accept request-------------: ${response.toString()}");
+      // }
+    }  on DioException catch(e){
+      print("$e------------------978454+84+4+54+84+5+4+");
+    }
+  }
+
 
   Future<dynamic> putRequest(String endpoint, Map<String, dynamic> data) async {
     final d = await dio;
