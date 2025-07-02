@@ -46,7 +46,7 @@ class ServiceBodyElectrical extends StatelessWidget {
     ),
     ServiceModel(
       servicename: 'Electrical',
-      name: 'Installation and maintaining lighting systems',
+      name: 'Installing and maintaining lighting systems',
       description:
           'Replacing and maintaining damaged light fixtures. Installing indoor and outdoor lights and timers',
       imageUrl: 'assets/images/electrical/download(2).png',

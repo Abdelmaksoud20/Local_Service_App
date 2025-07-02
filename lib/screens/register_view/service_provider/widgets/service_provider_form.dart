@@ -40,7 +40,10 @@ class _ServiceProviderFormState extends State<ServiceProviderForm> {
   late String place ;
   String jop  = "Carpentry Service";
    List<String> skill  = [
-
+     "Wiring and Cabling Services",
+     "Installing and Maintaining Electrical Panels",
+     "Installing and Maintaining Lighting Systems",
+     "Installing and Maintaining Alarm and Home Security Systems"
    ];
  Future<bool> registerUser() async {
     final provider = RegisterModel(

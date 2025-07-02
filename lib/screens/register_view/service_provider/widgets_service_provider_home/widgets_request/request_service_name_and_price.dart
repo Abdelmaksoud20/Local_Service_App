@@ -22,7 +22,7 @@ class RequestServiceNameAndPrice extends StatelessWidget {
         Spacer(),
         // ServicePrice
         Container(
-          padding: EdgeInsets.all(6),
+          padding: EdgeInsets.all(7),
           decoration: BoxDecoration(
             color: Color(0xffD9D9D9),
             borderRadius: BorderRadius.circular(20),
@@ -31,8 +31,8 @@ class RequestServiceNameAndPrice extends StatelessWidget {
             textAlign: TextAlign.center,
             servicePrice ?? "unKnown price",
             style: GoogleFonts.poppins(
-              fontSize: FontSizeApp.fontSize16,
-              fontWeight: FontWeight.w500,
+              fontSize: FontSizeApp.fontSize18,
+              fontWeight: FontWeight.w700,
               color: Color(0xff10B981),
             ),
           ),

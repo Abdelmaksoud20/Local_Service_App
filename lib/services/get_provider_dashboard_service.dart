@@ -24,8 +24,7 @@ class RequestStatus{
 
   Future<void> accepted (String requestKey)async {
     final endPoint = "/api/service-request/$requestKey";
-    final response = await api.postRequest(endPoint,{});
-    return response ;
+    final response = await api.postRequest(endPoint, {} );
 
   }
 
