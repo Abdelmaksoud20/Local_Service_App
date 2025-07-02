@@ -13,7 +13,7 @@ class CustomCheckboxList extends StatefulWidget {
 
   final List<String> data;
   final List<String>? initialSelectedItems;
-  final ValueChanged<List<String>> onChanged;
+  final ValueChanged<List<String>>? onChanged;
   final String hintText;
   final Color? color;
 
@@ -38,7 +38,7 @@ class _CustomCheckboxListState extends State<CustomCheckboxList> {
         selectedItems.add(item);
       }
     });
-    widget.onChanged(selectedItems);
+    widget.onChanged!(selectedItems);
   }
 
   @override
