@@ -45,25 +45,28 @@ class _ServiceProviderHomeBodyState extends State<ServiceProviderHomeBody> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount:
-                    getProviderDashBoard.data?.serviceRequests
-                        ?.where((request) => request.status == "pending")
-                        .length ??
-                    0,
-                itemBuilder: (context, index) {
-                  final filteredRequests =
-                      getProviderDashBoard.data?.serviceRequests
-                          ?.where((request) => request.status == "pending")
-                          .toList();
+                itemCount: getProviderDashBoard.data?.serviceRequests!.length,
 
-                  // Debug print to verify the status
-                  print(
-                    "${filteredRequests?[index].status}-------------------------++556777",
-                  );
+                    // getProviderDashBoard.data?.serviceRequests
+                    //     ?.where((request) => request.status == "pending")
+                    //     .length ??
+                    // 0,
+                 itemBuilder: (context, index) {
+
+                //   final filteredRequests =
+                //       getProviderDashBoard.data?.serviceRequests
+                //           ?.where((request) => request.status == "pending")
+                //           .toList();
+
+                //   // Debug print to verify the status
+                //   print(
+                //     "${filteredRequests?[index].status}-------------------------++556777",
+                //   );
 
                   // Return the widget for the filtered item
+
                   return CustomRequestInfo(
-                    data: filteredRequests?[index],
+                    data:getProviderDashBoard.data?.serviceRequests?[index],
                     onCancel: () {
                       getProviderDashBoard.data?.serviceRequests?.removeAt(
                         index,

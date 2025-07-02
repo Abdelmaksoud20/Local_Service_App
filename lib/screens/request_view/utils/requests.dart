@@ -5,6 +5,14 @@ import '../../../services/api_service.dart';
 
 class Requests {
   ApiService apiService = ApiService();
+  Future<dynamic> sendTopData({required Map<String, dynamic> data}) async {
+    final String url = "/api/top-provider-request";
+    try {
+      return await apiService.postRequest(url, data);
+    } catch (e) {
+      throw Exception("Failed to send data: $e");
+    }
+  }
   Future<dynamic> sendData({required Map<String, dynamic> data}) async {
     final String url = "/api/service-requests";
     try {

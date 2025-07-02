@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/screens/home_views/utils/cubit/request_state_cubit.dart';
 import 'package:graduation_project/screens/home_views/widgets/profile_information_title.dart';
+// ignore: depend_on_referenced_packages
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../helper/colors_app.dart';

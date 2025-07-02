@@ -18,4 +18,15 @@ class RequestCubit extends Cubit<RequestState> {
       emit(Requesterror(err: error.toString()));
     }
   }
+  sendDataTopProviderRequestMethod({required Map<String, dynamic> sendtopdata}) async{
+        emit(RequestLoading());
+    try {
+      final response = await data.sendTopData(data: sendtopdata);
+      log(response.toString());
+      emit(RequestLoaded(data: response));
+    } catch (error) {
+      log(error.toString());
+      emit(Requesterror(err: error.toString()));
+    }
+  }
 }
